@@ -1,6 +1,7 @@
 "use client";
 
 import { getImageProps } from "next/image";
+import type { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, EASE, DUR } from "@/lib/gsap";
 import { splitIntoLines, lineRevealVars, LINE_FROM } from "@/lib/animation/lineReveal";
@@ -9,10 +10,8 @@ import { WhatsAppIcon } from "@/components/site";
 import styles from "./Hero.module.css";
 
 interface HeroImage {
-  src: string;
+  src: StaticImageData;
   alt: string;
-  width: number;
-  height: number;
 }
 
 export interface HeroProps {
@@ -35,8 +34,6 @@ export interface HeroProps {
 /** Desktop breakpoint boundary — kept in one place, shared by <source> and CSS intent. */
 const DESKTOP_MQ = "(min-width: 601px)";
 const MOBILE_MQ = "(max-width: 600px)";
-
-const isSvg = (s: string) => s.endsWith(".svg");
 
 /**
  * Full-bleed hero. On scroll the section pins (~150%) and ONLY the image pans
@@ -162,19 +159,13 @@ export function Hero({
     ...shared,
     src: image.src,
     alt: image.alt,
-    width: image.width,
-    height: image.height,
     sizes: "120vw",
-    unoptimized: isSvg(image.src),
   });
   const { props: mobile } = getImageProps({
     ...shared,
     src: mobileImage.src,
     alt: mobileImage.alt,
-    width: mobileImage.width,
-    height: mobileImage.height,
     sizes: "100vw",
-    unoptimized: isSvg(mobileImage.src),
   });
 
   return (

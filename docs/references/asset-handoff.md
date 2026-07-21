@@ -1,7 +1,15 @@
 # Anta Estudio — Home: Handoff de assets
 
-Qué tocar cuando lleguen las imágenes reales (hoy hay placeholders SVG en
-`public/placeholder/`, servidos con `unoptimized` porque son SVG).
+> **Estado (actualizado):** los **proyectos** ya están cableados con imágenes reales
+> desde [`lib/projects.ts`](../../lib/projects.ts) (AUTO-GENERADO por
+> [`scripts/gen-projects.mjs`](../../scripts/gen-projects.mjs); imports estáticos →
+> `placeholder="blur"`). El **hero** usa una foto real de Terraza Pangea. Se
+> eliminaron los placeholders SVG. **Pendiente:** `categoria` de cada proyecto
+> (hoy `null`; la etiqueta de categoría en las tarjetas está oculta hasta definirlas)
+> y un hero dedicado en alta (~2880px). Para cambiar imágenes/portadas/featured de
+> proyectos, edita la config en `scripts/gen-projects.mjs` y corre `node scripts/gen-projects.mjs`.
+
+Lo de abajo aplica para cuando lleguen assets nuevos (logos de clientes, hero dedicado, etc.).
 
 ## 1. Dónde se configura el host remoto (CDN)
 

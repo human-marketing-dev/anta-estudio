@@ -1,0 +1,89 @@
+.head {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: clamp(56px, 7vw, 96px) var(--section-pad-x) clamp(32px, 4vw, 56px);
+}
+
+.back {
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--anta-ink-70);
+  text-decoration: none;
+}
+.back:hover {
+  color: var(--anta-pink);
+}
+
+.title {
+  margin: 20px 0 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* Editorial masonry — mixed aspect ratios, no forced crops. */
+.gallery {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+  columns: 2;
+  column-gap: clamp(16px, 2vw, 32px);
+}
+
+.item {
+  break-inside: avoid;
+  margin-bottom: clamp(16px, 2vw, 32px);
+}
+
+.item :global(img) {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .gallery {
+    columns: 1;
+  }
+}
+
+.next {
+  background: var(--anta-mist);
+  margin-top: clamp(64px, 8vw, 120px);
+  padding: clamp(56px, 6vw, 80px) var(--section-pad-x);
+}
+
+.nextInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.nextLabel {
+  font-family: var(--font-text);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--anta-ink-50);
+}
+
+.nextName {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 44.2px);
+  line-height: 1.2;
+}
+
+.nextActions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}

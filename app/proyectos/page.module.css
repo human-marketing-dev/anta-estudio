@@ -1,0 +1,40 @@
+.main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 120px) var(--section-pad-x) clamp(80px, 10vw, 140px);
+}
+
+.head {
+  max-width: 720px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.sub {
+  margin: 24px 0 0;
+  font-family: var(--font-text);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--anta-ink-70);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 36px);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+  }
+}

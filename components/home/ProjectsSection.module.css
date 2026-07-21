@@ -22,59 +22,6 @@
   margin-top: 56px;
 }
 
-.cardLink {
-  display: block;
-  text-decoration: none;
-  color: var(--anta-ink);
-}
-
-.frame {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: var(--anta-white);
-}
-
-.imgScale {
-  position: absolute;
-  inset: 0;
-  transition: transform var(--dur) var(--ease);
-}
-
-.cardLink:hover .imgScale {
-  transform: scale(1.03);
-}
-
-.meta {
-  padding-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.cat {
-  font-family: var(--font-text);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--anta-pink);
-}
-
-.title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 24.88px;
-  line-height: 1.2;
-}
-
-.place {
-  font-family: var(--font-text);
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: var(--anta-ink-70);
-}
-
 @media (max-width: 860px) {
   .grid {
     grid-template-columns: 1fr;
