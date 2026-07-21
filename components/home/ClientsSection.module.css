@@ -8,32 +8,39 @@
   margin-top: 16px;
 }
 
+/* Ink logo wall — white transparent logos read directly on the dark panel. */
 .grid {
   margin-top: 56px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1px;
-  background: var(--color-border-subtle);
-  border: 1px solid var(--color-border-subtle);
+  background: var(--anta-ink-90);
+  border: 1px solid var(--anta-ink-90);
 }
 
 .cell {
-  background: var(--anta-white);
+  position: relative;
+  background: var(--anta-ink);
   aspect-ratio: 3 / 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: var(--anta-ink-30);
+  padding: clamp(18px, 2.4vw, 34px);
+  opacity: 0.72;
+  transition: opacity var(--dur) var(--ease);
 }
 
-@media (max-width: 760px) {
+.cell:hover .logo {
+  opacity: 1;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
