@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1000" preserveAspectRatio="xMidYMid slice">
+  <rect width="2400" height="1000" fill="#EEF0F3"/>
+  <g fill="#E4E7EB">
+    <rect x="0" width="200" height="1000"/>
+    <rect x="400" width="200" height="1000"/>
+    <rect x="800" width="200" height="1000"/>
+    <rect x="1200" width="200" height="1000"/>
+    <rect x="1600" width="200" height="1000"/>
+    <rect x="2000" width="200" height="1000"/>
+  </g>
+  <rect x="1198" y="0" width="4" height="1000" fill="#B5519E"/>
+  <text x="60" y="120" font-family="system-ui, sans-serif" font-size="34" letter-spacing="6" fill="#8A8886">PANORÁMICA · HERO · 2400×1000</text>
+</svg>

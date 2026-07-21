@@ -1,0 +1,38 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.subtitle {
+  margin-top: 28px;
+}
+
+.right {
+  padding-top: 6px;
+}
+
+.pillars {
+  margin-top: 44px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.pillar {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.pillarLine {
+  font-size: 15.5px;
+  margin-top: 6px;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

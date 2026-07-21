@@ -1,0 +1,98 @@
+/* Shared primitives for the home sections. Tokens only — no Tailwind. */
+
+.section {
+  padding-block: clamp(80px, 10vw, 160px);
+}
+
+.sectionMist {
+  background: var(--anta-mist);
+}
+
+.sectionInk {
+  background: var(--anta-ink);
+  color: var(--anta-white);
+}
+
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-inline: var(--section-pad-x);
+}
+
+/* Type */
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4.4vw, 58.92px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.h3big {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 44.2px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.sub {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--anta-ink-70);
+}
+
+.body {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 16.5px;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: var(--anta-ink-70);
+}
+
+.num {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--anta-pink);
+}
+
+/* Underlined link with an arrow that nudges 8px on hover */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--anta-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--anta-ink);
+  padding-bottom: 6px;
+}
+
+.arrow {
+  display: inline-flex;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.link:hover .arrow {
+  transform: translateX(8px);
+}

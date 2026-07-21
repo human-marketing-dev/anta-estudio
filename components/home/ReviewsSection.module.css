@@ -1,0 +1,25 @@
+.head {
+  max-width: 640px;
+}
+
+.headSub {
+  margin-top: 18px;
+}
+
+.widget {
+  margin-top: 56px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--anta-white);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.widgetNote {
+  font-family: var(--font-text);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--anta-ink-50);
+}

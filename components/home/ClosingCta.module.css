@@ -1,0 +1,23 @@
+.inner {
+  max-width: 900px;
+  text-align: center;
+  /* center the 900px inner within the page */
+  margin-inline: auto;
+}
+
+.title {
+  font-size: clamp(38px, 6vw, 82px);
+}
+
+.body {
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+
+.ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}

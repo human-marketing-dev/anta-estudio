@@ -1,0 +1,13 @@
+.mask {
+  overflow: hidden;
+  display: block;
+}
+
+.slideInner {
+  display: block;
+  will-change: transform;
+}
+
+.clip {
+  will-change: clip-path;
+}

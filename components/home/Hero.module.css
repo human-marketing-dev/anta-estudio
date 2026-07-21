@@ -1,0 +1,112 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--anta-ink);
+  color: var(--anta-white);
+}
+
+/* Single media wrapper. On desktop it's wider than the viewport so the image
+   can pan laterally; the pan distance is derived from this width in JS, so this
+   value is the single source of truth. */
+.media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  will-change: transform;
+}
+
+@media (min-width: 601px) {
+  .media {
+    width: 120%;
+  }
+}
+
+.media picture,
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  object-fit: cover;
+}
+
+/* Ink gradient for text contrast, heavier toward the bottom. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 23, 22, 0.2) 0%,
+    rgba(26, 23, 22, 0.32) 42%,
+    rgba(26, 23, 22, 0.72) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+  padding-bottom: clamp(52px, 8vh, 116px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 clamp(20px, 3vh, 34px);
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.tick {
+  display: block;
+  width: 7px;
+  height: 7px;
+  background: var(--anta-pink);
+}
+
+.title {
+  margin: 0;
+  max-width: 15ch;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(46px, 7.6vw, 104px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--anta-white);
+}
+
+.subtitle {
+  margin: clamp(24px, 4vh, 40px) 0 0;
+  max-width: 52ch;
+  font-family: var(--font-text);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(28px, 4vh, 44px);
+}

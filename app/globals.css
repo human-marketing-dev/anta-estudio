@@ -1,26 +1,139 @@
-@import "tailwindcss";
+/* Anta Estudio — global stylesheet.
+   Design tokens ported from the Anta Estudio Design System (colors, typography,
+   spacing). Font families are wired to next/font variables set in layout.tsx. */
 
+/* ---- Color tokens ---- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --anta-ink: #1a1716; /* Primary / near-black */
+  --anta-mist: #eef0f3; /* Secondary / cool light gray */
+  --anta-pink: #b5519e; /* Accent / magenta-pink */
+  --anta-white: #ffffff;
+
+  --anta-ink-90: #322f2e;
+  --anta-ink-70: #5c5958;
+  --anta-ink-50: #8a8886;
+  --anta-ink-30: #b9b7b5;
+  --anta-mist-60: #f5f6f8;
+  --anta-pink-dark: #8e3f7c;
+  --anta-pink-tint: #f3e4ef;
+
+  --color-bg: var(--anta-white);
+  --color-bg-alt: var(--anta-mist);
+  --color-bg-inverse: var(--anta-ink);
+  --color-surface: var(--anta-white);
+  --color-text: var(--anta-ink);
+  --color-text-muted: var(--anta-ink-70);
+  --color-text-inverse: var(--anta-white);
+  --color-accent: var(--anta-pink);
+  --color-accent-hover: var(--anta-pink-dark);
+  --color-border: var(--anta-ink);
+  --color-border-subtle: #e2e4e8;
+  --color-focus: var(--anta-pink);
+
+  /* ---- Font families (wired to next/font variables) ---- */
+  --font-display: var(--font-lato), system-ui, sans-serif;
+  --font-text: var(--font-open-sans), system-ui, sans-serif;
+  --font-italic: var(--font-poppins), system-ui, sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500; /* Lato has no true 500; falls back to 400 */
+  --fw-bold: 700;
+
+  /* ---- Spacing / layout ---- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+  --space-10: 160px;
+
+  --section-pad-y: 128px;
+  --section-pad-x: 48px;
+  --content-max: 1320px;
+  --gutter: 24px;
+
+  /* ---- Shape — strictly square ---- */
+  --radius: 0;
+  --radius-sm: 0;
+
+  --border-width: 1px;
+  --border-hairline: 1px solid var(--color-border-subtle);
+  --border-strong: 1px solid var(--color-border);
+
+  --shadow-none: none;
+  --shadow-soft: 0 12px 40px -18px rgba(26, 23, 22, 0.22);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.35s;
+  --dur-fast: 0.2s;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---- Reset / base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--anta-white);
+  color: var(--anta-ink);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--anta-pink);
+}
+a:hover {
+  color: var(--anta-pink-dark);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---- Scroll cue animation (used on the hero) ---- */
+@keyframes anta-scrollcue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  40% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  60% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+.anta-scrollcue {
+  animation: anta-scrollcue 2.4s var(--ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anta-scrollcue {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
 }
