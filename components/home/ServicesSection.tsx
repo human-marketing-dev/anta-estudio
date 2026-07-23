@@ -12,7 +12,7 @@ const categories = [
     title: "Arquitectura Comercial",
     body: "Arquitectura e interiorismo para restaurantes, cafés, retail y espacios de hospitalidad, diseñados para recibir clientes y representar tu marca. Alineamos distribución, materiales e iluminación con el concepto y la operación.",
     link: "Conoce nuestro trabajo comercial",
-    href: "/proyectos",
+    href: "/servicios/arquitectura-comercial",
   },
   {
     n: "02",

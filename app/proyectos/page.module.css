@@ -1,12 +1,11 @@
 .main {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: clamp(64px, 8vw, 120px) var(--section-pad-x) clamp(80px, 10vw, 140px);
+  padding-top: clamp(56px, 7vw, 110px);
 }
 
 .head {
-  max-width: 720px;
-  margin-bottom: clamp(48px, 6vw, 80px);
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 5vw, 72px);
+  padding-inline: var(--section-pad-x);
 }
 
 .title {
@@ -26,15 +25,21 @@
   color: var(--anta-ink-70);
 }
 
+/* Full-bleed portrait wall — no gaps, no side margins (bottega-style). */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 2.5vw, 36px);
+  gap: 0;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
   .grid {
     grid-template-columns: 1fr;
-    max-width: 460px;
   }
 }

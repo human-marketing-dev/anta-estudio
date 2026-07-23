@@ -55,7 +55,7 @@
 
   --section-pad-y: 128px;
   --section-pad-x: 48px;
-  --content-max: 1320px;
+  --content-max: 1450px;
   --gutter: 24px;
 
   /* ---- Shape — strictly square ---- */
@@ -135,5 +135,55 @@ img {
   }
   * {
     scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Project detail slide transition ----
+   The detail page always slides in from the right (like a tab) and slides back
+   out to the right when leaving — including on the browser Back button — over a
+   static listing. */
+
+/* Keep everything else (the listing behind) static — only the detail slides. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Opaque panel so the listing doesn't show through the detail. */
+::view-transition-new(.slide-in-right),
+::view-transition-old(.slide-out-right) {
+  background: var(--anta-white);
+}
+
+::view-transition-new(.slide-in-right) {
+  animation: vt-slide-in-right 0.5s var(--ease) both;
+}
+::view-transition-old(.slide-out-right) {
+  animation: vt-slide-out-right 0.5s var(--ease) both;
+}
+
+@keyframes vt-slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes vt-slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

@@ -1,30 +1,29 @@
+/* Ink header that blends into the ink scroll-grid below it. */
+.section {
+  /* matches .head's margin-bottom so the header sits evenly between the top of
+     the ink section and the grid */
+  padding-top: clamp(36px, 4.5vw, 64px);
+  padding-bottom: 0;
+}
+
 .head {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 24px;
+  margin-bottom: clamp(36px, 4.5vw, 64px);
 }
 
 .headSub {
   max-width: 560px;
   margin-top: 22px;
+  color: var(--anta-ink-30);
 }
 
+/* Link on ink */
 .headLink {
   flex: none;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 2.5vw, 36px);
-  margin-top: 56px;
-}
-
-@media (max-width: 860px) {
-  .grid {
-    grid-template-columns: 1fr;
-    max-width: 460px;
-  }
+  color: var(--anta-white);
+  border-bottom-color: var(--anta-white);
 }

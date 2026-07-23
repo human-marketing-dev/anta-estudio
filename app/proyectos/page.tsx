@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectTile } from "@/components/ProjectTile";
 import { projects } from "@/lib/projects";
 import styles from "./page.module.css";
 
@@ -24,13 +24,8 @@ export default function ProyectosPage() {
           </p>
         </header>
         <div className={styles.grid}>
-          {projects.map((project, i) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              index={i % 3}
-              sizes="(max-width: 860px) 100vw, 33vw"
-            />
+          {projects.map((project) => (
+            <ProjectTile key={project.slug} project={project} />
           ))}
         </div>
       </main>

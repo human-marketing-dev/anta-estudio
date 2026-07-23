@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { RevealLines } from "@/components/anim";
 import { Arrow } from "@/components/site";
-import { ProjectCard } from "@/components/ProjectCard";
-import { featuredProjects } from "@/lib/projects";
+import { ScrollGridProjects } from "@/components/ScrollGridProjects";
 import shared from "./home.module.css";
 import styles from "./ProjectsSection.module.css";
 
-/** Section 3 · Proyectos Recientes. Shows the featured projects (cover 4:5). */
+/** Section 3 · Proyectos Recientes. Header on mist, then the scroll-grid showcase. */
 export function ProjectsSection() {
   return (
-    <section id="proyectos" className={`${shared.section} ${shared.sectionMist}`}>
+    <section id="proyectos" className={`${shared.section} ${shared.sectionInk} ${styles.section}`}>
       <div className={shared.wrap}>
         <div className={styles.head}>
           <div>
@@ -31,13 +30,9 @@ export function ProjectsSection() {
             </span>
           </Link>
         </div>
-
-        <div className={styles.grid}>
-          {featuredProjects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
-        </div>
       </div>
+
+      <ScrollGridProjects />
     </section>
   );
 }

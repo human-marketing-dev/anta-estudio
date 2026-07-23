@@ -57,9 +57,9 @@ export function Button({
 
   const variants: Record<Variant, CSSProperties> = {
     solid: {
-      background: "var(--anta-ink)",
+      background: "var(--anta-pink)",
       color: "var(--anta-white)",
-      borderColor: "var(--anta-ink)",
+      borderColor: "var(--anta-pink)",
     },
     outline: {
       background: "transparent",
@@ -78,7 +78,7 @@ export function Button({
   const hoverStyle: CSSProperties =
     !disabled && hover
       ? variant === "solid"
-        ? { background: "var(--anta-pink)", borderColor: "var(--anta-pink)" }
+        ? { background: "var(--anta-ink)", borderColor: "var(--anta-ink)" }
         : variant === "outline"
           ? { background: "var(--anta-ink)", color: "var(--anta-white)" }
           : { color: "var(--anta-pink)" }

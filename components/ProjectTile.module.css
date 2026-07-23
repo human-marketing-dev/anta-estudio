@@ -1,0 +1,60 @@
+.tile {
+  display: block;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: var(--anta-white);
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--anta-mist);
+}
+
+.img {
+  object-fit: cover;
+  transition: opacity 0.5s var(--ease);
+  will-change: opacity;
+}
+
+/* Name + location overlaid, revealed on hover */
+.info {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 20px;
+  color: var(--anta-white);
+  background: linear-gradient(rgba(26, 23, 22, 0.12), rgba(26, 23, 22, 0.42));
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.link:hover .info {
+  opacity: 1;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.loc {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 15px;
+  opacity: 0.9;
+}

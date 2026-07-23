@@ -1,0 +1,177 @@
+/* Scroll-grid showcase (adapted from Jhey's CodePen → GSAP). On brand: ink bg,
+   square corners (--radius). Sticky-spacer trick: a tall stage + a sticky
+   viewport-height content. */
+
+.stage {
+  position: relative;
+  min-height: 240vh;
+  background: var(--anta-ink);
+}
+
+.content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  place-items: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.grid {
+  --offset: 0;
+  --gap: clamp(8px, 1.4vw, 24px);
+
+  /* Fill the width; with landscape cells the 3 rows fit the viewport height, so
+     rows 1 and 3 are never clipped. */
+  width: min(1760px, calc(100% - (2 * var(--section-pad-x))));
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: var(--gap);
+  margin: 0 auto;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    --offset: -1;
+  }
+  .grid > .layer:nth-of-type(1) {
+    display: none;
+  }
+}
+
+/* Layers inherit the parent tracks via subgrid. */
+.grid > .layer {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+/* Fallback for browsers without subgrid (e.g. Chrome 111–116): rebuild the
+   same tracks on each layer. */
+@supports not (grid-template-columns: subgrid) {
+  .grid > .layer {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: var(--gap);
+  }
+  @media (max-width: 600px) {
+    .grid > .layer {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* Placement (unchanged from the original) */
+.grid > .layer:nth-of-type(1) div:nth-of-type(odd) {
+  grid-column: 1;
+}
+.grid > .layer:nth-of-type(1) div:nth-of-type(even) {
+  grid-column: -2;
+}
+.grid > .layer:nth-of-type(2) div:nth-of-type(odd) {
+  grid-column: calc(2 + var(--offset));
+}
+.grid > .layer:nth-of-type(2) div:nth-of-type(even) {
+  grid-column: calc(-3 - var(--offset));
+}
+.grid > .layer:nth-of-type(3) div:first-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: 1;
+}
+.grid > .layer:nth-of-type(3) div:last-of-type {
+  grid-column: calc(3 + var(--offset));
+  grid-row: -1;
+}
+
+.cellLink {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Hover: reveal the project name */
+.cellName,
+.scalerName {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 18px 16px 14px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--anta-white);
+  background: linear-gradient(to top, rgba(26, 23, 22, 0.74), rgba(26, 23, 22, 0));
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.cellLink:hover .cellName,
+.scaler:hover .scalerName {
+  opacity: 1;
+  transform: none;
+}
+
+/* While the grid is animating, suppress hover-names (the main image is still
+   resizing). Re-enabled once it settles to its cell. */
+.scrubbing .cellName,
+.scrubbing .scalerName {
+  opacity: 0 !important;
+  transform: translateY(8px) !important;
+}
+
+.cellImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+  transition: transform var(--dur) var(--ease);
+}
+
+.cellLink:hover .cellImg {
+  transform: scale(1.03);
+}
+
+/* Center scaler cell (also the link) */
+.scaler {
+  position: relative;
+  grid-area: 2 / calc(3 + var(--offset));
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scalerImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 100%;
+  height: 100%;
+  /* The global `img { max-width: 100% }` reset would clamp this to the grid
+     cell (~195px) and break the full-bleed start size GSAP sets. */
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  border-radius: var(--radius);
+}

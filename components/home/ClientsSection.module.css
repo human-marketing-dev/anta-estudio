@@ -1,47 +1,95 @@
-.head {
-  text-align: center;
-  max-width: 640px;
+/* Horizontal layout on ink: [ square mark ] [ title + copy ] [ two logo rows ] */
+.layout {
+  max-width: var(--content-max);
   margin: 0 auto;
+  padding-inline: var(--section-pad-x);
+  display: grid;
+  grid-template-columns: auto minmax(220px, 300px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 3.5vw, 64px);
+}
+
+.mark {
+  flex: none;
+}
+
+.markImg {
+  width: clamp(120px, 15vw, 220px);
+  height: auto;
+  display: block;
+}
+
+.head {
+  max-width: 320px;
 }
 
 .headSub {
-  margin-top: 16px;
+  margin-top: 14px;
+  color: var(--anta-ink-30);
 }
 
-/* Ink logo wall — white transparent logos read directly on the dark panel. */
-.grid {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: var(--anta-ink-90);
-  border: 1px solid var(--anta-ink-90);
+/* Two marquee rows */
+.marquee {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vw, 32px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
-.cell {
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: clamp(28px, 3vw, 56px);
+  align-items: center;
+  will-change: transform;
+}
+
+.logoCell {
   position: relative;
-  background: var(--anta-ink);
-  aspect-ratio: 3 / 2;
+  flex: none;
+  width: clamp(140px, 14vw, 190px);
+  height: 74px;
 }
 
 .logo {
-  padding: clamp(18px, 2.4vw, 34px);
-  opacity: 0.72;
+  opacity: 0.68;
   transition: opacity var(--dur) var(--ease);
 }
 
-.cell:hover .logo {
+.logoCell:hover .logo {
   opacity: 1;
 }
 
-@media (max-width: 980px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+/* Stack on narrower screens */
+@media (max-width: 1040px) {
+  .layout {
+    grid-template-columns: auto 1fr;
+  }
+  .marquee {
+    grid-column: 1 / -1;
+    margin-top: 8px;
   }
 }
 
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 620px) {
+  .layout {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .row {
+    flex-wrap: wrap;
+    width: auto;
+    gap: clamp(20px, 2.5vw, 40px);
   }
 }

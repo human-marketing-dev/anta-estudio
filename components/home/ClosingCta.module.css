@@ -1,23 +1,80 @@
-.inner {
-  max-width: 900px;
-  text-align: center;
-  /* center the 900px inner within the page */
-  margin-inline: auto;
+/* Ink closing CTA — blends into the footer below it. */
+.section {
+  padding-bottom: clamp(72px, 8vw, 120px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
 }
 
 .title {
-  font-size: clamp(38px, 6vw, 82px);
+  max-width: 16ch;
 }
 
 .body {
-  max-width: 620px;
-  margin: 28px auto 0;
+  margin: 26px 0 0;
+  max-width: 52ch;
+  font-family: var(--font-text);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--anta-ink-30);
 }
 
 .ctas {
   display: flex;
   gap: 14px;
-  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 44px;
+  margin-top: 32px;
+}
+
+/* Form */
+.formPanel {
+  padding-top: 6px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formPanel input::placeholder,
+.formPanel textarea::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.thanksTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.2;
+  color: var(--anta-white);
+}
+
+.thanksBody {
+  margin: 0 0 8px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--anta-ink-30);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    max-width: none;
+  }
 }

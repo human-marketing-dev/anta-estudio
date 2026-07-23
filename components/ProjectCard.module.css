@@ -6,7 +6,7 @@
 
 .frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--anta-mist);
 }
@@ -21,13 +21,19 @@
   transform: scale(1.03);
 }
 
-.meta {
-  padding-top: 16px;
-}
-
-.title {
+/* Name overlaid on the image */
+.name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 16px 18px 30px;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 24.88px;
+  font-size: clamp(15px, 1.3vw, 20px);
   line-height: 1.2;
+  color: var(--anta-white);
+  background: linear-gradient(to bottom, rgba(26, 23, 22, 0.55), rgba(26, 23, 22, 0));
+  pointer-events: none;
 }

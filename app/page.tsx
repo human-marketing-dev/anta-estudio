@@ -28,19 +28,27 @@ const navLinks = [
 export default function Home() {
   return (
     <>
-      <NavBar theme="light" links={navLinks} cta="Solicitar propuesta" />
+      {/* Nav overlays the hero (absolute) so the 100svh hero fills the viewport
+          from the very top — otherwise the nav would push the hero down and clip
+          its bottom (the CTAs). */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
+        <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
+      </div>
       <Hero
         image={{ src: heroWide, alt: "Terraza Pangea, proyecto de arquitectura de Anta Estudio en Monterrey" }}
         mobileImage={{ src: heroPortrait, alt: "Terraza Pangea, proyecto de arquitectura de Anta Estudio en Monterrey" }}
       />
-      <AboutSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <IntegralSection />
-      <ClientsSection />
-      <ReviewsSection />
-      <ClosingCta />
-      <Footer />
+      {/* Opaque wrapper above the sticky hero — it scrolls over the hero image. */}
+      <div style={{ position: "relative", zIndex: 1, background: "var(--anta-white)" }}>
+        <AboutSection />
+        <ProjectsSection />
+        <ServicesSection />
+        <IntegralSection />
+        <ClientsSection />
+        <ReviewsSection />
+        <ClosingCta />
+        <Footer />
+      </div>
     </>
   );
 }

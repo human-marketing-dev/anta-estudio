@@ -35,19 +35,25 @@ export function NavBar({
   return (
     <nav
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "24px 48px",
         background: inverse ? "transparent" : "var(--anta-white)",
         borderBottom: inverse ? "none" : "1px solid var(--color-border-subtle)",
         ...style,
       }}
     >
-      <Link href="/" aria-label="Anta Estudio — inicio" style={{ display: "inline-flex" }}>
-        <Logo color={inverse ? "white" : "black"} height={24} />
-      </Link>
-      <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          maxWidth: "var(--content-max)",
+          margin: "0 auto",
+          padding: "24px var(--section-pad-x)",
+        }}
+      >
+        <Link href="/" aria-label="Anta Estudio — inicio" style={{ display: "inline-flex" }}>
+          <Logo color={inverse ? "white" : "black"} height={24} />
+        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
         <ul style={{ display: "flex", gap: 32, listStyle: "none", margin: 0, padding: 0 }}>
           {links.map((l) => (
             <NavLink key={l.href} {...l} fg={fg} />
@@ -72,6 +78,7 @@ export function NavBar({
             {cta}
           </Link>
         )}
+        </div>
       </div>
     </nav>
   );

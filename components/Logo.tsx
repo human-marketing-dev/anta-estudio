@@ -1,20 +1,19 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
+import antaLogo from "@/public/anta-logo.webp";
 
 type LogoColor = "white" | "black" | "accent";
 
-const TINT: Record<LogoColor, string> = {
-  white: "var(--anta-white)",
-  black: "var(--anta-ink)",
-  accent: "var(--anta-pink)",
+// The asset is a white wordmark. Recolor with a filter for light backgrounds.
+const FILTER: Record<LogoColor, string> = {
+  white: "none",
+  black: "brightness(0)",
+  accent: "none",
 };
 
-/**
- * Anta brand wordmark. Rendered as a tracked type "logotype" so it stays crisp
- * at any size and inherits the brand ink / white / pink tints.
- *
- * To use the real raster logotype instead, drop the files into
- * `public/assets/` and swap this span for a `next/image`.
- */
+const RATIO = 350 / 100;
+
+/** Anta brand wordmark (raster). `color` tints it for light / dark backgrounds. */
 export function Logo({
   color = "black",
   height = 24,
@@ -25,23 +24,13 @@ export function Logo({
   style?: CSSProperties;
 }) {
   return (
-    <span
-      aria-label="Anta Estudio"
-      style={{
-        fontFamily: "var(--font-display)",
-        fontWeight: 300,
-        fontSize: height,
-        lineHeight: 1,
-        letterSpacing: "0.34em",
-        textTransform: "uppercase",
-        color: TINT[color],
-        display: "inline-block",
-        // balance the trailing letter-spacing so the mark reads centered
-        paddingLeft: "0.34em",
-        ...style,
-      }}
-    >
-      anta
-    </span>
+    <Image
+      src={antaLogo}
+      alt="Anta Estudio"
+      height={height}
+      width={Math.round(height * RATIO)}
+      priority
+      style={{ display: "block", filter: FILTER[color], ...style }}
+    />
   );
 }

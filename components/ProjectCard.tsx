@@ -7,14 +7,14 @@ import type { Project } from "@/lib/projects";
 import styles from "./ProjectCard.module.css";
 
 /**
- * Project card — cover in a 4:5 clip-reveal frame, hover scale, title below.
- * The title is a <span> (not a heading) so it never competes with page H2/H3.
- * Category label is intentionally omitted until projects are categorized.
+ * Project card — landscape (3:2) cover in a clip-reveal frame with the project
+ * name overlaid on the image, hover scale. The name is a <span> (not a heading)
+ * to keep it out of the page's heading hierarchy.
  */
 export function ProjectCard({
   project,
   index = 0,
-  sizes = "(max-width: 860px) 100vw, 33vw",
+  sizes = "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw",
 }: {
   project: Project;
   index?: number;
@@ -34,10 +34,8 @@ export function ProjectCard({
               style={{ objectFit: "cover" }}
             />
           </span>
+          <span className={styles.name}>{project.nombre}</span>
         </MaskReveal>
-        <div className={styles.meta}>
-          <span className={styles.title}>{project.nombre}</span>
-        </div>
       </Link>
     </article>
   );

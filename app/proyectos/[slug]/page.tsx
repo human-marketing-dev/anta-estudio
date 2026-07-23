@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -39,7 +40,7 @@ export default async function ProjectDetailPage({
   const images = [project.cover, ...project.galeria];
 
   return (
-    <>
+    <ViewTransition enter="slide-in-right" exit="slide-out-right" default="none">
       <NavBar theme="light" cta="Solicitar propuesta" />
 
       <main>
@@ -84,6 +85,6 @@ export default async function ProjectDetailPage({
       </main>
 
       <Footer />
-    </>
+    </ViewTransition>
   );
 }
