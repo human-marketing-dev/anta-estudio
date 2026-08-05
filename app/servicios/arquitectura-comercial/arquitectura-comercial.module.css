@@ -64,8 +64,8 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(50px, 9vw, 128px);
-  line-height: 0.98;
+  font-size: clamp(42px, 6.2vw, 90px);
+  line-height: 1;
   letter-spacing: -0.03em;
   color: var(--anta-white);
 }
@@ -192,6 +192,218 @@
   }
 }
 
+/* Mirror of .queEs — image bleeds to the LEFT, text on the right. */
+.queEsRev {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 88px);
+  padding-right: max(var(--section-pad-x), calc((100% - var(--content-max)) / 2 + var(--section-pad-x)));
+}
+
+.queEsRev .queEsText {
+  max-width: 560px;
+}
+
+@media (max-width: 860px) {
+  .queEsRev {
+    grid-template-columns: 1fr;
+    padding-left: var(--section-pad-x);
+    padding-right: var(--section-pad-x);
+    gap: clamp(28px, 5vw, 44px);
+  }
+}
+
+/* ¿Para quién? — editorial split: sticky intro left, ghost-numbered stack right */
+.perfilSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(32px, 6vw, 100px);
+  align-items: start;
+}
+
+.perfilAside {
+  position: sticky;
+  top: clamp(96px, 12vh, 140px);
+}
+
+.perfilIntro {
+  margin-top: 24px;
+  max-width: 34ch;
+  color: var(--anta-ink-70);
+}
+
+.perfilStack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.perfilItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: baseline;
+  padding: clamp(26px, 3vw, 40px) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.perfilItem:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.perfilGhost {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(46px, 5.4vw, 84px);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: var(--anta-pink);
+}
+
+.perfilItemTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(21px, 2.2vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.perfilItemDesc {
+  margin: 12px 0 0;
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--anta-ink-70);
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .perfilSplit {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 48px);
+  }
+  .perfilAside {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .perfilItem {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* Alcance del Servicio — bordered cell grid (distinct from the profile rows) */
+.alcanceGrid {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border-subtle);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.alcanceCell {
+  background: var(--anta-white);
+  padding: clamp(28px, 3vw, 40px);
+  min-height: 196px;
+}
+
+.alcanceNum {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--anta-pink);
+}
+
+.alcanceTitle {
+  margin: 18px 0 10px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.alcanceDesc {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--anta-ink-70);
+}
+
+@media (max-width: 860px) {
+  .alcanceGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .alcanceGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Por qué — horizontal 4-across strip with big pink indices */
+.whyStrip {
+  margin-top: clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 56px);
+}
+
+.whyItem {
+  border-top: 1px solid var(--anta-ink);
+  padding-top: clamp(18px, 2vw, 26px);
+}
+
+.whyNum {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 4.4vw, 68px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--anta-pink);
+}
+
+.whyTitle {
+  display: block;
+  margin: clamp(16px, 2vw, 24px) 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.whyDesc {
+  margin: 12px 0 0;
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--anta-ink-70);
+}
+
+@media (max-width: 900px) {
+  .whyStrip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(28px, 4vw, 44px);
+  }
+}
+
+@media (max-width: 520px) {
+  .whyStrip {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Section heads ---------- */
 .headText {
   max-width: 760px;
@@ -232,37 +444,6 @@
   }
 }
 
-/* ---------- Por qué (big statements) ---------- */
-.statements {
-  margin-top: clamp(40px, 5vw, 72px);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(32px, 4vw, 64px) clamp(40px, 6vw, 96px);
-}
-
-.statement {
-  border-top: 1px solid var(--color-border-subtle);
-  padding-top: 24px;
-}
-
-.statementTitle {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(24px, 2.8vw, 38px);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-
-.statementDesc {
-  margin: 14px 0 0;
-  font-family: var(--font-text);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--anta-ink-70);
-  max-width: 42ch;
-}
-
 /* ---------- Sobre Nosotros ---------- */
 .aboutSub {
   margin-top: 24px;
@@ -274,9 +455,6 @@
 
 @media (max-width: 860px) {
   .twoCol {
-    grid-template-columns: 1fr;
-  }
-  .statements {
     grid-template-columns: 1fr;
   }
 }

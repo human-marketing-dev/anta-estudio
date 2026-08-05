@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { ViewTransition } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
+import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { projects, getProject, getNextProject } from "@/lib/projects";
 import styles from "./detail.module.css";
 
@@ -51,20 +51,7 @@ export default async function ProjectDetailPage({
           <h1 className={styles.title}>{project.nombre}</h1>
         </header>
 
-        <section className={styles.gallery}>
-          {images.map((img, i) => (
-            <div key={i} className={styles.item}>
-              <Image
-                src={img}
-                alt={`${project.nombre} — fotografía ${i + 1}`}
-                placeholder="blur"
-                sizes="(max-width: 860px) 100vw, 50vw"
-                style={{ width: "100%", height: "auto" }}
-                priority={i === 0}
-              />
-            </div>
-          ))}
-        </section>
+        <HorizontalGallery images={images} alt={project.nombre} />
 
         <section className={styles.next}>
           <div className={styles.nextInner}>

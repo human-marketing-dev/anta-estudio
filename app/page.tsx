@@ -22,7 +22,7 @@ const navLinks = [
   { label: "Nosotros", href: "#nosotros" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Contacto", href: "#cta" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Home() {

@@ -1,0 +1,52 @@
+/* Native horizontal swipe by default (mobile / reduced motion). */
+.section {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  background: var(--anta-white);
+}
+
+/* Desktop with motion: GSAP pins the section and drives the horizontal move. */
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  .section {
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+  width: max-content;
+  height: 100vh;
+  padding-inline: clamp(24px, 6vw, 120px);
+  will-change: transform;
+}
+
+.item {
+  position: relative;
+  flex: none;
+  height: 76vh;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--anta-mist);
+  scroll-snap-align: center;
+}
+
+.img {
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .track {
+    height: auto;
+    padding-block: 24px;
+    padding-inline: 16px;
+    gap: 12px;
+  }
+  .item {
+    height: auto;
+    width: 86vw;
+  }
+}

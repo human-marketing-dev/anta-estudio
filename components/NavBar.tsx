@@ -11,7 +11,7 @@ const DEFAULT_LINKS: NavLinkItem[] = [
   { label: "Nosotros", href: "#nosotros" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Contacto", href: "#cta" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 /**
@@ -68,8 +68,8 @@ export function NavBar({
               fontWeight: 600,
               letterSpacing: "0.8px",
               textTransform: "uppercase",
-              color: inverse ? "var(--anta-ink)" : "var(--anta-white)",
-              background: inverse ? "var(--anta-white)" : "var(--anta-ink)",
+              color: "var(--anta-white)",
+              background: "var(--anta-pink)",
               padding: "12px 22px",
               textDecoration: "none",
               borderRadius: 0,

@@ -7,3 +7,5 @@ export type { StaggerRevealProps } from "./StaggerReveal";
 export { ParallaxImage } from "./ParallaxImage";
 export { NumberedList } from "./NumberedList";
 export type { NumberedItem } from "./NumberedList";
+export { ProcessTimeline } from "./ProcessTimeline";
+export type { Step } from "./ProcessTimeline";

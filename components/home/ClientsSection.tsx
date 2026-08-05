@@ -26,76 +26,46 @@ const clientes: [string, string][] = [
   ["latin-american-school-of-monterrey-logo.png", "Latin American School of Monterrey"],
 ];
 
-const rowA = clientes.slice(0, 8);
-const rowB = clientes.slice(8);
-
-function Row({ logos, dirRef }: { logos: [string, string][]; dirRef: React.RefObject<HTMLDivElement | null> }) {
-  return (
-    <div ref={dirRef} className={styles.row}>
-      {logos.map(([file, name]) => (
-        <div key={file} className={styles.logoCell}>
-          <Image
-            src={`/clientes/${file}`}
-            alt={name}
-            fill
-            sizes="150px"
-            style={{ objectFit: "contain" }}
-            className={styles.logo}
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 /**
- * Section 6 · Nuestros Clientes (horizontal, on ink): big square Anta mark on
- * the left, title + copy next to it, then two marquee rows of client logos
- * scrolling in opposite directions. Reduced motion / no-JS → static rows.
+ * Section 6 · Nuestros Clientes (horizontal, on ink): big square Anta mark, the
+ * title + copy next to it, then a single marquee row of client logos.
+ * Reduced motion / no-JS → static wrapping row.
  */
 export function ClientsSection() {
   const rootRef = useRef<HTMLElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const rowARef = useRef<HTMLDivElement>(null);
-  const rowBRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
+      const row = rowRef.current;
+      const marquee = marqueeRef.current;
+      if (!row) return;
+
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const rows: [HTMLDivElement | null, number, 1 | -1][] = [
-          [rowARef.current, 46, 1],
-          [rowBRef.current, 56, -1],
-        ];
         const added: Element[] = [];
-        const tweens: gsap.core.Tween[] = [];
-
-        rows.forEach(([el, dur, dir]) => {
-          if (!el) return;
-          Array.from(el.children).forEach((child) => {
-            const clone = child.cloneNode(true) as Element;
-            el.appendChild(clone);
-            added.push(clone);
-          });
-          tweens.push(
-            gsap.fromTo(
-              el,
-              { xPercent: dir === 1 ? 0 : -50 },
-              { xPercent: dir === 1 ? -50 : 0, duration: dur, ease: "none", repeat: -1 },
-            ),
-          );
+        Array.from(row.children).forEach((child) => {
+          const clone = child.cloneNode(true) as Element;
+          row.appendChild(clone);
+          added.push(clone);
         });
 
-        const marquee = marqueeRef.current;
-        const pause = () => tweens.forEach((t) => t.pause());
-        const play = () => tweens.forEach((t) => t.play());
+        const tween = gsap.fromTo(
+          row,
+          { xPercent: 0 },
+          { xPercent: -50, duration: 55, ease: "none", repeat: -1 },
+        );
+
+        const pause = () => tween.pause();
+        const play = () => tween.play();
         marquee?.addEventListener("mouseenter", pause);
         marquee?.addEventListener("mouseleave", play);
 
         return () => {
           marquee?.removeEventListener("mouseenter", pause);
           marquee?.removeEventListener("mouseleave", play);
-          tweens.forEach((t) => t.kill());
+          tween.kill();
           added.forEach((c) => c.remove());
         };
       });
@@ -127,8 +97,20 @@ export function ClientsSection() {
         </div>
 
         <div ref={marqueeRef} className={styles.marquee}>
-          <Row logos={rowA} dirRef={rowARef} />
-          <Row logos={rowB} dirRef={rowBRef} />
+          <div ref={rowRef} className={styles.row}>
+            {clientes.map(([file, name]) => (
+              <div key={file} className={styles.logoCell}>
+                <Image
+                  src={`/clientes/${file}`}
+                  alt={name}
+                  fill
+                  sizes="180px"
+                  style={{ objectFit: "contain" }}
+                  className={styles.logo}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

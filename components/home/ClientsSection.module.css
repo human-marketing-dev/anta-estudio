@@ -1,4 +1,9 @@
-/* Horizontal layout on ink: [ square mark ] [ title + copy ] [ two logo rows ] */
+/* Thinner section — logos are the focus. */
+.section {
+  padding-block: clamp(36px, 4vw, 60px);
+}
+
+/* Horizontal layout on ink: [ square mark ] [ title + copy ] [ logo row ] */
 .layout {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -14,7 +19,7 @@
 }
 
 .markImg {
-  width: clamp(120px, 15vw, 220px);
+  width: clamp(96px, 11vw, 150px);
   height: auto;
   display: block;
 }
@@ -50,8 +55,8 @@
 .logoCell {
   position: relative;
   flex: none;
-  width: clamp(140px, 14vw, 190px);
-  height: 74px;
+  width: clamp(176px, 17vw, 232px);
+  height: 100px;
 }
 
 .logo {

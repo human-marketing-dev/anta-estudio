@@ -4,7 +4,7 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { WhatsAppIcon, Arrow } from "@/components/site";
-import { RevealLines, StaggerReveal, ParallaxImage, NumberedList } from "@/components/anim";
+import { RevealLines, StaggerReveal, ParallaxImage, ProcessTimeline } from "@/components/anim";
 import { ProjectTile } from "@/components/ProjectTile";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
@@ -146,11 +146,35 @@ export default function ArquitecturaComercialPage() {
       {/* 3 · ¿PARA QUIÉN? */}
       <section className={`${shared.section} ${shared.sectionMist}`}>
         <div className={shared.wrap}>
-          <RevealLines as="h2" className={shared.h2}>
-            ¿Para quién es este servicio?
-          </RevealLines>
-          <div className={styles.listWrap}>
-            <NumberedList items={perfiles} />
+          <div className={styles.perfilSplit}>
+            <div className={styles.perfilAside}>
+              <RevealLines as="h2" className={shared.h2}>
+                ¿Para quién es este servicio?
+              </RevealLines>
+              <p className={`${shared.body} ${styles.perfilIntro}`}>
+                Diseñado para marcas que abren, remodelan o evolucionan su espacio comercial —
+                y para quienes entienden el lugar como parte central de la experiencia.
+              </p>
+            </div>
+            <StaggerReveal
+              as="ul"
+              className={styles.perfilStack}
+              childSelector={`.${styles.perfilItem}`}
+              stagger={0.08}
+              start="top 82%"
+            >
+              {perfiles.map((p, i) => (
+                <li key={p.title} className={styles.perfilItem}>
+                  <span className={styles.perfilGhost} aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className={styles.perfilBody}>
+                    <h3 className={styles.perfilItemTitle}>{p.title}</h3>
+                    <p className={styles.perfilItemDesc}>{p.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </StaggerReveal>
           </div>
         </div>
       </section>
@@ -195,7 +219,7 @@ export default function ArquitecturaComercialPage() {
             </p>
           </div>
           <div className={styles.listWrap}>
-            <NumberedList items={pasos} tone="ink" />
+            <ProcessTimeline steps={pasos} />
           </div>
         </div>
       </section>
@@ -212,9 +236,15 @@ export default function ArquitecturaComercialPage() {
               bajo un mismo estándar de calidad.
             </p>
           </div>
-          <div className={styles.listWrap}>
-            <NumberedList items={alcances} />
-          </div>
+          <StaggerReveal className={styles.alcanceGrid} childSelector={`.${styles.alcanceCell}`} stagger={0.06}>
+            {alcances.map((a, i) => (
+              <div key={a.title} className={styles.alcanceCell}>
+                <span className={styles.alcanceNum}>{String(i + 1).padStart(2, "0")}</span>
+                <h3 className={styles.alcanceTitle}>{a.title}</h3>
+                <p className={styles.alcanceDesc}>{a.desc}</p>
+              </div>
+            ))}
+          </StaggerReveal>
         </div>
       </section>
 
@@ -229,11 +259,12 @@ export default function ArquitecturaComercialPage() {
               Por qué las marcas nos eligen para su proyecto comercial.
             </p>
           </div>
-          <StaggerReveal className={styles.statements} stagger={0.1}>
-            {diferenciadores.map((d) => (
-              <div key={d.title} className={styles.statement}>
-                <span className={styles.statementTitle}>{d.title}</span>
-                <p className={styles.statementDesc}>{d.desc}</p>
+          <StaggerReveal className={styles.whyStrip} childSelector={`.${styles.whyItem}`} stagger={0.1}>
+            {diferenciadores.map((d, i) => (
+              <div key={d.title} className={styles.whyItem}>
+                <span className={styles.whyNum}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.whyTitle}>{d.title}</span>
+                <p className={styles.whyDesc}>{d.desc}</p>
               </div>
             ))}
           </StaggerReveal>
@@ -242,30 +273,30 @@ export default function ArquitecturaComercialPage() {
 
       {/* 8 · SOBRE NOSOTROS */}
       <section className={shared.section}>
-        <div className={shared.wrap}>
-          <div className={styles.twoCol}>
-            <div>
-              <RevealLines as="h2" className={shared.h2}>
-                Sobre Nosotros
-              </RevealLines>
-              <RevealLines as="h3" className={`${shared.h3big} ${styles.aboutSub}`}>
-                Un despacho de arquitectura e interiorismo con más de 15 años de experiencia
-              </RevealLines>
-              <p className={`${shared.body} ${styles.aboutBody}`}>
-                Somos un equipo de arquitectos en Monterrey especializado en el diseño de espacios que
-                funcionan, comunican y perduran. Durante más de 15 años hemos desarrollado proyectos
-                comerciales, corporativos y residenciales, acompañando a nuestros clientes desde el
-                análisis y la conceptualización hasta la gerencia y supervisión de obra. En el ámbito
-                comercial, esto significa restaurantes y espacios de marca que enamoran a sus clientes
-                y están listos para operar desde el primer día.
-              </p>
-            </div>
+        <div className={styles.queEsRev}>
+          <div className={styles.queEsMedia}>
             <ParallaxImage
               src={nosotrosImg}
               alt="Proyecto comercial de Anta Estudio"
-              className={styles.editorialImg}
-              sizes="(max-width: 860px) 100vw, 44vw"
+              className={styles.queEsImg}
+              sizes="(max-width: 860px) 100vw, 50vw"
             />
+          </div>
+          <div className={styles.queEsText}>
+            <RevealLines as="h2" className={shared.h2}>
+              Sobre Nosotros
+            </RevealLines>
+            <RevealLines as="h3" className={`${shared.h3big} ${styles.aboutSub}`}>
+              Un despacho de arquitectura e interiorismo con más de 15 años de experiencia
+            </RevealLines>
+            <p className={`${shared.body} ${styles.aboutBody}`}>
+              Somos un equipo de arquitectos en Monterrey especializado en el diseño de espacios que
+              funcionan, comunican y perduran. Durante más de 15 años hemos desarrollado proyectos
+              comerciales, corporativos y residenciales, acompañando a nuestros clientes desde el
+              análisis y la conceptualización hasta la gerencia y supervisión de obra. En el ámbito
+              comercial, esto significa restaurantes y espacios de marca que enamoran a sus clientes y
+              están listos para operar desde el primer día.
+            </p>
           </div>
         </div>
       </section>

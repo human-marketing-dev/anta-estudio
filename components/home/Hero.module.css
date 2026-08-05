@@ -86,7 +86,7 @@
   max-width: 15ch;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(46px, 7.6vw, 104px);
+  font-size: clamp(40px, 6vw, 80px);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--anta-white);
