@@ -211,3 +211,8 @@ img {
     animation-delay: 0s !important;
   }
 }
+
+/* PRUEBA · Home: h1/h2 en mayúsculas (mismo tamaño, solo transform). */
+.home-caps :is(h1, h2) {
+  text-transform: uppercase;
+}
