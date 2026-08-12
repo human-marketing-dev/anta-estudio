@@ -55,6 +55,10 @@
   grid-row: 1 / -1;
   grid-template-columns: subgrid;
   grid-template-rows: subgrid;
+  /* Each layer spans the whole grid area and they stack; without this, an upper
+     layer's empty cells would block clicks to the cells beneath it. Clicks pass
+     through the empties and only the actual links (below) catch them. */
+  pointer-events: none;
 }
 
 /* Fallback for browsers without subgrid (e.g. Chrome 111–116): rebuild the
@@ -99,6 +103,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
+  pointer-events: auto;
 }
 
 /* Hover: reveal the project name */

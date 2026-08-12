@@ -14,6 +14,13 @@ const DEFAULT_LINKS: NavLinkItem[] = [
   { label: "Contacto", href: "/contacto" },
 ];
 
+/** Sub-items shown when hovering the "Servicios" nav item. */
+const SERVICE_LINKS: NavLinkItem[] = [
+  { label: "Arquitectura Comercial", href: "/servicios/arquitectura-comercial" },
+  { label: "Arquitectura Corporativa", href: "/servicios/arquitectura-corporativa" },
+  { label: "Arquitectura Residencial", href: "/servicios/arquitectura-residencial" },
+];
+
 /**
  * Website top bar — logo left, nav links right. `theme` inverts for dark heroes.
  */
@@ -55,9 +62,13 @@ export function NavBar({
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
         <ul style={{ display: "flex", gap: 32, listStyle: "none", margin: 0, padding: 0 }}>
-          {links.map((l) => (
-            <NavLink key={l.href} {...l} fg={fg} />
-          ))}
+          {links.map((l) =>
+            l.label === "Servicios" ? (
+              <NavDropdown key={l.href} label={l.label} fg={fg} items={SERVICE_LINKS} />
+            ) : (
+              <NavLink key={l.href} {...l} fg={fg} />
+            ),
+          )}
         </ul>
         {cta && (
           <Link
@@ -81,6 +92,102 @@ export function NavBar({
         </div>
       </div>
     </nav>
+  );
+}
+
+function NavDropdown({ label, fg, items }: { label: string; fg: string; items: NavLinkItem[] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <li
+      style={{ position: "relative" }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 7,
+          fontFamily: "var(--font-text)",
+          fontSize: 14,
+          letterSpacing: "0.5px",
+          color: fg,
+          background: "none",
+          border: "none",
+          borderBottom: `1px solid ${open ? "var(--anta-pink)" : "transparent"}`,
+          padding: 0,
+          paddingBottom: 4,
+          cursor: "pointer",
+          transition: "border-color var(--dur-fast) var(--ease)",
+        }}
+      >
+        {label}
+        <svg
+          aria-hidden="true"
+          width="11"
+          height="11"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            transform: open ? "rotate(180deg)" : "none",
+            transition: "transform var(--dur-fast) var(--ease)",
+          }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {open && (
+        // Transparent padding-top acts as a "bridge" so moving from the button
+        // to the panel never leaves the <li> (the gap is part of the hover area).
+        <div style={{ position: "absolute", top: "100%", left: 0, paddingTop: 14, zIndex: 30 }}>
+          <div
+            style={{
+              minWidth: 250,
+              padding: "8px 0",
+              background: "var(--anta-white)",
+              border: "1px solid var(--color-border-subtle)",
+              boxShadow: "0 14px 40px rgba(26, 23, 22, 0.12)",
+            }}
+          >
+            {items.map((it) => (
+              <DropdownItem key={it.href} {...it} />
+            ))}
+          </div>
+        </div>
+      )}
+    </li>
+  );
+}
+
+function DropdownItem({ label, href }: NavLinkItem) {
+  const [hover, setHover] = useState(false);
+  return (
+    <Link
+      href={href}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        display: "block",
+        padding: "11px 22px",
+        fontFamily: "var(--font-text)",
+        fontSize: 14,
+        letterSpacing: "0.3px",
+        color: hover ? "var(--anta-white)" : "var(--anta-ink)",
+        background: hover ? "var(--anta-pink)" : "transparent",
+        textDecoration: "none",
+        whiteSpace: "nowrap",
+        transition: "color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease)",
+      }}
+    >
+      {label}
+    </Link>
   );
 }
 

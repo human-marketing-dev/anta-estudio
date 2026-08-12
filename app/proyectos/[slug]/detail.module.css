@@ -21,7 +21,7 @@
   margin: 20px 0 0;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(34px, 5vw, 66px);
+  font-size: clamp(40px, 6vw, 80px);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -53,12 +53,13 @@
 .next {
   background: var(--anta-mist);
   margin-top: clamp(64px, 8vw, 120px);
-  padding: clamp(56px, 6vw, 80px) var(--section-pad-x);
+  padding-block: clamp(56px, 6vw, 80px);
 }
 
 .nextInner {
   max-width: var(--content-max);
   margin: 0 auto;
+  padding-inline: var(--section-pad-x);
   display: flex;
   justify-content: space-between;
   align-items: center;

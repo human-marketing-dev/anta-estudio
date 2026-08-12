@@ -23,7 +23,9 @@ export function HorizontalGallery({ images, alt }: { images: StaticImageData[]; 
 
       const mm = gsap.matchMedia();
       mm.add("(min-width: 861px) and (prefers-reduced-motion: no-preference)", () => {
-        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+        // offsetWidth (border-box) includes BOTH paddings; scrollWidth drops the
+        // trailing one, which would pull the last image flush to the right edge.
+        const distance = () => Math.max(0, track.offsetWidth - window.innerWidth);
         gsap.to(track, {
           x: () => -distance(),
           ease: "none",

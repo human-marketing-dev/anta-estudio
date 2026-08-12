@@ -23,10 +23,10 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
   };
   return (
     <footer
-      style={{ background: "var(--anta-ink)", color: "var(--anta-white)", padding: "0 48px 40px", ...style }}
+      style={{ background: "var(--anta-ink)", color: "var(--anta-white)", padding: "0 0 40px", ...style }}
     >
       {/* Divider between the closing CTA above and the footer. */}
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--content-max)", paddingInline: "var(--section-pad-x)", margin: "0 auto" }}>
         <div style={{ height: 1, background: "var(--anta-ink-90)" }} />
       </div>
       <div
@@ -34,7 +34,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
           display: "grid",
           gridTemplateColumns: "2fr 1fr 1fr 1.4fr",
           gap: 48,
-          maxWidth: 1320,
+          maxWidth: "var(--content-max)", paddingInline: "var(--section-pad-x)",
           margin: "96px auto 0",
         }}
       >
@@ -65,7 +65,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
       </div>
       <div
         style={{
-          maxWidth: 1320,
+          maxWidth: "var(--content-max)", paddingInline: "var(--section-pad-x)",
           margin: "64px auto 0",
           paddingTop: 24,
           borderTop: "1px solid var(--anta-ink-90)",

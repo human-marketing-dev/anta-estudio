@@ -20,7 +20,9 @@
   gap: clamp(16px, 2vw, 32px);
   width: max-content;
   height: 100vh;
-  padding-inline: clamp(24px, 6vw, 120px);
+  /* Match the header/footer container: same left inset at the start of the
+     scroll and same right inset at the end (content-max 1450, centered). */
+  padding-inline: max(var(--section-pad-x), calc((100vw - var(--content-max)) / 2 + var(--section-pad-x)));
   will-change: transform;
 }
 

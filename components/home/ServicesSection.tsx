@@ -19,14 +19,14 @@ const categories = [
     title: "Arquitectura Corporativa",
     body: "Arquitectura e interiorismo corporativo y diseño de oficinas que traducen la identidad de la empresa en ambientes funcionales y eficientes, fortaleciendo la cultura y la experiencia del equipo.",
     link: "Conoce nuestro trabajo corporativo",
-    href: "/proyectos",
+    href: "/servicios/arquitectura-corporativa",
   },
   {
     n: "03",
     title: "Arquitectura Residencial",
     body: "Arquitectura e interiorismo para casas, departamentos y residencias premium, donde la arquitectura, los interiores y el detalle se integran en una experiencia coherente de habitar.",
     link: "Conoce nuestro trabajo residencial",
-    href: "/proyectos",
+    href: "/servicios/arquitectura-residencial",
   },
 ];
 
