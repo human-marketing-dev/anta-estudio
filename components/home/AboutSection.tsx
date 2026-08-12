@@ -33,9 +33,9 @@ export function AboutSection() {
             resultado final sea fiel a la intención original.
           </p>
           <StaggerReveal className={styles.pillars} childSelector={`.${styles.pillar}`} stagger={0.1}>
-            {pillars.map(([title, line], i) => (
+            {pillars.map(([title, line]) => (
               <div key={title} className={styles.pillar}>
-                <span className={shared.num}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.bullet} aria-hidden="true" />
                 <div>
                   <h3 className={shared.h3}>{title}</h3>
                   <p className={`${shared.body} ${styles.pillarLine}`}>{line}</p>

@@ -23,15 +23,19 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
   };
   return (
     <footer
-      style={{ background: "var(--anta-ink)", color: "var(--anta-white)", padding: "96px 48px 40px", ...style }}
+      style={{ background: "var(--anta-ink)", color: "var(--anta-white)", padding: "0 48px 40px", ...style }}
     >
+      {/* Divider between the closing CTA above and the footer. */}
+      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+        <div style={{ height: 1, background: "var(--anta-ink-90)" }} />
+      </div>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "2fr 1fr 1fr 1.4fr",
           gap: 48,
           maxWidth: 1320,
-          margin: "0 auto",
+          margin: "96px auto 0",
         }}
       >
         <div style={col}>

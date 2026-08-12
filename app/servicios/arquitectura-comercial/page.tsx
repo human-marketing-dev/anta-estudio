@@ -6,6 +6,7 @@ import { Button } from "@/components/Button";
 import { WhatsAppIcon, Arrow } from "@/components/site";
 import { RevealLines, StaggerReveal, ParallaxImage, ProcessTimeline } from "@/components/anim";
 import { ProjectTile } from "@/components/ProjectTile";
+import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
@@ -33,6 +34,40 @@ const perfiles = [
   { title: "Espacios orientados a la experiencia", desc: "Lugares donde el ambiente y el detalle son parte central de la propuesta." },
 ];
 
+// Line icons per profile (outline, inherit color from .perfilIcon → pink).
+const svgProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+const perfilIconos = [
+  // Abrir — storefront
+  <svg key="abrir" {...svgProps}>
+    <path d="M3.5 9.5 5.5 4h13l2 5.5" />
+    <path d="M5 9.5V20h14V9.5" />
+    <path d="M3.5 9.5h17" />
+    <path d="M10 20v-5h4v5" />
+  </svg>,
+  // Remodelar — refresh
+  <svg key="remodelar" {...svgProps}>
+    <polyline points="21 4 21 9 16 9" />
+    <polyline points="3 20 3 15 8 15" />
+    <path d="M19.5 9A8 8 0 0 0 6 5.7L3 9m18 6-3 3.3A8 8 0 0 1 4.5 15" />
+  </svg>,
+  // Evolución — trending up
+  <svg key="evolucion" {...svgProps}>
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+    <polyline points="16 7 22 7 22 13" />
+  </svg>,
+  // Experiencia — sparkle
+  <svg key="experiencia" {...svgProps}>
+    <path d="M12 3c.6 4 1.9 5.4 6 6-4.1.6-5.4 2-6 6-.6-4-1.9-5.4-6-6 4.1-.6 5.4-2 6-6Z" />
+  </svg>,
+];
+
 const pasos = [
   { title: "Diagnóstico y objetivos", desc: "Entendemos tu operación, tu marca y la meta del proyecto." },
   { title: "Concepto y anteproyecto", desc: "Definimos la dirección estética y el layout del espacio." },
@@ -41,13 +76,18 @@ const pasos = [
   { title: "Ejecución, supervisión y entrega", desc: "Coordinamos la obra de principio a fin y entregamos listo para operar." },
 ];
 
+const pic = (slug: string, i = 0) => {
+  const p = getProject(slug)!;
+  return p.galeria[i] ?? p.cover;
+};
+
 const alcances = [
-  { title: "Diseño de Restaurantes", desc: "Distribución, ambientes y flujos pensados para el concepto, la operación y la experiencia del cliente." },
-  { title: "Interiorismo Comercial", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca." },
-  { title: "Retail y Showrooms", desc: "Puntos de venta y espacios de marca que comunican identidad y mejoran la experiencia de compra." },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de locales existentes, optimizando lo que ya funciona sin perder control ni coherencia." },
-  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales alineadas al concepto del espacio." },
-  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto, listo para abrir." },
+  { title: "Diseño de Restaurantes", desc: "Distribución, ambientes y flujos pensados para el concepto, la operación y la experiencia del cliente.", image: pic("kampai", 0) },
+  { title: "Interiorismo Comercial", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca.", image: pic("cafe-laurel", 0) },
+  { title: "Retail y Showrooms", desc: "Puntos de venta y espacios de marca que comunican identidad y mejoran la experiencia de compra.", image: pic("nailz", 0) },
+  { title: "Remodelación y Adecuaciones", desc: "Renovación de locales existentes, optimizando lo que ya funciona sin perder control ni coherencia.", image: pic("crispy-pollo", 0) },
+  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales alineadas al concepto del espacio.", image: pic("kampai", 1) },
+  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto, listo para abrir.", image: pic("cafe-laurel", 1) },
 ];
 
 const diferenciadores = [
@@ -79,14 +119,10 @@ export default function ArquitecturaComercialPage() {
         <ParallaxImage src={heroImg} alt="Restaurante — arquitectura comercial de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <p className={styles.kicker}>
-            <span className={styles.tick} />
-            Anta Estudio
-          </p>
           <RevealLines as="h1" className={styles.heroTitle}>
             Arquitectura Comercial
           </RevealLines>
-          <StaggerReveal className={styles.heroLower}>
+          <StaggerReveal>
             <p className={styles.heroSub}>
               Diseñamos y ejecutamos restaurantes, cafés y espacios comerciales que representan tu
               marca, funcionan en operación y elevan la experiencia de tus clientes. Diseño e
@@ -165,8 +201,8 @@ export default function ArquitecturaComercialPage() {
             >
               {perfiles.map((p, i) => (
                 <li key={p.title} className={styles.perfilItem}>
-                  <span className={styles.perfilGhost} aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className={styles.perfilIcon} aria-hidden="true">
+                    {perfilIconos[i]}
                   </span>
                   <div className={styles.perfilBody}>
                     <h3 className={styles.perfilItemTitle}>{p.title}</h3>
@@ -224,29 +260,14 @@ export default function ArquitecturaComercialPage() {
         </div>
       </section>
 
-      {/* 6 · ALCANCE DEL SERVICIO */}
-      <section className={shared.section}>
-        <div className={shared.wrap}>
-          <div className={styles.headText}>
-            <RevealLines as="h2" className={shared.h2}>
-              Alcance del Servicio
-            </RevealLines>
-            <p className={`${shared.sub} ${styles.headSub}`}>
-              Contigo en cada etapa: nos encargamos de todo lo que tu proyecto comercial necesita,
-              bajo un mismo estándar de calidad.
-            </p>
-          </div>
-          <StaggerReveal className={styles.alcanceGrid} childSelector={`.${styles.alcanceCell}`} stagger={0.06}>
-            {alcances.map((a, i) => (
-              <div key={a.title} className={styles.alcanceCell}>
-                <span className={styles.alcanceNum}>{String(i + 1).padStart(2, "0")}</span>
-                <h3 className={styles.alcanceTitle}>{a.title}</h3>
-                <p className={styles.alcanceDesc}>{a.desc}</p>
-              </div>
-            ))}
-          </StaggerReveal>
-        </div>
-      </section>
+      {/* 6 · ALCANCE DEL SERVICIO — tabs (mismo diseño que "Servicio Integral") */}
+      <IntegralSection
+        id="alcance"
+        tone="white"
+        heading="Alcance del Servicio"
+        intro="Contigo en cada etapa: nos encargamos de todo lo que tu proyecto comercial necesita, bajo un mismo estándar de calidad."
+        items={alcances}
+      />
 
       {/* 7 · POR QUÉ ANTA ESTUDIO */}
       <section className={`${shared.section} ${shared.sectionMist}`}>
@@ -260,9 +281,9 @@ export default function ArquitecturaComercialPage() {
             </p>
           </div>
           <StaggerReveal className={styles.whyStrip} childSelector={`.${styles.whyItem}`} stagger={0.1}>
-            {diferenciadores.map((d, i) => (
+            {diferenciadores.map((d) => (
               <div key={d.title} className={styles.whyItem}>
-                <span className={styles.whyNum}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.whyDash} aria-hidden="true" />
                 <span className={styles.whyTitle}>{d.title}</span>
                 <p className={styles.whyDesc}>{d.desc}</p>
               </div>

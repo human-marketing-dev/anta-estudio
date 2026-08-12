@@ -41,57 +41,30 @@
   justify-content: center;
 }
 
-.kicker {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 clamp(18px, 3vh, 30px);
-  font-family: var(--font-text);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.tick {
-  width: 7px;
-  height: 7px;
-  background: var(--anta-pink);
-}
-
 .heroTitle {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(42px, 6.2vw, 90px);
+  font-size: clamp(40px, 6vw, 80px);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--anta-white);
 }
 
-.heroLower {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: clamp(28px, 4vw, 64px);
-  flex-wrap: wrap;
-  margin-top: clamp(24px, 4vh, 44px);
-}
-
 .heroSub {
-  max-width: 480px;
+  max-width: 52ch;
   font-family: var(--font-text);
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.82);
-  margin: 0;
+  margin: clamp(24px, 4vh, 40px) 0 0;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  margin-top: clamp(28px, 4vh, 44px);
 }
 
 /* ---------- Editorial two-column ---------- */
@@ -133,13 +106,16 @@
 
 .lead {
   margin-top: 28px;
-  font-size: clamp(16.5px, 1.7vw, 21px);
-  line-height: 1.5;
+  font-size: 16.5px;
+  line-height: 1.6;
   color: var(--anta-ink);
 }
 
 .leadBody {
   margin-top: 20px;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--anta-ink);
 }
 
 /* Full-width grid: left text aligned to the container, right image bleeds to
@@ -147,22 +123,26 @@
 .queEs {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
+  align-items: stretch;
   gap: clamp(32px, 5vw, 88px);
   padding-left: max(var(--section-pad-x), calc((100% - var(--content-max)) / 2 + var(--section-pad-x)));
 }
 
 .queEsText {
   max-width: 560px;
+  align-self: center;
 }
 
+/* Image fills the row height (driven by the text), so there's no dead space. */
 .queEsMedia {
   position: relative;
+  height: 100%;
+  min-height: clamp(360px, 42vw, 520px);
 }
 
 .queEsImg {
-  aspect-ratio: 4 / 5;
   width: 100%;
+  height: 100%;
 }
 
 .composeTag {
@@ -187,7 +167,12 @@
     padding-right: var(--section-pad-x);
     gap: clamp(28px, 5vw, 44px);
   }
+  .queEsMedia {
+    height: auto;
+    min-height: 0;
+  }
   .queEsImg {
+    height: auto;
     aspect-ratio: 4 / 3;
   }
 }
@@ -196,13 +181,14 @@
 .queEsRev {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
+  align-items: stretch;
   gap: clamp(32px, 5vw, 88px);
   padding-right: max(var(--section-pad-x), calc((100% - var(--content-max)) / 2 + var(--section-pad-x)));
 }
 
 .queEsRev .queEsText {
   max-width: 560px;
+  align-self: center;
 }
 
 @media (max-width: 860px) {
@@ -211,6 +197,10 @@
     padding-left: var(--section-pad-x);
     padding-right: var(--section-pad-x);
     gap: clamp(28px, 5vw, 44px);
+  }
+  /* Image first on mobile so it doesn't dangle under the text. */
+  .queEsRev .queEsMedia {
+    order: -1;
   }
 }
 
@@ -242,8 +232,8 @@
 .perfilItem {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 48px);
-  align-items: baseline;
+  gap: clamp(18px, 2.4vw, 36px);
+  align-items: start;
   padding: clamp(26px, 3vw, 40px) 0;
   border-top: 1px solid var(--color-border-subtle);
 }
@@ -253,13 +243,18 @@
   border-top: 0;
 }
 
-.perfilGhost {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(46px, 5.4vw, 84px);
-  line-height: 0.82;
-  letter-spacing: -0.03em;
+.perfilIcon {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  margin-top: 3px;
   color: var(--anta-pink);
+  flex: none;
+}
+
+.perfilIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .perfilItemTitle {
@@ -298,58 +293,6 @@
   }
 }
 
-/* Alcance del Servicio — bordered cell grid (distinct from the profile rows) */
-.alcanceGrid {
-  margin-top: clamp(40px, 5vw, 64px);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--color-border-subtle);
-  border: 1px solid var(--color-border-subtle);
-}
-
-.alcanceCell {
-  background: var(--anta-white);
-  padding: clamp(28px, 3vw, 40px);
-  min-height: 196px;
-}
-
-.alcanceNum {
-  font-family: var(--font-text);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  color: var(--anta-pink);
-}
-
-.alcanceTitle {
-  margin: 18px 0 10px;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.25;
-}
-
-.alcanceDesc {
-  margin: 0;
-  font-family: var(--font-text);
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--anta-ink-70);
-}
-
-@media (max-width: 860px) {
-  .alcanceGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .alcanceGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Por qué — horizontal 4-across strip with big pink indices */
 .whyStrip {
   margin-top: clamp(40px, 5vw, 72px);
@@ -359,23 +302,19 @@
 }
 
 .whyItem {
-  border-top: 1px solid var(--anta-ink);
-  padding-top: clamp(18px, 2vw, 26px);
+  padding-top: 0;
 }
 
-.whyNum {
+.whyDash {
   display: block;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(40px, 4.4vw, 68px);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  color: var(--anta-pink);
+  width: 32px;
+  height: 2px;
+  background: var(--anta-pink);
 }
 
 .whyTitle {
   display: block;
-  margin: clamp(16px, 2vw, 24px) 0 0;
+  margin: clamp(16px, 1.8vw, 22px) 0 0;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(18px, 1.7vw, 23px);

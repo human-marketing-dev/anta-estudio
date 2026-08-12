@@ -212,7 +212,11 @@ img {
   }
 }
 
-/* PRUEBA · Home: h1/h2 en mayúsculas (mismo tamaño, solo transform). */
-.home-caps :is(h1, h2) {
+/* Site-wide headings: h1/h2 en MAYÚSCULAS con un poco de tracking.
+   (mismo tamaño — solo transform + letter-spacing; el !important gana sobre el
+   tracking negativo que traen algunas clases display). */
+h1,
+h2 {
   text-transform: uppercase;
+  letter-spacing: 0.05em !important;
 }

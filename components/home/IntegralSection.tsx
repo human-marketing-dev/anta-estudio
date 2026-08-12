@@ -14,13 +14,13 @@ const img = (slug: string, i = 0): StaticImageData => {
   return p.galeria[i] ?? p.cover;
 };
 
-interface Capability {
+export interface Capability {
   title: string;
   desc: string;
   image: StaticImageData;
 }
 
-const capabilities: Capability[] = [
+const DEFAULT_ITEMS: Capability[] = [
   {
     title: "Diseño Arquitectónico",
     desc: "Distribución, reconfiguración y soluciones espaciales que ordenan el proyecto desde su lógica: función, luz y recorrido.",
@@ -53,12 +53,35 @@ const capabilities: Capability[] = [
   },
 ];
 
+const DEFAULT_HEADING = "Un Servicio Integral: del Diseño a la Obra";
+const DEFAULT_INTRO =
+  "Contigo en cada etapa: nos encargamos de todo el proceso —diseño arquitectónico, diseño de interiores, remodelación, ejecución y coordinación— bajo un mismo estándar de calidad.";
+
+export interface IntegralSectionProps {
+  /** H2 copy. */
+  heading?: string;
+  /** Supporting paragraph under the H2. */
+  intro?: string;
+  /** Tabs (title + desc + image). H3 titles are preserved for SEO. */
+  items?: Capability[];
+  /** Section anchor id. */
+  id?: string;
+  /** Background tone. Default "mist" (home). Use "white" to keep contrast. */
+  tone?: "mist" | "white";
+}
+
 /**
- * Section 5 · Servicio Integral — the tabs advance as you scroll (the section
- * pins and each capability takes over in turn). Reduced motion / mobile fall
- * back to click. H2 + the six H3 titles are preserved (SEO).
+ * Servicio Integral — tabs that advance as you scroll (the section pins and each
+ * item takes over in turn). Reduced motion / mobile fall back to click. The H2
+ * and every H3 tab title are real headings (SEO). Reusable via props.
  */
-export function IntegralSection() {
+export function IntegralSection({
+  heading = DEFAULT_HEADING,
+  intro = DEFAULT_INTRO,
+  items = DEFAULT_ITEMS,
+  id = "servicio-integral",
+  tone = "mist",
+}: IntegralSectionProps = {}) {
   const [active, setActive] = useState(0);
   const rootRef = useRef<HTMLElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -75,12 +98,12 @@ export function IntegralSection() {
         const st = ScrollTrigger.create({
           trigger: tabs,
           start: "top 14%",
-          end: "+=" + capabilities.length * 34 + "%",
+          end: "+=" + items.length * 34 + "%",
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            const idx = Math.min(capabilities.length - 1, Math.floor(self.progress * capabilities.length));
+            const idx = Math.min(items.length - 1, Math.floor(self.progress * items.length));
             if (idx !== cur) {
               cur = idx;
               setActive(idx);
@@ -101,7 +124,7 @@ export function IntegralSection() {
   const goTo = (i: number) => {
     const st = stRef.current;
     if (st) {
-      const y = st.start + ((i + 0.5) / capabilities.length) * (st.end - st.start);
+      const y = st.start + ((i + 0.5) / items.length) * (st.end - st.start);
       window.scrollTo({ top: y, behavior: "smooth" });
     } else {
       setActive(i);
@@ -109,21 +132,22 @@ export function IntegralSection() {
   };
 
   return (
-    <section ref={rootRef} id="servicio-integral" className={`${shared.section} ${shared.sectionMist}`}>
+    <section
+      ref={rootRef}
+      id={id}
+      className={`${shared.section} ${tone === "mist" ? shared.sectionMist : ""}`}
+    >
       <div className={shared.wrap}>
         <div className={styles.head}>
           <RevealLines as="h2" className={shared.h2}>
-            Un Servicio Integral: del Diseño a la Obra
+            {heading}
           </RevealLines>
-          <p className={`${shared.body} ${styles.headBody}`}>
-            Contigo en cada etapa: nos encargamos de todo el proceso —diseño arquitectónico, diseño
-            de interiores, remodelación, ejecución y coordinación— bajo un mismo estándar de calidad.
-          </p>
+          <p className={`${shared.body} ${styles.headBody}`}>{intro}</p>
         </div>
 
         <div ref={tabsRef} className={styles.tabs}>
-          <ul className={styles.list} role="tablist" aria-label="Capacidades">
-            {capabilities.map((c, i) => (
+          <ul className={styles.list} role="tablist" aria-label={heading}>
+            {items.map((c, i) => (
               <li key={c.title}>
                 <button
                   type="button"
@@ -141,7 +165,7 @@ export function IntegralSection() {
 
           <div className={styles.panel}>
             <div className={styles.panelImg}>
-              {capabilities.map((c, i) => (
+              {items.map((c, i) => (
                 <Image
                   key={c.title}
                   src={c.image}
@@ -154,11 +178,11 @@ export function IntegralSection() {
                 />
               ))}
               <span className={styles.panelCount}>
-                {String(active + 1).padStart(2, "0")} / {String(capabilities.length).padStart(2, "0")}
+                {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
               </span>
             </div>
             <p key={active} className={styles.panelDesc}>
-              {capabilities[active].desc}
+              {items[active].desc}
             </p>
           </div>
         </div>
