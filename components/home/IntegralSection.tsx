@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import type { ReactNode } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import { RevealLines } from "@/components/anim";
@@ -16,7 +17,8 @@ const img = (slug: string, i = 0): StaticImageData => {
 
 export interface Capability {
   title: string;
-  desc: string;
+  /** Rendered as the panel copy. Accepts JSX so a page can embed a link. */
+  desc: ReactNode;
   image: StaticImageData;
 }
 

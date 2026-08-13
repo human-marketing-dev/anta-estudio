@@ -82,7 +82,20 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  { title: "Diseño de Restaurantes", desc: "Distribución, ambientes y flujos pensados para el concepto, la operación y la experiencia del cliente.", image: pic("kampai", 0) },
+  {
+    title: "Diseño de Restaurantes",
+    desc: (
+      <>
+        Distribución, ambientes y flujos pensados para el concepto, la operación y la experiencia del
+        cliente. Conoce a detalle nuestro servicio de{" "}
+        <Link href="/interiorismo/diseno-de-restaurantes" style={{ color: "var(--anta-pink)", fontWeight: 600 }}>
+          diseño de restaurantes
+        </Link>
+        .
+      </>
+    ),
+    image: pic("kampai", 0),
+  },
   { title: "Interiorismo Comercial", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca.", image: pic("cafe-laurel", 0) },
   { title: "Retail y Showrooms", desc: "Puntos de venta y espacios de marca que comunican identidad y mejoran la experiencia de compra.", image: pic("nailz", 0) },
   { title: "Remodelación y Adecuaciones", desc: "Renovación de locales existentes, optimizando lo que ya funciona sin perder control ni coherencia.", image: pic("crispy-pollo", 0) },
@@ -120,7 +133,7 @@ export default function ArquitecturaComercialPage() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
-            Arquitectura Comercial
+            Arquitectura <br />Comercial
           </RevealLines>
           <StaggerReveal>
             <p className={styles.heroSub}>

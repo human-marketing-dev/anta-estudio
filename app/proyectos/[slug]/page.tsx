@@ -6,6 +6,10 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
+import { AboutStudio } from "@/components/AboutStudio";
+import { ClientsSection } from "@/components/home/ClientsSection";
+import { ReviewsSection } from "@/components/home/ReviewsSection";
+import { ClosingCta } from "@/components/home/ClosingCta";
 import { projects, getProject, getNextProject } from "@/lib/projects";
 import styles from "./detail.module.css";
 
@@ -70,6 +74,11 @@ export default async function ProjectDetailPage({
           </div>
         </section>
       </main>
+
+      <AboutStudio />
+      <ClientsSection />
+      <ReviewsSection />
+      <ClosingCta />
 
       <Footer />
     </ViewTransition>

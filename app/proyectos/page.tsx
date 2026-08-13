@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { ProjectTile } from "@/components/ProjectTile";
+import { AboutStudio } from "@/components/AboutStudio";
+import { ClientsSection } from "@/components/home/ClientsSection";
+import { ReviewsSection } from "@/components/home/ReviewsSection";
+import { ClosingCta } from "@/components/home/ClosingCta";
 import { projects } from "@/lib/projects";
 import styles from "./page.module.css";
 
@@ -29,6 +33,12 @@ export default function ProyectosPage() {
           ))}
         </div>
       </main>
+
+      <AboutStudio />
+      <ClientsSection />
+      <ReviewsSection />
+      <ClosingCta />
+
       <Footer />
     </>
   );

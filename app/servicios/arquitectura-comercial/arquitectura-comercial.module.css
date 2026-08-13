@@ -308,7 +308,7 @@
 .whyDash {
   display: block;
   width: 32px;
-  height: 2px;
+  height: 1px;
   background: var(--anta-pink);
 }
 
@@ -317,7 +317,7 @@
   margin: clamp(16px, 1.8vw, 22px) 0 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(19px, 2vw, 26px);
+  font-size: clamp(17px, 1.5vw, 21px);
   line-height: 1.2;
   letter-spacing: -0.01em;
 }

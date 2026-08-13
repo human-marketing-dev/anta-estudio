@@ -11,14 +11,16 @@ import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
 import { getProject, type Project } from "@/lib/projects";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbList } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
-// Same design as Arquitectura Comercial — reuse its module so both stay in sync.
-import styles from "../arquitectura-comercial/arquitectura-comercial.module.css";
+// Same design as the service pages — reuse the module so they stay in sync.
+import styles from "../../servicios/arquitectura-comercial/arquitectura-comercial.module.css";
 
 export const metadata: Metadata = {
-  title: "Arquitectura Corporativa y Diseño de Oficinas | Anta Estudio",
+  title: "Diseño de Oficinas e Interiorismo Corporativo | Anta Estudio",
   description:
-    "Diseño de oficinas e interiorismo corporativo en Monterrey. Creamos espacios que reflejan tu marca y mejoran la operación, con diseño y ejecución de principio a fin.",
+    "Diseño de oficinas e interiorismo corporativo en Monterrey. Layout, materialidad y mobiliario para espacios de trabajo que reflejan tu marca. +15 años de experiencia.",
 };
 
 const navLinks = [
@@ -29,10 +31,10 @@ const navLinks = [
 ];
 
 const perfiles = [
-  { title: "Empresas en crecimiento", desc: "Necesitan oficinas a la altura de su siguiente etapa, sin frenar la operación." },
-  { title: "Marcas que quieren elevar su percepción", desc: "Buscan un espacio que comunique solidez y profesionalismo a clientes y talento." },
-  { title: "Equipos que necesitan eficiencia", desc: "Quieren optimizar el layout, los flujos y las áreas clave del día a día." },
-  { title: "Negocios que van a remodelar", desc: "Van a renovar su espacio y quieren hacerlo con control de tiempos y presupuesto." },
+  { title: "Empresas que se mudan a un nuevo espacio", desc: "Tienen la oficina y necesitan definir cómo distribuirla y darle carácter." },
+  { title: "Marcas que quieren elevar su percepción", desc: "Buscan que el espacio comunique solidez y profesionalismo a clientes y talento." },
+  { title: "Equipos que necesitan más eficiencia", desc: "Quieren optimizar el layout, los flujos y las áreas clave del día a día." },
+  { title: "Oficinas que necesitan una renovación", desc: "Quieren actualizar imagen y funcionalidad sin empezar de cero." },
 ];
 
 // Line icons per profile (outline, inherit color from .perfilIcon → pink).
@@ -45,10 +47,11 @@ const svgProps = {
   strokeLinejoin: "round" as const,
 };
 const perfilIconos = [
-  // Crecimiento — trending up
-  <svg key="crecimiento" {...svgProps}>
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-    <polyline points="16 7 22 7 22 13" />
+  // Nuevo espacio — building
+  <svg key="nuevo" {...svgProps}>
+    <path d="M4 3h10v18H4z" />
+    <path d="M14 8h6v13h-6" />
+    <path d="M7 7h4M7 11h4M7 15h4" />
   </svg>,
   // Percepción — sparkle
   <svg key="percepcion" {...svgProps}>
@@ -60,8 +63,8 @@ const perfilIconos = [
     <path d="M4 10h16" />
     <path d="M11 10v10" />
   </svg>,
-  // Remodelar — refresh
-  <svg key="remodelar" {...svgProps}>
+  // Renovación — refresh
+  <svg key="renovar" {...svgProps}>
     <polyline points="21 4 21 9 16 9" />
     <polyline points="3 20 3 15 8 15" />
     <path d="M19.5 9A8 8 0 0 0 6 5.7L3 9m18 6-3 3.3A8 8 0 0 1 4.5 15" />
@@ -69,11 +72,11 @@ const perfilIconos = [
 ];
 
 const pasos = [
-  { title: "Diagnóstico y objetivos", desc: "Entendemos tu operación, tu marca y la meta del proyecto." },
-  { title: "Concepto y anteproyecto", desc: "Definimos la dirección estética y el layout del espacio." },
-  { title: "Alcance y especificaciones", desc: "Aterrizamos materiales, acabados y detalles para decidir con claridad." },
-  { title: "Presupuesto y calendario", desc: "Presentamos un presupuesto preciso y un calendario de obra realista." },
-  { title: "Ejecución, supervisión y entrega", desc: "Coordinamos la obra de principio a fin y entregamos listo para operar." },
+  { title: "Diagnóstico y objetivos", desc: "Entendemos cómo trabaja tu equipo, qué necesita el espacio y qué quieres proyectar." },
+  { title: "Concepto y anteproyecto", desc: "Definimos la dirección estética y el layout de la oficina." },
+  { title: "Alcance y especificaciones", desc: "Aterrizamos materiales, acabados, iluminación y mobiliario." },
+  { title: "Presupuesto y calendario", desc: "Presentamos un presupuesto preciso y tiempos realistas." },
+  { title: "Ejecución, supervisión y entrega", desc: "Coordinamos la implementación de principio a fin y entregamos listo para usar." },
 ];
 
 const pic = (slug: string, i = 0) => {
@@ -82,25 +85,12 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  {
-    title: "Diseño de Oficinas",
-    desc: (
-      <>
-        Distribución, ambientes y estaciones de trabajo pensados para la operación y la cultura de tu
-        empresa. Conoce a detalle nuestro servicio de{" "}
-        <Link href="/interiorismo/diseno-de-oficinas" style={{ color: "var(--anta-pink)", fontWeight: 600 }}>
-          diseño de oficinas
-        </Link>
-        .
-      </>
-    ),
-    image: pic("oficinas-majadma", 0),
-  },
-  { title: "Interiorismo Corporativo", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca.", image: pic("e-80", 0) },
+  { title: "Layout y Distribución", desc: "Organización de áreas, estaciones de trabajo y flujos según la operación de tu empresa.", image: pic("oficinas-majadma", 0) },
+  { title: "Diseño de Interiores de Oficinas", desc: "Materiales, acabados, color e iluminación que dan carácter y confort al espacio.", image: pic("e-80", 0) },
   { title: "Áreas Comunes y Salas de Juntas", desc: "Espacios de reunión, colaboración y recepción que reflejan profesionalismo.", image: pic("tp-zentralia", 0) },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de oficinas existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf", 0) },
-  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales alineadas al concepto del espacio.", image: pic("e-80", 1) },
-  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto.", image: pic("oficinas-majadma", 1) },
+  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y la forma de trabajar del equipo.", image: pic("valle-alto-club-de-golf", 0) },
+  { title: "Diseño de Oficinas Modernas", desc: "Propuestas contemporáneas que equilibran estética, funcionalidad y durabilidad.", image: pic("e-80", 1) },
+  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("oficinas-majadma", 1) },
 ];
 
 const diferenciadores = [
@@ -112,34 +102,41 @@ const diferenciadores = [
 
 const subInk = { color: "var(--anta-ink-30)" };
 
-export default function ArquitecturaCorporativaPage() {
+export default function DisenoDeOficinasPage() {
   const heroImg = getProject("oficinas-majadma")!.cover;
   const queEsImg = getProject("e-80")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
-  const corporativo = ["e-80", "valle-alto-club-de-golf", "oficinas-majadma", "tp-zentralia"].flatMap((s) => {
+  const proyectos = ["e-80", "valle-alto-club-de-golf", "oficinas-majadma", "tp-zentralia"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Interiorismo", path: "/interiorismo" },
+          { name: "Diseño de Oficinas", path: "/interiorismo/diseno-de-oficinas" },
+        ])}
+      />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
       {/* 1 · HERO */}
       <header className={styles.hero}>
-        <ParallaxImage src={heroImg} alt="Oficina — arquitectura corporativa de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
+        <ParallaxImage src={heroImg} alt="Oficina — diseño e interiorismo de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
-            Arquitectura <br />Corporativa
+            Diseño de Oficinas e Interiorismo Corporativo
           </RevealLines>
           <StaggerReveal>
             <p className={styles.heroSub}>
-              Diseñamos y ejecutamos oficinas y espacios corporativos que reflejan tu marca, mejoran
-              la operación y elevan la experiencia del equipo. Diseño e interiorismo de principio a
-              fin, con más de 15 años de experiencia.
+              Diseñamos oficinas que reflejan la identidad de tu empresa y hacen más fácil el día a
+              día del equipo. Layout, materialidad, iluminación y detalle pensados para trabajar
+              mejor. Más de 15 años de experiencia en Monterrey.
             </p>
             <div className={styles.ctas}>
               <Button as="a" href="/contacto">
@@ -160,29 +157,35 @@ export default function ArquitecturaCorporativaPage() {
           <div className={styles.queEsText}>
             <p className={styles.eyebrow}>
               <span className={styles.eyebrowTick} />
-              Arquitectura e interiorismo corporativo
+              Diseño e interiorismo de oficinas
             </p>
             <RevealLines as="h2" className={shared.h2}>
-              ¿Qué es la Arquitectura Corporativa?
+              ¿Qué es el Diseño de Oficinas?
             </RevealLines>
             <p className={`${shared.body} ${styles.lead}`}>
-              La arquitectura corporativa es el diseño de espacios de trabajo que traducen la
-              identidad de una empresa en un entorno real. Va más allá de la estética: se trata de
-              organizar el espacio para que la operación fluya, la marca se sienta y el equipo trabaje
-              mejor. En Anta Estudio diseñamos y construimos oficinas, corporativos y espacios para
-              marcas que buscan cultura, eficiencia y presencia.
+              El diseño de oficinas es la disciplina que organiza y da carácter al espacio de trabajo.
+              Define cómo se distribuyen las áreas, cómo circula la gente, qué materiales y qué luz
+              acompañan cada zona, y cómo todo eso comunica la identidad de la empresa. Un buen diseño
+              de oficinas no solo se ve bien: hace que el equipo trabaje con más comodidad y que quien
+              te visita entienda quién eres.
             </p>
             <p className={`${shared.body} ${styles.leadBody}`}>
-              Cada proyecto integra interiorismo corporativo, distribución y ejecución bajo un mismo
-              estándar, para que el resultado final sea fiel a la intención original y esté listo para
-              operar.
+              En Anta Estudio trabajamos el interiorismo corporativo con criterio arquitectónico: cada
+              decisión de layout, acabado o mobiliario responde a la forma en que tu empresa opera y a
+              la imagen que quiere proyectar.
+            </p>
+            <p className={`${shared.body} ${styles.leadBody}`}>
+              ¿Tu proyecto incluye obra y remodelación completa?{" "}
+              <Link href="/servicios/arquitectura-corporativa" style={{ color: "var(--anta-pink)", fontWeight: 600, textDecoration: "none" }}>
+                Conoce nuestro servicio de Arquitectura Corporativa →
+              </Link>
             </p>
           </div>
 
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={queEsImg}
-              alt="Interiorismo corporativo de Anta Estudio"
+              alt="Interiorismo de oficinas de Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -200,8 +203,8 @@ export default function ArquitecturaCorporativaPage() {
                 ¿Para quién es este servicio?
               </RevealLines>
               <p className={`${shared.body} ${styles.perfilIntro}`}>
-                Diseñado para empresas que crecen, elevan su marca o remodelan sus oficinas —
-                y para quienes entienden el espacio de trabajo como parte de su cultura y operación.
+                Pensado para quienes ya tienen el espacio y necesitan resolverlo: empresas que se
+                mudan, marcas que quieren elevar su percepción y equipos que buscan más eficiencia.
               </p>
             </div>
             <StaggerReveal
@@ -227,17 +230,17 @@ export default function ArquitecturaCorporativaPage() {
         </div>
       </section>
 
-      {/* 4 · PROYECTOS CORPORATIVOS */}
+      {/* 4 · OFICINAS QUE HEMOS DISEÑADO */}
       <section className={shared.section}>
         <div className={shared.wrap}>
           <div className={styles.headRow}>
             <div className={styles.headText}>
               <RevealLines as="h2" className={shared.h2}>
-                Proyectos Corporativos
+                Oficinas que Hemos Diseñado
               </RevealLines>
               <p className={`${shared.sub} ${styles.headSub}`}>
-                Una selección de oficinas y espacios corporativos donde el diseño, los materiales y la
-                ejecución se alinean con la marca.
+                Una selección de espacios de trabajo donde el layout, los materiales y el detalle se
+                alinean con la identidad de cada empresa.
               </p>
             </div>
             <Link href="/proyectos" className={shared.link}>
@@ -249,7 +252,7 @@ export default function ArquitecturaCorporativaPage() {
           </div>
         </div>
         <div className={styles.projectsGrid}>
-          {corporativo.map((p) => (
+          {proyectos.map((p) => (
             <ProjectTile key={p.slug} project={p} />
           ))}
         </div>
@@ -272,12 +275,12 @@ export default function ArquitecturaCorporativaPage() {
         </div>
       </section>
 
-      {/* 6 · ALCANCE DEL SERVICIO — tabs (mismo diseño que "Servicio Integral") */}
+      {/* 6 · ALCANCE DEL SERVICIO */}
       <IntegralSection
         id="alcance"
         tone="white"
         heading="Alcance del Servicio"
-        intro="Contigo en cada etapa: nos encargamos de todo lo que tu proyecto corporativo necesita, bajo un mismo estándar de calidad."
+        intro="Contigo en cada etapa: nos encargamos de todo lo que el diseño de tu oficina necesita, bajo un mismo estándar de calidad."
         items={alcances}
       />
 
@@ -289,7 +292,7 @@ export default function ArquitecturaCorporativaPage() {
               Por qué Anta Estudio
             </RevealLines>
             <p className={`${shared.sub} ${styles.headSub}`}>
-              Por qué las empresas nos eligen para su proyecto corporativo.
+              Por qué las empresas nos eligen para diseñar sus oficinas.
             </p>
           </div>
           <StaggerReveal className={styles.whyStrip} childSelector={`.${styles.whyItem}`} stagger={0.1}>
@@ -310,7 +313,7 @@ export default function ArquitecturaCorporativaPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={nosotrosImg}
-              alt="Proyecto corporativo de Anta Estudio"
+              alt="Oficina diseñada por Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -325,10 +328,9 @@ export default function ArquitecturaCorporativaPage() {
             <p className={`${shared.body} ${styles.aboutBody}`}>
               Somos un equipo de arquitectos en Monterrey especializado en el diseño de espacios que
               funcionan, comunican y perduran. Durante más de 15 años hemos desarrollado proyectos
-              corporativos, comerciales y residenciales, acompañando a nuestros clientes desde el
-              análisis y la conceptualización hasta la gerencia y supervisión de obra. En el ámbito
-              corporativo, esto significa oficinas que reflejan la cultura de cada empresa y están
-              listas para operar desde el primer día.
+              corporativos, comerciales y residenciales, con una misma forma de trabajar: entender
+              primero cómo se usa el espacio y después darle forma. En el diseño de oficinas, esto
+              significa lugares de trabajo cómodos, coherentes con la marca y pensados para durar.
             </p>
           </div>
         </div>
@@ -342,8 +344,8 @@ export default function ArquitecturaCorporativaPage() {
 
       {/* 11 · CTA DE CIERRE */}
       <ClosingCta
-        title="¿Buscas Arquitectura Corporativa en Monterrey?"
-        body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para crear oficinas que reflejan tu marca y funcionan desde el primer día."
+        title="¿Buscas Diseño de Oficinas en Monterrey?"
+        body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, criterio arquitectónico y más de 15 años de experiencia para crear oficinas que reflejan tu marca y hacen mejor el día a día de tu equipo."
       />
 
       <Footer />

@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { FooterLink } from "@/components/FooterLink";
 
 /** Site footer on ink. Wordmark, columns, contact, fine print. */
 export function Footer({ style = {} }: { style?: CSSProperties }) {
@@ -12,6 +12,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
     letterSpacing: "2px",
     textTransform: "uppercase",
     color: "var(--anta-ink-50)",
+    textDecoration: "none",
     marginBottom: 6,
   };
   const link: CSSProperties = {
@@ -32,7 +33,9 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "2fr 1fr 1fr 1.4fr",
+          // auto-fit + minmax lets the 5 columns wrap onto multiple rows on
+          // tablet/mobile instead of getting cramped (no media queries inline).
+          gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
           gap: 48,
           maxWidth: "var(--content-max)", paddingInline: "var(--section-pad-x)",
           margin: "96px auto 0",
@@ -46,21 +49,27 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
         </div>
         <div style={col}>
           <span style={head}>Estudio</span>
-          <Link href="/#nosotros" style={link}>Nosotros</Link>
-          <Link href="/#servicios" style={link}>Servicios</Link>
-          <Link href="/#proyectos" style={link}>Proyectos</Link>
+          <FooterLink href="/#nosotros" style={link}>Nosotros</FooterLink>
+          <FooterLink href="/#servicios" style={link}>Servicios</FooterLink>
+          <FooterLink href="/#proyectos" style={link}>Proyectos</FooterLink>
         </div>
         <div style={col}>
-          <span style={head}>Servicios</span>
-          <a href="#" style={link}>Arquitectura</a>
-          <a href="#" style={link}>Interiores</a>
-          <a href="#" style={link}>Gestión de obra</a>
+          <FooterLink href="/#servicios" style={head}>Servicios</FooterLink>
+          <FooterLink href="/servicios/arquitectura-comercial" style={link}>Arquitectura Comercial</FooterLink>
+          <FooterLink href="/servicios/arquitectura-corporativa" style={link}>Arquitectura Corporativa</FooterLink>
+          <FooterLink href="/servicios/arquitectura-residencial" style={link}>Arquitectura Residencial</FooterLink>
+        </div>
+        <div style={col}>
+          <FooterLink href="/interiorismo" style={head}>Interiorismo</FooterLink>
+          <FooterLink href="/interiorismo/diseno-de-oficinas" style={link}>Diseño de Oficinas</FooterLink>
+          <FooterLink href="/interiorismo/diseno-de-restaurantes" style={link}>Diseño de Restaurantes</FooterLink>
+          <FooterLink href="/interiorismo/diseno-de-interiores-casas" style={link}>Diseño de Interiores de Casas</FooterLink>
         </div>
         <div style={col}>
           <span style={head}>Contacto</span>
-          <a href="mailto:hola@antaestudio.com" style={link}>hola@antaestudio.com</a>
-          <a href="#" style={link}>San Pedro Garza García, N.L.</a>
-          <a href="#" style={{ ...link, color: "var(--anta-pink)" }}>Instagram ↗</a>
+          <FooterLink href="mailto:hola@antaestudio.com" style={link}>hola@antaestudio.com</FooterLink>
+          <FooterLink href="#" style={link}>San Pedro Garza García, N.L.</FooterLink>
+          <FooterLink href="#" style={{ ...link, color: "var(--anta-pink)" }}>Instagram ↗</FooterLink>
         </div>
       </div>
       <div

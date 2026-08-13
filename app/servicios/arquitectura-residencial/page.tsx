@@ -84,7 +84,20 @@ const pic = (slug: string, i = 0) => {
 
 const alcances = [
   { title: "Diseño Arquitectónico Residencial", desc: "Proyecto y distribución de la casa o residencia, del concepto a los planos ejecutivos.", image: pic("terraza-pangea", 0) },
-  { title: "Diseño de Interiores de Casas", desc: "Materiales, acabados, iluminación y mobiliario que dan carácter a cada espacio del hogar.", image: pic("edificio-vh", 0) },
+  {
+    title: "Diseño de Interiores de Casas",
+    desc: (
+      <>
+        Materiales, acabados, iluminación y mobiliario que dan carácter a cada espacio del hogar.
+        Conoce a detalle nuestro servicio de{" "}
+        <Link href="/interiorismo/diseno-de-interiores-casas" style={{ color: "var(--anta-pink)", fontWeight: 600 }}>
+          diseño de interiores de casas
+        </Link>
+        .
+      </>
+    ),
+    image: pic("edificio-vh", 0),
+  },
   { title: "Diseño de Fachadas", desc: "Renovación y diseño de la imagen exterior, integrando la vivienda a su entorno.", image: pic("tp-zentralia", 0) },
   { title: "Remodelación y Adecuaciones", desc: "Renovación de residencias existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf", 0) },
   { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y el estilo de vida del cliente.", image: pic("edificio-vh", 1) },
@@ -122,7 +135,7 @@ export default function ArquitecturaResidencialPage() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
-            Arquitectura Residencial
+            Arquitectura <br />Residencial
           </RevealLines>
           <StaggerReveal>
             <p className={styles.heroSub}>

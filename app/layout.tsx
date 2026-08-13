@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lato, Open_Sans, Poppins } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Brand fonts: Lato (display), Open Sans (body/UI), Poppins (italic accent).
@@ -26,6 +27,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Anta Estudio — Despacho de Arquitectura en Monterrey",
   description:
     "Despacho de arquitectura e interiorismo en Monterrey. Diseñamos y ejecutamos espacios comerciales, corporativos y residenciales, con más de 15 años de experiencia.",

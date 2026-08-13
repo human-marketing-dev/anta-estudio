@@ -11,14 +11,16 @@ import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
 import { getProject, type Project } from "@/lib/projects";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbList } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
-// Same design as Arquitectura Comercial — reuse its module so both stay in sync.
-import styles from "../arquitectura-comercial/arquitectura-comercial.module.css";
+// Same design as the service pages — reuse the module so they stay in sync.
+import styles from "../../servicios/arquitectura-comercial/arquitectura-comercial.module.css";
 
 export const metadata: Metadata = {
-  title: "Arquitectura Corporativa y Diseño de Oficinas | Anta Estudio",
+  title: "Diseño de Restaurantes e Interiorismo Comercial | Anta Estudio",
   description:
-    "Diseño de oficinas e interiorismo corporativo en Monterrey. Creamos espacios que reflejan tu marca y mejoran la operación, con diseño y ejecución de principio a fin.",
+    "Diseño de restaurantes e interiorismo comercial en Monterrey. Ambiente, materialidad y mobiliario para espacios de hospitalidad con carácter. +15 años de experiencia.",
 };
 
 const navLinks = [
@@ -29,10 +31,10 @@ const navLinks = [
 ];
 
 const perfiles = [
-  { title: "Empresas en crecimiento", desc: "Necesitan oficinas a la altura de su siguiente etapa, sin frenar la operación." },
-  { title: "Marcas que quieren elevar su percepción", desc: "Buscan un espacio que comunique solidez y profesionalismo a clientes y talento." },
-  { title: "Equipos que necesitan eficiencia", desc: "Quieren optimizar el layout, los flujos y las áreas clave del día a día." },
-  { title: "Negocios que van a remodelar", desc: "Van a renovar su espacio y quieren hacerlo con control de tiempos y presupuesto." },
+  { title: "Conceptos que están por nacer", desc: "Tienen el local y la idea, y necesitan traducirla en un espacio con carácter propio." },
+  { title: "Restaurantes que quieren renovarse", desc: "Buscan actualizar ambiente e imagen sin cerrar por meses ni empezar de cero." },
+  { title: "Marcas con varias sucursales", desc: "Necesitan un lenguaje de diseño consistente y replicable en cada punto." },
+  { title: "Espacios donde la experiencia manda", desc: "Cafés, bares y lugares donde el ambiente es parte central de la propuesta." },
 ];
 
 // Line icons per profile (outline, inherit color from .perfilIcon → pink).
@@ -45,35 +47,33 @@ const svgProps = {
   strokeLinejoin: "round" as const,
 };
 const perfilIconos = [
-  // Crecimiento — trending up
-  <svg key="crecimiento" {...svgProps}>
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-    <polyline points="16 7 22 7 22 13" />
-  </svg>,
-  // Percepción — sparkle
-  <svg key="percepcion" {...svgProps}>
+  // Concepto por nacer — sparkle
+  <svg key="concepto" {...svgProps}>
     <path d="M12 3c.6 4 1.9 5.4 6 6-4.1.6-5.4 2-6 6-.6-4-1.9-5.4-6-6 4.1-.6 5.4-2 6-6Z" />
   </svg>,
-  // Eficiencia — floor plan / layout
-  <svg key="eficiencia" {...svgProps}>
-    <path d="M4 4h16v16H4z" />
-    <path d="M4 10h16" />
-    <path d="M11 10v10" />
-  </svg>,
-  // Remodelar — refresh
-  <svg key="remodelar" {...svgProps}>
+  // Renovarse — refresh
+  <svg key="renovar" {...svgProps}>
     <polyline points="21 4 21 9 16 9" />
     <polyline points="3 20 3 15 8 15" />
     <path d="M19.5 9A8 8 0 0 0 6 5.7L3 9m18 6-3 3.3A8 8 0 0 1 4.5 15" />
   </svg>,
+  // Varias sucursales — copy
+  <svg key="sucursales" {...svgProps}>
+    <path d="M9 9h11v11H9z" />
+    <path d="M5 15H4V4h11v1" />
+  </svg>,
+  // Experiencia — star
+  <svg key="experiencia" {...svgProps}>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>,
 ];
 
 const pasos = [
-  { title: "Diagnóstico y objetivos", desc: "Entendemos tu operación, tu marca y la meta del proyecto." },
-  { title: "Concepto y anteproyecto", desc: "Definimos la dirección estética y el layout del espacio." },
-  { title: "Alcance y especificaciones", desc: "Aterrizamos materiales, acabados y detalles para decidir con claridad." },
-  { title: "Presupuesto y calendario", desc: "Presentamos un presupuesto preciso y un calendario de obra realista." },
-  { title: "Ejecución, supervisión y entrega", desc: "Coordinamos la obra de principio a fin y entregamos listo para operar." },
+  { title: "Diagnóstico y objetivos", desc: "Entendemos tu concepto, tu operación y la experiencia que quieres ofrecer." },
+  { title: "Concepto y anteproyecto", desc: "Definimos la dirección estética, la distribución del salón y los flujos de servicio." },
+  { title: "Alcance y especificaciones", desc: "Aterrizamos materiales, acabados, iluminación y mobiliario, pensando en el uso diario." },
+  { title: "Presupuesto y calendario", desc: "Presentamos un presupuesto preciso y tiempos realistas." },
+  { title: "Ejecución, supervisión y entrega", desc: "Coordinamos la implementación de principio a fin y entregamos listo para usar." },
 ];
 
 const pic = (slug: string, i = 0) => {
@@ -82,25 +82,12 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  {
-    title: "Diseño de Oficinas",
-    desc: (
-      <>
-        Distribución, ambientes y estaciones de trabajo pensados para la operación y la cultura de tu
-        empresa. Conoce a detalle nuestro servicio de{" "}
-        <Link href="/interiorismo/diseno-de-oficinas" style={{ color: "var(--anta-pink)", fontWeight: 600 }}>
-          diseño de oficinas
-        </Link>
-        .
-      </>
-    ),
-    image: pic("oficinas-majadma", 0),
-  },
-  { title: "Interiorismo Corporativo", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca.", image: pic("e-80", 0) },
-  { title: "Áreas Comunes y Salas de Juntas", desc: "Espacios de reunión, colaboración y recepción que reflejan profesionalismo.", image: pic("tp-zentralia", 0) },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de oficinas existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf", 0) },
-  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales alineadas al concepto del espacio.", image: pic("e-80", 1) },
-  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto.", image: pic("oficinas-majadma", 1) },
+  { title: "Concepto y Dirección de Ambiente", desc: "Traducimos la idea de tu marca en una atmósfera con identidad propia.", image: pic("kampai", 0) },
+  { title: "Distribución de Salón y Flujos", desc: "Capacidad, acomodo de mesas y circulaciones de servicio pensadas para la operación real.", image: pic("cafe-laurel", 0) },
+  { title: "Diseño de Interiores de Restaurantes", desc: "Materiales, acabados, color e iluminación que resisten el uso diario y se ven bien siempre.", image: pic("crispy-pollo", 0) },
+  { title: "Mobiliario a Medida", desc: "Barras, bancas y piezas especiales diseñadas para tu espacio y tu servicio.", image: pic("nailz", 0) },
+  { title: "Fachada e Imagen Exterior", desc: "La primera impresión del local: acceso, señalización y presencia en la calle.", image: pic("kampai", 1) },
+  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("cafe-laurel", 1) },
 ];
 
 const diferenciadores = [
@@ -112,34 +99,41 @@ const diferenciadores = [
 
 const subInk = { color: "var(--anta-ink-30)" };
 
-export default function ArquitecturaCorporativaPage() {
-  const heroImg = getProject("oficinas-majadma")!.cover;
-  const queEsImg = getProject("e-80")!.cover;
-  const nosotrosImg = getProject("tp-zentralia")!.cover;
-  const corporativo = ["e-80", "valle-alto-club-de-golf", "oficinas-majadma", "tp-zentralia"].flatMap((s) => {
+export default function DisenoDeRestaurantesPage() {
+  const heroImg = getProject("crispy-pollo")!.cover;
+  const queEsImg = getProject("kampai")!.cover;
+  const nosotrosImg = getProject("cafe-laurel")!.cover;
+  const proyectos = ["cafe-laurel", "kampai", "crispy-pollo", "nailz"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Interiorismo", path: "/interiorismo" },
+          { name: "Diseño de Restaurantes", path: "/interiorismo/diseno-de-restaurantes" },
+        ])}
+      />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
       {/* 1 · HERO */}
       <header className={styles.hero}>
-        <ParallaxImage src={heroImg} alt="Oficina — arquitectura corporativa de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
+        <ParallaxImage src={heroImg} alt="Restaurante — diseño e interiorismo de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
-            Arquitectura <br />Corporativa
+            Diseño de Restaurantes e Interiorismo Comercial
           </RevealLines>
           <StaggerReveal>
             <p className={styles.heroSub}>
-              Diseñamos y ejecutamos oficinas y espacios corporativos que reflejan tu marca, mejoran
-              la operación y elevan la experiencia del equipo. Diseño e interiorismo de principio a
-              fin, con más de 15 años de experiencia.
+              Diseñamos restaurantes, cafés y espacios de hospitalidad donde el ambiente acompaña al
+              concepto y la operación fluye. Materialidad, iluminación y detalle pensados para que
+              cada visita se sienta bien. Más de 15 años de experiencia en Monterrey.
             </p>
             <div className={styles.ctas}>
               <Button as="a" href="/contacto">
@@ -160,29 +154,35 @@ export default function ArquitecturaCorporativaPage() {
           <div className={styles.queEsText}>
             <p className={styles.eyebrow}>
               <span className={styles.eyebrowTick} />
-              Arquitectura e interiorismo corporativo
+              Diseño e interiorismo de restaurantes
             </p>
             <RevealLines as="h2" className={shared.h2}>
-              ¿Qué es la Arquitectura Corporativa?
+              ¿Qué es el Diseño de Restaurantes?
             </RevealLines>
             <p className={`${shared.body} ${styles.lead}`}>
-              La arquitectura corporativa es el diseño de espacios de trabajo que traducen la
-              identidad de una empresa en un entorno real. Va más allá de la estética: se trata de
-              organizar el espacio para que la operación fluya, la marca se sienta y el equipo trabaje
-              mejor. En Anta Estudio diseñamos y construimos oficinas, corporativos y espacios para
-              marcas que buscan cultura, eficiencia y presencia.
+              El diseño de restaurantes es el trabajo de traducir un concepto gastronómico en un
+              espacio real. Define cuántas personas caben y cómo se sientan, cómo circulan los
+              meseros, qué materiales resisten el uso diario y qué luz hace que la comida y el lugar
+              se vean bien. Un buen diseño no solo se fotografía bonito: sostiene la operación todos
+              los días y hace que la gente quiera volver.
             </p>
             <p className={`${shared.body} ${styles.leadBody}`}>
-              Cada proyecto integra interiorismo corporativo, distribución y ejecución bajo un mismo
-              estándar, para que el resultado final sea fiel a la intención original y esté listo para
-              operar.
+              En Anta Estudio trabajamos el interiorismo comercial con criterio arquitectónico: cada
+              decisión de distribución, acabado o mobiliario responde al concepto de tu marca y a cómo
+              funciona tu cocina, tu servicio y tu salón.
+            </p>
+            <p className={`${shared.body} ${styles.leadBody}`}>
+              ¿Vas a abrir o remodelar por completo?{" "}
+              <Link href="/servicios/arquitectura-comercial" style={{ color: "var(--anta-pink)", fontWeight: 600, textDecoration: "none" }}>
+                Conoce nuestro servicio de Arquitectura Comercial →
+              </Link>
             </p>
           </div>
 
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={queEsImg}
-              alt="Interiorismo corporativo de Anta Estudio"
+              alt="Interiorismo de restaurantes de Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -200,8 +200,8 @@ export default function ArquitecturaCorporativaPage() {
                 ¿Para quién es este servicio?
               </RevealLines>
               <p className={`${shared.body} ${styles.perfilIntro}`}>
-                Diseñado para empresas que crecen, elevan su marca o remodelan sus oficinas —
-                y para quienes entienden el espacio de trabajo como parte de su cultura y operación.
+                Pensado para quienes ya tienen el local y necesitan resolver el ambiente: conceptos
+                que nacen, restaurantes que se renuevan y marcas que crecen en varias sucursales.
               </p>
             </div>
             <StaggerReveal
@@ -227,21 +227,21 @@ export default function ArquitecturaCorporativaPage() {
         </div>
       </section>
 
-      {/* 4 · PROYECTOS CORPORATIVOS */}
+      {/* 4 · RESTAURANTES QUE HEMOS DISEÑADO */}
       <section className={shared.section}>
         <div className={shared.wrap}>
           <div className={styles.headRow}>
             <div className={styles.headText}>
               <RevealLines as="h2" className={shared.h2}>
-                Proyectos Corporativos
+                Restaurantes que Hemos Diseñado
               </RevealLines>
               <p className={`${shared.sub} ${styles.headSub}`}>
-                Una selección de oficinas y espacios corporativos donde el diseño, los materiales y la
-                ejecución se alinean con la marca.
+                Una selección de restaurantes, cafés y espacios de hospitalidad donde el ambiente, los
+                materiales y el detalle acompañan al concepto.
               </p>
             </div>
             <Link href="/proyectos" className={shared.link}>
-              Ver más proyectos corporativos
+              Ver más proyectos comerciales
               <span className={shared.arrow}>
                 <Arrow s={15} />
               </span>
@@ -249,7 +249,7 @@ export default function ArquitecturaCorporativaPage() {
           </div>
         </div>
         <div className={styles.projectsGrid}>
-          {corporativo.map((p) => (
+          {proyectos.map((p) => (
             <ProjectTile key={p.slug} project={p} />
           ))}
         </div>
@@ -272,12 +272,12 @@ export default function ArquitecturaCorporativaPage() {
         </div>
       </section>
 
-      {/* 6 · ALCANCE DEL SERVICIO — tabs (mismo diseño que "Servicio Integral") */}
+      {/* 6 · ALCANCE DEL SERVICIO */}
       <IntegralSection
         id="alcance"
         tone="white"
         heading="Alcance del Servicio"
-        intro="Contigo en cada etapa: nos encargamos de todo lo que tu proyecto corporativo necesita, bajo un mismo estándar de calidad."
+        intro="Contigo en cada etapa: nos encargamos de todo lo que el diseño de tu restaurante necesita, bajo un mismo estándar de calidad."
         items={alcances}
       />
 
@@ -289,7 +289,7 @@ export default function ArquitecturaCorporativaPage() {
               Por qué Anta Estudio
             </RevealLines>
             <p className={`${shared.sub} ${styles.headSub}`}>
-              Por qué las empresas nos eligen para su proyecto corporativo.
+              Por qué las marcas nos eligen para diseñar sus restaurantes.
             </p>
           </div>
           <StaggerReveal className={styles.whyStrip} childSelector={`.${styles.whyItem}`} stagger={0.1}>
@@ -310,7 +310,7 @@ export default function ArquitecturaCorporativaPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={nosotrosImg}
-              alt="Proyecto corporativo de Anta Estudio"
+              alt="Restaurante diseñado por Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -325,10 +325,10 @@ export default function ArquitecturaCorporativaPage() {
             <p className={`${shared.body} ${styles.aboutBody}`}>
               Somos un equipo de arquitectos en Monterrey especializado en el diseño de espacios que
               funcionan, comunican y perduran. Durante más de 15 años hemos desarrollado proyectos
-              corporativos, comerciales y residenciales, acompañando a nuestros clientes desde el
-              análisis y la conceptualización hasta la gerencia y supervisión de obra. En el ámbito
-              corporativo, esto significa oficinas que reflejan la cultura de cada empresa y están
-              listas para operar desde el primer día.
+              comerciales, corporativos y residenciales, con una misma forma de trabajar: entender
+              primero cómo se usa el espacio y después darle forma. En el diseño de restaurantes, esto
+              significa lugares con carácter, cómodos de operar y hechos con materiales que aguantan el
+              día a día.
             </p>
           </div>
         </div>
@@ -342,8 +342,8 @@ export default function ArquitecturaCorporativaPage() {
 
       {/* 11 · CTA DE CIERRE */}
       <ClosingCta
-        title="¿Buscas Arquitectura Corporativa en Monterrey?"
-        body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para crear oficinas que reflejan tu marca y funcionan desde el primer día."
+        title="¿Buscas Diseño de Restaurantes en Monterrey?"
+        body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, criterio arquitectónico y más de 15 años de experiencia para crear espacios con ambiente propio, cómodos de operar y pensados para que la gente quiera volver."
       />
 
       <Footer />
