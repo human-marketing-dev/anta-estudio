@@ -78,6 +78,12 @@ import img_tp_zentralia_4 from "@/public/proyectos/tp-zentralia/arquitectura-cor
 import img_tp_zentralia_5 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-7.webp";
 import img_tp_zentralia_6 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-8.webp";
 import img_tp_zentralia_7 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-9.webp";
+import img_valle_alto_club_de_golf_gimnasio_0 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-2.webp";
+import img_valle_alto_club_de_golf_gimnasio_1 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-3.webp";
+import img_valle_alto_club_de_golf_gimnasio_2 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-4.webp";
+import img_valle_alto_club_de_golf_gimnasio_3 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-5.webp";
+import img_valle_alto_club_de_golf_gimnasio_4 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-6.webp";
+import img_valle_alto_club_de_golf_gimnasio_5 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio.webp";
 
 export type Categoria = "comercial" | "corporativo" | "residencial";
 
@@ -179,6 +185,14 @@ export const projects: Project[] = [
     featured: false,
     cover: img_tp_zentralia_0,
     galeria: [img_tp_zentralia_1, img_tp_zentralia_2, img_tp_zentralia_3, img_tp_zentralia_4, img_tp_zentralia_5, img_tp_zentralia_6, img_tp_zentralia_7],
+  },
+  {
+    slug: "valle-alto-club-de-golf-gimnasio",
+    nombre: "Valle Alto Gimnasio",
+    categoria: null,
+    featured: false,
+    cover: img_valle_alto_club_de_golf_gimnasio_5,
+    galeria: [img_valle_alto_club_de_golf_gimnasio_0, img_valle_alto_club_de_golf_gimnasio_1, img_valle_alto_club_de_golf_gimnasio_2, img_valle_alto_club_de_golf_gimnasio_3, img_valle_alto_club_de_golf_gimnasio_4],
   },
 ];
 

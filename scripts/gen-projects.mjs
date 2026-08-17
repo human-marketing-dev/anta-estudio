@@ -24,6 +24,7 @@ const NAMES = {
   "edificio-vh": "Edificio VH",
   "oficinas-majadma": "Oficinas MAJADMA",
   "tp-zentralia": "TP Zentralia",
+  "valle-alto-club-de-golf-gimnasio": "Valle Alto Gimnasio",
 };
 
 // Chosen cover per project (portrait where available, else best square/landscape).
@@ -39,6 +40,7 @@ const COVERS = {
   "edificio-vh": "anta-arquitectura-corporativo-edificio-vh-1.webp",
   "oficinas-majadma": "EA_AES_SOMA_23_003AV2_3480_P.webp",
   "tp-zentralia": "arquitectura-corporativo-tp-zentralia-2.webp",
+  "valle-alto-club-de-golf-gimnasio": "valle-alto-gimnasio.webp",
 };
 
 const FEATURED = new Set([
@@ -63,6 +65,7 @@ const ORDER = [
   "edificio-vh",
   "oficinas-majadma",
   "tp-zentralia",
+  "valle-alto-club-de-golf-gimnasio",
 ];
 
 const IMG_RE = /\.(webp|jpe?g|png)$/i;
