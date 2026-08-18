@@ -9,7 +9,7 @@ type NavLinkItem = { label: string; href: string };
 
 const DEFAULT_LINKS: NavLinkItem[] = [
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Proyectos", href: "#proyectos" },
+  { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Contacto", href: "/contacto" },
 ];

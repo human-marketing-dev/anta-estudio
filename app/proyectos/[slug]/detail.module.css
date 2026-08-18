@@ -21,7 +21,7 @@
   margin: 20px 0 0;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(34px, 5vw, 66px);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -53,7 +53,7 @@
 /* Ficha técnica — spec grid below the gallery. */
 .ficha {
   max-width: var(--content-max);
-  margin: clamp(48px, 6vw, 88px) auto 0;
+  margin: 0 auto clamp(40px, 5vw, 72px);
   padding-inline: var(--section-pad-x);
 }
 

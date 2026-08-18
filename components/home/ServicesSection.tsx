@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { RevealLines, MaskReveal } from "@/components/anim";
 import { Arrow } from "@/components/site";
-import { Button } from "@/components/Button";
 import shared from "./home.module.css";
 import styles from "./ServicesSection.module.css";
 
@@ -55,10 +55,10 @@ export function ServicesSection() {
                 </div>
                 <div className={styles.blockBody}>
                   <p className={shared.body}>{c.body}</p>
-                  <Button as="a" href={c.href} size="sm" className={styles.blockLink}>
+                  <Link href={c.href} className={styles.blockBtn}>
                     {c.link}
                     <Arrow s={15} />
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </MaskReveal>

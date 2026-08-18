@@ -88,7 +88,7 @@ export function ClientsSection() {
         </div>
 
         <div className={styles.head}>
-          <RevealLines as="h2" className={shared.h2}>
+          <RevealLines as="h2" className={`${shared.h2} ${styles.title}`}>
             Nuestros Clientes
           </RevealLines>
           <p className={`${shared.sub} ${styles.headSub}`}>

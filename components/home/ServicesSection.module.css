@@ -40,8 +40,31 @@
   align-items: flex-start;
 }
 
-.blockLink {
+/* Outline button — turns pink on hover. */
+.blockBtn {
   margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 14px 30px;
+  border: 1px solid var(--anta-ink);
+  color: var(--anta-ink);
+  background: transparent;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.blockBtn:hover {
+  background: var(--anta-pink);
+  border-color: var(--anta-pink);
+  color: var(--anta-white);
 }
 
 @media (max-width: 760px) {

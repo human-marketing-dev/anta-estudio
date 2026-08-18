@@ -1,6 +1,11 @@
 /* Thinner section — logos are the focus. */
 .section {
-  padding-block: clamp(36px, 4vw, 60px);
+  padding-block: clamp(26px, 3vw, 44px);
+}
+
+/* Slightly smaller title so the block reads thinner. */
+.title {
+  font-size: clamp(24px, 2.6vw, 34px);
 }
 
 /* Horizontal layout on ink: [ square mark ] [ title + copy ] [ logo row ] */
@@ -19,7 +24,7 @@
 }
 
 .markImg {
-  width: clamp(96px, 11vw, 150px);
+  width: clamp(80px, 8vw, 108px);
   height: auto;
   display: block;
 }
@@ -56,7 +61,7 @@
   position: relative;
   flex: none;
   width: clamp(176px, 17vw, 232px);
-  height: 100px;
+  height: 78px;
 }
 
 .logo {

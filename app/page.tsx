@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const navLinks = [
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Proyectos", href: "#proyectos" },
+  { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Contacto", href: "/contacto" },
 ];

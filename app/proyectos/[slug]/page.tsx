@@ -78,8 +78,6 @@ export default async function ProjectDetailPage({
           <h1 className={styles.title}>{project.nombre}</h1>
         </header>
 
-        <HorizontalGallery images={images} alt={project.nombre} />
-
         <section className={styles.ficha}>
           <p className={styles.fichaEyebrow}>Ficha del proyecto</p>
           <dl className={styles.fichaGrid}>
@@ -91,6 +89,8 @@ export default async function ProjectDetailPage({
             ))}
           </dl>
         </section>
+
+        <HorizontalGallery images={images} alt={project.nombre} />
 
         <section className={styles.next}>
           <div className={styles.nextInner}>
