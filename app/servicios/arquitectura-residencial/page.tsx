@@ -99,7 +99,7 @@ const alcances = [
     image: pic("edificio-vh", 0),
   },
   { title: "Diseño de Fachadas", desc: "Renovación y diseño de la imagen exterior, integrando la vivienda a su entorno.", image: pic("tp-zentralia", 0) },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de residencias existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf", 0) },
+  { title: "Remodelación y Adecuaciones", desc: "Renovación de residencias existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
   { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y el estilo de vida del cliente.", image: pic("edificio-vh", 1) },
   { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar la residencia en tiempo y presupuesto.", image: pic("terraza-pangea", 1) },
 ];
@@ -118,7 +118,16 @@ export default function ArquitecturaResidencialPage() {
   const queEsImg = getProject("edificio-vh")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
   // TODO: placeholder — reemplazar por proyectos residenciales reales cuando existan.
-  const residencial = ["terraza-pangea", "edificio-vh", "tp-zentralia", "valle-alto-club-de-golf"].flatMap((s) => {
+  const residencial = [
+    "casa-arbol",
+    "mirasierra",
+    "colibri",
+    "livin",
+    "departamente-bw-2204",
+    "san-patricio",
+    "casa-bosques",
+    "casa-san-jeronimo",
+  ].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });

@@ -7,40 +7,63 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIR = join(ROOT, "public/proyectos");
 
-const EXCLUDE_SLUGS = new Set(["valle"]); // empty folder
+// Empty / not-used folders.
+const EXCLUDE_SLUGS = new Set(["valle", "valle-alto-lobby", "valle-alto-pasillos"]);
 const EXCLUDE_FILES = new Set([
   "despacho-de-arquitectura-en-monterrey-Restaurante-Crispy-Pollo.jpg", // low-res OG thumb
 ]);
 
 const NAMES = {
   "terraza-pangea": "Terraza Pangea",
-  kampai: "Kampai",
+  "e-80": "E-80",
+  majadma: "Majadma",
   "cafe-laurel": "Café Laurel",
   nailz: "Nailz",
-  "ludoteca-valle-alto": "Ludoteca Valle Alto",
-  "valle-alto-club-de-golf": "Valle Alto Club de Golf",
-  "crispy-pollo": "Crispy Pollo",
-  "e-80": "E-80",
-  "edificio-vh": "Edificio VH",
-  "oficinas-majadma": "Oficinas MAJADMA",
-  "tp-zentralia": "TP Zentralia",
+  livin: "Livin",
+  "valle-alto-club-de-golf-areas-comunes": "Valle Alto Áreas Comunes",
   "valle-alto-club-de-golf-gimnasio": "Valle Alto Gimnasio",
+  "valle-alto-club-de-golf-hoyo-19-damas": "Valle Alto Hoyo 19 Damas",
+  "ludoteca-valle-alto": "Valle Alto Ludoteca",
+  "casa-liebre": "Casa Liebre",
+  "majadma-cemex": "Cemex",
+  "crispy-pollo": "Crispy Pollo",
+  kampai: "Kampai",
+  "tp-zentralia": "TP Zentralia",
+  "casa-arbol": "Casa Árbol",
+  mirasierra: "Mirasierra",
+  colibri: "Colibrí",
+  "departamente-bw-2204": "Departamento BW2204",
+  "san-patricio": "San Patricio",
+  "casa-bosques": "Bosques",
+  "casa-san-jeronimo": "San Jerónimo",
+  "edificio-vh": "Edificio VH",
 };
 
-// Chosen cover per project (portrait where available, else best square/landscape).
+// Chosen cover per project.
 const COVERS = {
   "terraza-pangea": "EA_AES_SRPA_24_005AV2_5310_P-scaled-1.webp",
-  kampai: "anta-arquitectura-comercial-kampai-1-scaled.webp",
+  "e-80": "arquitectura-corporativo-e80-2.webp",
+  majadma: "anta-estudio-comercial-majadma-2.webp",
   "cafe-laurel": "anta-arquitectura-comercial-cafe-laurel-1.webp",
   nailz: "anta-arquitectura-comercial-nailz-2.webp",
-  "ludoteca-valle-alto": "arquitectura-corporativo-ludoteca-7.webp",
-  "valle-alto-club-de-golf": "anta-arquitectura-corporativo-valle-alto-areas-comunes-2.webp",
-  "crispy-pollo": "anta-arquitectura-comercial-crispy-pollo-1.webp",
-  "e-80": "arquitectura-corporativo-e80-2.webp",
-  "edificio-vh": "anta-arquitectura-corporativo-edificio-vh-1.webp",
-  "oficinas-majadma": "EA_AES_SOMA_23_003AV2_3480_P.webp",
-  "tp-zentralia": "arquitectura-corporativo-tp-zentralia-2.webp",
+  livin: "anta-estudio-residencial-livin-2.webp",
+  "valle-alto-club-de-golf-areas-comunes": "anta-arquitectura-corporativo-valle-alto-areas-comunes-1.webp",
   "valle-alto-club-de-golf-gimnasio": "valle-alto-gimnasio.webp",
+  "valle-alto-club-de-golf-hoyo-19-damas": "anta-estudio-comercial-valle-alto-hoyo19-2.webp",
+  "ludoteca-valle-alto": "arquitectura-corporativo-ludoteca-7.webp",
+  "casa-liebre": "anta-estudio-casa-liebre-1.webp",
+  "majadma-cemex": "anta-estudio-corporativo-majadma-cemex-1.webp",
+  "crispy-pollo": "anta-arquitectura-comercial-crispy-pollo-1.webp",
+  kampai: "anta-arquitectura-comercial-kampai-1-scaled.webp",
+  "tp-zentralia": "arquitectura-corporativo-tp-zentralia-2.webp",
+  "casa-arbol": "anta-estudio-residencial-casa-arbol-2.webp",
+  mirasierra: "anta-mirasierra-1.webp",
+  colibri: "anta-estudio-residencial-colibri-10.jpg",
+  "departamente-bw-2204": "anta-estudio-residencial-departamente-bw-2204-2.webp",
+  "san-patricio": "anta-estudio-residencial-san-patricio-2.webp",
+  "casa-bosques": "anta-estudio-residencial-casa-bosques-2.webp",
+  "casa-san-jeronimo": "anta-estudio-residencial-casa-san-jeronimo-2.webp",
+  "edificio-vh": "anta-arquitectura-corporativo-edificio-vh-1.webp",
 };
 
 const FEATURED = new Set([
@@ -49,23 +72,34 @@ const FEATURED = new Set([
   "cafe-laurel",
   "nailz",
   "ludoteca-valle-alto",
-  "valle-alto-club-de-golf",
+  "valle-alto-club-de-golf-areas-comunes",
 ]);
 
-// Display / route order: featured first, then the rest.
+// Display / route order.
 const ORDER = [
   "terraza-pangea",
-  "kampai",
+  "e-80",
+  "majadma",
   "cafe-laurel",
   "nailz",
-  "ludoteca-valle-alto",
-  "valle-alto-club-de-golf",
-  "crispy-pollo",
-  "e-80",
-  "edificio-vh",
-  "oficinas-majadma",
-  "tp-zentralia",
+  "livin",
+  "valle-alto-club-de-golf-areas-comunes",
   "valle-alto-club-de-golf-gimnasio",
+  "valle-alto-club-de-golf-hoyo-19-damas",
+  "ludoteca-valle-alto",
+  "casa-liebre",
+  "majadma-cemex",
+  "crispy-pollo",
+  "kampai",
+  "tp-zentralia",
+  "casa-arbol",
+  "mirasierra",
+  "colibri",
+  "departamente-bw-2204",
+  "san-patricio",
+  "casa-bosques",
+  "casa-san-jeronimo",
+  "edificio-vh",
 ];
 
 const IMG_RE = /\.(webp|jpe?g|png)$/i;

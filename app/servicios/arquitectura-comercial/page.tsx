@@ -116,7 +116,17 @@ export default function ArquitecturaComercialPage() {
   const heroImg = getProject("crispy-pollo")!.cover;
   const queEsImg = getProject("kampai")!.cover;
   const nosotrosImg = getProject("cafe-laurel")!.cover;
-  const comercial = ["cafe-laurel", "kampai", "nailz", "crispy-pollo"].flatMap((s) => {
+  const comercial = [
+    "cafe-laurel",
+    "valle-alto-club-de-golf-areas-comunes",
+    "valle-alto-club-de-golf-hoyo-19-damas",
+    "valle-alto-club-de-golf-gimnasio",
+    "ludoteca-valle-alto",
+    "terraza-pangea",
+    "nailz",
+    "crispy-pollo",
+    "kampai",
+  ].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });

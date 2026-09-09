@@ -88,7 +88,7 @@ const alcances = [
   { title: "Salas y Áreas Sociales", desc: "Los espacios donde recibes: acomodo, confort y una atmósfera que invita a quedarse.", image: pic("terraza-pangea", 0) },
   { title: "Diseño de Interiores de Recámaras", desc: "Descanso, guardado y luz bien resueltos, con materiales cálidos y duraderos.", image: pic("edificio-vh", 0) },
   { title: "Cocinas y Comedores", desc: "El corazón de la casa: funcionalidad diaria con acabados que aguantan el uso.", image: pic("tp-zentralia", 0) },
-  { title: "Materialidad e Iluminación", desc: "Selección de acabados, texturas y luz que definen el carácter de cada estancia.", image: pic("valle-alto-club-de-golf", 0) },
+  { title: "Materialidad e Iluminación", desc: "Selección de acabados, texturas y luz que definen el carácter de cada estancia.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
   { title: "Mobiliario a Medida", desc: "Clósets, libreros y piezas especiales diseñadas para tu espacio y tus cosas.", image: pic("edificio-vh", 1) },
   { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("terraza-pangea", 1) },
 ];
@@ -107,7 +107,7 @@ export default function DisenoDeInterioresCasasPage() {
   const queEsImg = getProject("edificio-vh")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
   // TODO: placeholder — reemplazar por proyectos residenciales reales cuando existan.
-  const proyectos = ["terraza-pangea", "edificio-vh", "tp-zentralia", "valle-alto-club-de-golf"].flatMap((s) => {
+  const proyectos = ["terraza-pangea", "edificio-vh", "tp-zentralia", "valle-alto-club-de-golf-areas-comunes"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });

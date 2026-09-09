@@ -27,26 +27,26 @@ const scaler: Cell = { slug: "terraza-pangea", img: gal("terraza-pangea", 0) };
 const SCALER_ASPECT = scaler.img.width / scaler.img.height;
 
 const layer3: Cell[] = [
-  { slug: "kampai", img: cover("kampai") },
-  { slug: "cafe-laurel", img: cover("cafe-laurel") },
+  { slug: "e-80", img: cover("e-80") },
+  { slug: "tp-zentralia", img: cover("tp-zentralia") },
 ];
 
 const layer2: Cell[] = [
+  { slug: "cafe-laurel", img: cover("cafe-laurel") },
   { slug: "nailz", img: cover("nailz") },
-  { slug: "ludoteca-valle-alto", img: cover("ludoteca-valle-alto") },
-  { slug: "valle-alto-club-de-golf", img: cover("valle-alto-club-de-golf") },
-  { slug: "oficinas-majadma", img: cover("oficinas-majadma") },
+  { slug: "kampai", img: cover("kampai") },
   { slug: "crispy-pollo", img: cover("crispy-pollo") },
-  { slug: "e-80", img: cover("e-80") },
+  { slug: "majadma", img: cover("majadma") },
+  { slug: "valle-alto-club-de-golf-gimnasio", img: cover("valle-alto-club-de-golf-gimnasio") },
 ];
 
 const layer1: Cell[] = [
-  { slug: "edificio-vh", img: cover("edificio-vh") },
-  { slug: "tp-zentralia", img: cover("tp-zentralia") },
-  { slug: "valle-alto-club-de-golf", img: gal("valle-alto-club-de-golf", 0) },
-  { slug: "oficinas-majadma", img: gal("oficinas-majadma", 0) },
-  { slug: "kampai", img: gal("kampai", 1) },
-  { slug: "terraza-pangea", img: gal("terraza-pangea", 1) },
+  { slug: "livin", img: cover("livin") },
+  { slug: "valle-alto-club-de-golf-areas-comunes", img: cover("valle-alto-club-de-golf-areas-comunes") },
+  { slug: "valle-alto-club-de-golf-hoyo-19-damas", img: cover("valle-alto-club-de-golf-hoyo-19-damas") },
+  { slug: "ludoteca-valle-alto", img: cover("ludoteca-valle-alto") },
+  { slug: "casa-liebre", img: cover("casa-liebre") },
+  { slug: "majadma-cemex", img: cover("majadma-cemex") },
 ];
 
 function Cells({ cells }: { cells: Cell[] }) {

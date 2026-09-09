@@ -41,7 +41,7 @@ const DEFAULT_ITEMS: Capability[] = [
   {
     title: "Project Management de Obra",
     desc: "Administración, supervisión, coordinación y gestión de obra para entregar en tiempo y presupuesto, listo para operar.",
-    image: img("oficinas-majadma", 1),
+    image: img("majadma", 1),
   },
   {
     title: "Diseño de Mobiliario a Medida",
@@ -51,7 +51,7 @@ const DEFAULT_ITEMS: Capability[] = [
   {
     title: "Análisis Arquitectónico",
     desc: "Evaluación del inmueble para anticipar implicaciones, alcances y costos, y tomar decisiones con claridad desde el inicio.",
-    image: img("valle-alto-club-de-golf", 0),
+    image: img("valle-alto-club-de-golf-areas-comunes", 0),
   },
 ];
 

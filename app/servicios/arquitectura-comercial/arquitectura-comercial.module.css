@@ -364,6 +364,36 @@
   margin-top: clamp(40px, 5vw, 72px);
 }
 
+/* Placeholder tile (proyecto sin fotografía todavía). */
+.placeholderTile {
+  aspect-ratio: 3 / 2;
+  background: var(--anta-mist);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+}
+
+.placeholderName {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(19px, 2vw, 26px);
+  line-height: 1.15;
+  color: var(--anta-ink);
+}
+
+.placeholderNote {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--anta-ink-50);
+}
+
 /* ---------- Proyectos (bottega full-bleed) ---------- */
 .projectsGrid {
   margin-top: clamp(40px, 5vw, 64px);

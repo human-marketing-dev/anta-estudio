@@ -85,12 +85,12 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  { title: "Layout y Distribución", desc: "Organización de áreas, estaciones de trabajo y flujos según la operación de tu empresa.", image: pic("oficinas-majadma", 0) },
+  { title: "Layout y Distribución", desc: "Organización de áreas, estaciones de trabajo y flujos según la operación de tu empresa.", image: pic("majadma", 0) },
   { title: "Diseño de Interiores de Oficinas", desc: "Materiales, acabados, color e iluminación que dan carácter y confort al espacio.", image: pic("e-80", 0) },
   { title: "Áreas Comunes y Salas de Juntas", desc: "Espacios de reunión, colaboración y recepción que reflejan profesionalismo.", image: pic("tp-zentralia", 0) },
-  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y la forma de trabajar del equipo.", image: pic("valle-alto-club-de-golf", 0) },
+  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y la forma de trabajar del equipo.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
   { title: "Diseño de Oficinas Modernas", desc: "Propuestas contemporáneas que equilibran estética, funcionalidad y durabilidad.", image: pic("e-80", 1) },
-  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("oficinas-majadma", 1) },
+  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("majadma", 1) },
 ];
 
 const diferenciadores = [
@@ -103,10 +103,10 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function DisenoDeOficinasPage() {
-  const heroImg = getProject("oficinas-majadma")!.cover;
+  const heroImg = getProject("majadma")!.cover;
   const queEsImg = getProject("e-80")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
-  const proyectos = ["e-80", "valle-alto-club-de-golf", "oficinas-majadma", "tp-zentralia"].flatMap((s) => {
+  const proyectos = ["e-80", "valle-alto-club-de-golf-areas-comunes", "majadma", "tp-zentralia"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });

@@ -94,13 +94,13 @@ const alcances = [
         .
       </>
     ),
-    image: pic("oficinas-majadma", 0),
+    image: pic("majadma", 0),
   },
   { title: "Interiorismo Corporativo", desc: "Materiales, acabados, iluminación y atmósfera con estándar premium y coherencia de marca.", image: pic("e-80", 0) },
   { title: "Áreas Comunes y Salas de Juntas", desc: "Espacios de reunión, colaboración y recepción que reflejan profesionalismo.", image: pic("tp-zentralia", 0) },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de oficinas existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf", 0) },
+  { title: "Remodelación y Adecuaciones", desc: "Renovación de oficinas existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
   { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales alineadas al concepto del espacio.", image: pic("e-80", 1) },
-  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto.", image: pic("oficinas-majadma", 1) },
+  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar en tiempo y presupuesto.", image: pic("majadma", 1) },
 ];
 
 const diferenciadores = [
@@ -113,10 +113,10 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function ArquitecturaCorporativaPage() {
-  const heroImg = getProject("oficinas-majadma")!.cover;
+  const heroImg = getProject("majadma")!.cover;
   const queEsImg = getProject("e-80")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
-  const corporativo = ["e-80", "valle-alto-club-de-golf", "oficinas-majadma", "tp-zentralia"].flatMap((s) => {
+  const corporativo = ["e-80", "majadma", "majadma-cemex", "tp-zentralia", "edificio-vh"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });
@@ -252,6 +252,11 @@ export default function ArquitecturaCorporativaPage() {
           {corporativo.map((p) => (
             <ProjectTile key={p.slug} project={p} />
           ))}
+          {/* TODO: placeholder — Rivero González, pendiente de fotografía. */}
+          <div className={styles.placeholderTile}>
+            <span className={styles.placeholderName}>Rivero González</span>
+            <span className={styles.placeholderNote}>Próximamente</span>
+          </div>
         </div>
       </section>
 

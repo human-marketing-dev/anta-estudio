@@ -49,7 +49,7 @@ const especialidades = [
         .
       </>
     ),
-    image: pic("oficinas-majadma", 0),
+    image: pic("majadma", 0),
   },
   {
     title: "Diseño de Restaurantes",

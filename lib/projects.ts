@@ -7,12 +7,22 @@ import img_terraza_pangea_1 from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_
 import img_terraza_pangea_2 from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_003AV2_5295_P.webp";
 import img_terraza_pangea_3 from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_004AV2_5324_P-scaled-1.webp";
 import img_terraza_pangea_4 from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_005AV2_5310_P-scaled-1.webp";
-import img_kampai_0 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-1-scaled.webp";
-import img_kampai_1 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-2-scaled.webp";
-import img_kampai_2 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-3.webp";
-import img_kampai_3 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-4-scaled.webp";
-import img_kampai_4 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-5-scaled.webp";
-import img_kampai_5 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-6.webp";
+import img_e_80_0 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-2.webp";
+import img_e_80_1 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-3.webp";
+import img_e_80_2 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-4.webp";
+import img_e_80_3 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-5.webp";
+import img_e_80_4 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-6.webp";
+import img_e_80_5 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-7.webp";
+import img_e_80_6 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-8.webp";
+import img_e_80_7 from "@/public/proyectos/e-80/EA_AES_SOE80_26_008AV2D_0150-e1774392988765.webp";
+import img_majadma_0 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-2.webp";
+import img_majadma_1 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-3.webp";
+import img_majadma_2 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-4.webp";
+import img_majadma_3 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-5.webp";
+import img_majadma_4 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-6.webp";
+import img_majadma_5 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-7.webp";
+import img_majadma_6 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma-8.webp";
+import img_majadma_7 from "@/public/proyectos/majadma/anta-estudio-comercial-majadma.webp";
 import img_cafe_laurel_0 from "@/public/proyectos/cafe-laurel/anta-arquitectura-comercial-cafe-laurel-1.webp";
 import img_cafe_laurel_1 from "@/public/proyectos/cafe-laurel/anta-arquitectura-comercial-cafe-laurel-2.webp";
 import img_cafe_laurel_2 from "@/public/proyectos/cafe-laurel/anta-arquitectura-comercial-cafe-laurel-3.webp";
@@ -23,25 +33,60 @@ import img_nailz_1 from "@/public/proyectos/nailz/anta-arquitectura-comercial-na
 import img_nailz_2 from "@/public/proyectos/nailz/anta-arquitectura-comercial-nailz-3.webp";
 import img_nailz_3 from "@/public/proyectos/nailz/anta-arquitectura-comercial-nailz-4.webp";
 import img_nailz_4 from "@/public/proyectos/nailz/anta-arquitectura-comercial-nailz-5.webp";
+import img_livin_0 from "@/public/proyectos/livin/anta-estudio-residencial-livin-2.webp";
+import img_livin_1 from "@/public/proyectos/livin/anta-estudio-residencial-livin-3.webp";
+import img_livin_2 from "@/public/proyectos/livin/anta-estudio-residencial-livin-4.webp";
+import img_livin_3 from "@/public/proyectos/livin/anta-estudio-residencial-livin-5.webp";
+import img_livin_4 from "@/public/proyectos/livin/anta-estudio-residencial-livin-6.webp";
+import img_livin_5 from "@/public/proyectos/livin/anta-estudio-residencial-livin-7.webp";
+import img_livin_6 from "@/public/proyectos/livin/anta-estudio-residencial-livin.webp";
+import img_valle_alto_club_de_golf_areas_comunes_0 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-1.webp";
+import img_valle_alto_club_de_golf_areas_comunes_1 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-2.webp";
+import img_valle_alto_club_de_golf_areas_comunes_2 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-3.webp";
+import img_valle_alto_club_de_golf_areas_comunes_3 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-4.webp";
+import img_valle_alto_club_de_golf_areas_comunes_4 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-5.webp";
+import img_valle_alto_club_de_golf_areas_comunes_5 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-6.webp";
+import img_valle_alto_club_de_golf_areas_comunes_6 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-7.webp";
+import img_valle_alto_club_de_golf_areas_comunes_7 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-8.webp";
+import img_valle_alto_club_de_golf_areas_comunes_8 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-9.webp";
+import img_valle_alto_club_de_golf_areas_comunes_9 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-10.webp";
+import img_valle_alto_club_de_golf_areas_comunes_10 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-12.webp";
+import img_valle_alto_club_de_golf_areas_comunes_11 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes-13.webp";
+import img_valle_alto_club_de_golf_areas_comunes_12 from "@/public/proyectos/valle-alto-club-de-golf-areas-comunes/anta-arquitectura-corporativo-valle-alto-areas-comunes.webp";
+import img_valle_alto_club_de_golf_gimnasio_0 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-2.webp";
+import img_valle_alto_club_de_golf_gimnasio_1 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-3.webp";
+import img_valle_alto_club_de_golf_gimnasio_2 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-4.webp";
+import img_valle_alto_club_de_golf_gimnasio_3 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-5.webp";
+import img_valle_alto_club_de_golf_gimnasio_4 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-6.webp";
+import img_valle_alto_club_de_golf_gimnasio_5 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_0 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19-2.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_1 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19-3.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_2 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19-4.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_3 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19-5.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_4 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19-6.webp";
+import img_valle_alto_club_de_golf_hoyo_19_damas_5 from "@/public/proyectos/valle-alto-club-de-golf-hoyo-19-damas/anta-estudio-comercial-valle-alto-hoyo19.webp";
 import img_ludoteca_valle_alto_0 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-1-e1773265872463.webp";
 import img_ludoteca_valle_alto_1 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-2.webp";
 import img_ludoteca_valle_alto_2 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-3.webp";
 import img_ludoteca_valle_alto_3 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-5.webp";
 import img_ludoteca_valle_alto_4 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-6.webp";
 import img_ludoteca_valle_alto_5 from "@/public/proyectos/ludoteca-valle-alto/arquitectura-corporativo-ludoteca-7.webp";
-import img_valle_alto_club_de_golf_0 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-1.webp";
-import img_valle_alto_club_de_golf_1 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-2.webp";
-import img_valle_alto_club_de_golf_2 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-3.webp";
-import img_valle_alto_club_de_golf_3 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-4.webp";
-import img_valle_alto_club_de_golf_4 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-5.webp";
-import img_valle_alto_club_de_golf_5 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-6.webp";
-import img_valle_alto_club_de_golf_6 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-7.webp";
-import img_valle_alto_club_de_golf_7 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-8.webp";
-import img_valle_alto_club_de_golf_8 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-9.webp";
-import img_valle_alto_club_de_golf_9 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-10.webp";
-import img_valle_alto_club_de_golf_10 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-12.webp";
-import img_valle_alto_club_de_golf_11 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes-13.webp";
-import img_valle_alto_club_de_golf_12 from "@/public/proyectos/valle-alto-club-de-golf/anta-arquitectura-corporativo-valle-alto-areas-comunes.webp";
+import img_casa_liebre_0 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-1.webp";
+import img_casa_liebre_1 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-2.webp";
+import img_casa_liebre_2 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-3.webp";
+import img_casa_liebre_3 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-4.webp";
+import img_casa_liebre_4 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-5.webp";
+import img_casa_liebre_5 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-6.webp";
+import img_casa_liebre_6 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-7.webp";
+import img_casa_liebre_7 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-8.webp";
+import img_casa_liebre_8 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-9.webp";
+import img_casa_liebre_9 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-10.webp";
+import img_casa_liebre_10 from "@/public/proyectos/casa-liebre/anta-estudio-casa-liebre-11.webp";
+import img_majadma_cemex_0 from "@/public/proyectos/majadma-cemex/anta-estudio-corporativo-majadma-cemex-1.webp";
+import img_majadma_cemex_1 from "@/public/proyectos/majadma-cemex/anta-estudio-corporativo-majadma-cemex-2.webp";
+import img_majadma_cemex_2 from "@/public/proyectos/majadma-cemex/anta-estudio-corporativo-majadma-cemex-3.webp";
+import img_majadma_cemex_3 from "@/public/proyectos/majadma-cemex/anta-estudio-corporativo-majadma-cemex-4.webp";
+import img_majadma_cemex_4 from "@/public/proyectos/majadma-cemex/anta-estudio-corporativo-majadma-cemex.webp";
 import img_crispy_pollo_0 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-1.webp";
 import img_crispy_pollo_1 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-2.webp";
 import img_crispy_pollo_2 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-3.webp";
@@ -51,25 +96,12 @@ import img_crispy_pollo_5 from "@/public/proyectos/crispy-pollo/anta-arquitectur
 import img_crispy_pollo_6 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-7.webp";
 import img_crispy_pollo_7 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-8.webp";
 import img_crispy_pollo_8 from "@/public/proyectos/crispy-pollo/anta-arquitectura-comercial-crispy-pollo-9.webp";
-import img_e_80_0 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-2.webp";
-import img_e_80_1 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-3.webp";
-import img_e_80_2 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-4.webp";
-import img_e_80_3 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-5.webp";
-import img_e_80_4 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-6.webp";
-import img_e_80_5 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-7.webp";
-import img_e_80_6 from "@/public/proyectos/e-80/arquitectura-corporativo-e80-8.webp";
-import img_e_80_7 from "@/public/proyectos/e-80/EA_AES_SOE80_26_008AV2D_0150-e1774392988765.webp";
-import img_edificio_vh_0 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-1.webp";
-import img_edificio_vh_1 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-2.webp";
-import img_oficinas_majadma_0 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_001AV2_3492_P-e1772727087278.webp";
-import img_oficinas_majadma_1 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_003AV2_3480_P.webp";
-import img_oficinas_majadma_2 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_004AV2_3498_P.webp";
-import img_oficinas_majadma_3 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_005AV2_3511_P.webp";
-import img_oficinas_majadma_4 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_006AV2_3507_P.webp";
-import img_oficinas_majadma_5 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_007AV2_3520_P.webp";
-import img_oficinas_majadma_6 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_008AV2_3523_P.webp";
-import img_oficinas_majadma_7 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_009AV2_3529_P.webp";
-import img_oficinas_majadma_8 from "@/public/proyectos/oficinas-majadma/EA_AES_SOMA_23_010AV2_3539_P.webp";
+import img_kampai_0 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-1-scaled.webp";
+import img_kampai_1 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-2-scaled.webp";
+import img_kampai_2 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-3.webp";
+import img_kampai_3 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-4-scaled.webp";
+import img_kampai_4 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-5-scaled.webp";
+import img_kampai_5 from "@/public/proyectos/kampai/anta-arquitectura-comercial-kampai-6.webp";
 import img_tp_zentralia_0 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-2.webp";
 import img_tp_zentralia_1 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-3.webp";
 import img_tp_zentralia_2 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-4.webp";
@@ -78,12 +110,61 @@ import img_tp_zentralia_4 from "@/public/proyectos/tp-zentralia/arquitectura-cor
 import img_tp_zentralia_5 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-7.webp";
 import img_tp_zentralia_6 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-8.webp";
 import img_tp_zentralia_7 from "@/public/proyectos/tp-zentralia/arquitectura-corporativo-tp-zentralia-9.webp";
-import img_valle_alto_club_de_golf_gimnasio_0 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-2.webp";
-import img_valle_alto_club_de_golf_gimnasio_1 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-3.webp";
-import img_valle_alto_club_de_golf_gimnasio_2 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-4.webp";
-import img_valle_alto_club_de_golf_gimnasio_3 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-5.webp";
-import img_valle_alto_club_de_golf_gimnasio_4 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio-6.webp";
-import img_valle_alto_club_de_golf_gimnasio_5 from "@/public/proyectos/valle-alto-club-de-golf-gimnasio/valle-alto-gimnasio.webp";
+import img_casa_arbol_0 from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol-2.webp";
+import img_casa_arbol_1 from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol-3.webp";
+import img_casa_arbol_2 from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol-4.webp";
+import img_casa_arbol_3 from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol-5.webp";
+import img_casa_arbol_4 from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol.webp";
+import img_mirasierra_0 from "@/public/proyectos/mirasierra/anta-mirasierra-1.webp";
+import img_mirasierra_1 from "@/public/proyectos/mirasierra/anta-mirasierra-2.webp";
+import img_mirasierra_2 from "@/public/proyectos/mirasierra/anta-mirasierra-3.webp";
+import img_mirasierra_3 from "@/public/proyectos/mirasierra/anta-mirasierra-4.webp";
+import img_mirasierra_4 from "@/public/proyectos/mirasierra/anta-mirasierra-5.webp";
+import img_colibri_0 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-2.jpg";
+import img_colibri_1 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-3.jpg";
+import img_colibri_2 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-4.jpg";
+import img_colibri_3 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-5.jpg";
+import img_colibri_4 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-6.jpg";
+import img_colibri_5 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-7.jpg";
+import img_colibri_6 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-8.jpg";
+import img_colibri_7 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-9.jpg";
+import img_colibri_8 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-10.jpg";
+import img_colibri_9 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-11.jpg";
+import img_colibri_10 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri.jpg";
+import img_departamente_bw_2204_0 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-2.webp";
+import img_departamente_bw_2204_1 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-3.webp";
+import img_departamente_bw_2204_2 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-4.webp";
+import img_departamente_bw_2204_3 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-5.webp";
+import img_departamente_bw_2204_4 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-6.webp";
+import img_departamente_bw_2204_5 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-7.webp";
+import img_departamente_bw_2204_6 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-8.webp";
+import img_departamente_bw_2204_7 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-9.webp";
+import img_departamente_bw_2204_8 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204.webp";
+import img_san_patricio_0 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-2.webp";
+import img_san_patricio_1 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-3.webp";
+import img_san_patricio_2 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-4.webp";
+import img_san_patricio_3 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-5.webp";
+import img_san_patricio_4 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-6.webp";
+import img_san_patricio_5 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-7.webp";
+import img_san_patricio_6 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-8.webp";
+import img_san_patricio_7 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio.webp";
+import img_casa_bosques_0 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-2.webp";
+import img_casa_bosques_1 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-3.webp";
+import img_casa_bosques_2 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-4.webp";
+import img_casa_bosques_3 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-5.webp";
+import img_casa_bosques_4 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-6.webp";
+import img_casa_bosques_5 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-7.webp";
+import img_casa_bosques_6 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques-8.webp";
+import img_casa_bosques_7 from "@/public/proyectos/casa-bosques/anta-estudio-residencial-casa-bosques.webp";
+import img_casa_san_jeronimo_0 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-2.webp";
+import img_casa_san_jeronimo_1 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-3.webp";
+import img_casa_san_jeronimo_2 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-4.webp";
+import img_casa_san_jeronimo_3 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-5.webp";
+import img_casa_san_jeronimo_4 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-6.webp";
+import img_casa_san_jeronimo_5 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo-7.webp";
+import img_casa_san_jeronimo_6 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo.webp";
+import img_edificio_vh_0 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-1.webp";
+import img_edificio_vh_1 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-2.webp";
 
 export type Categoria = "comercial" | "corporativo" | "residencial";
 
@@ -107,12 +188,20 @@ export const projects: Project[] = [
     galeria: [img_terraza_pangea_0, img_terraza_pangea_1, img_terraza_pangea_2, img_terraza_pangea_3],
   },
   {
-    slug: "kampai",
-    nombre: "Kampai",
+    slug: "e-80",
+    nombre: "E-80",
     categoria: null,
-    featured: true,
-    cover: img_kampai_0,
-    galeria: [img_kampai_1, img_kampai_2, img_kampai_3, img_kampai_4, img_kampai_5],
+    featured: false,
+    cover: img_e_80_0,
+    galeria: [img_e_80_1, img_e_80_2, img_e_80_3, img_e_80_4, img_e_80_5, img_e_80_6, img_e_80_7],
+  },
+  {
+    slug: "majadma",
+    nombre: "Majadma",
+    categoria: null,
+    featured: false,
+    cover: img_majadma_0,
+    galeria: [img_majadma_1, img_majadma_2, img_majadma_3, img_majadma_4, img_majadma_5, img_majadma_6, img_majadma_7],
   },
   {
     slug: "cafe-laurel",
@@ -131,20 +220,60 @@ export const projects: Project[] = [
     galeria: [img_nailz_0, img_nailz_2, img_nailz_3, img_nailz_4],
   },
   {
+    slug: "livin",
+    nombre: "Livin",
+    categoria: null,
+    featured: false,
+    cover: img_livin_0,
+    galeria: [img_livin_1, img_livin_2, img_livin_3, img_livin_4, img_livin_5, img_livin_6],
+  },
+  {
+    slug: "valle-alto-club-de-golf-areas-comunes",
+    nombre: "Valle Alto Áreas Comunes",
+    categoria: null,
+    featured: true,
+    cover: img_valle_alto_club_de_golf_areas_comunes_0,
+    galeria: [img_valle_alto_club_de_golf_areas_comunes_1, img_valle_alto_club_de_golf_areas_comunes_2, img_valle_alto_club_de_golf_areas_comunes_3, img_valle_alto_club_de_golf_areas_comunes_4, img_valle_alto_club_de_golf_areas_comunes_5, img_valle_alto_club_de_golf_areas_comunes_6, img_valle_alto_club_de_golf_areas_comunes_7, img_valle_alto_club_de_golf_areas_comunes_8, img_valle_alto_club_de_golf_areas_comunes_9, img_valle_alto_club_de_golf_areas_comunes_10, img_valle_alto_club_de_golf_areas_comunes_11, img_valle_alto_club_de_golf_areas_comunes_12],
+  },
+  {
+    slug: "valle-alto-club-de-golf-gimnasio",
+    nombre: "Valle Alto Gimnasio",
+    categoria: null,
+    featured: false,
+    cover: img_valle_alto_club_de_golf_gimnasio_5,
+    galeria: [img_valle_alto_club_de_golf_gimnasio_0, img_valle_alto_club_de_golf_gimnasio_1, img_valle_alto_club_de_golf_gimnasio_2, img_valle_alto_club_de_golf_gimnasio_3, img_valle_alto_club_de_golf_gimnasio_4],
+  },
+  {
+    slug: "valle-alto-club-de-golf-hoyo-19-damas",
+    nombre: "Valle Alto Hoyo 19 Damas",
+    categoria: null,
+    featured: false,
+    cover: img_valle_alto_club_de_golf_hoyo_19_damas_0,
+    galeria: [img_valle_alto_club_de_golf_hoyo_19_damas_1, img_valle_alto_club_de_golf_hoyo_19_damas_2, img_valle_alto_club_de_golf_hoyo_19_damas_3, img_valle_alto_club_de_golf_hoyo_19_damas_4, img_valle_alto_club_de_golf_hoyo_19_damas_5],
+  },
+  {
     slug: "ludoteca-valle-alto",
-    nombre: "Ludoteca Valle Alto",
+    nombre: "Valle Alto Ludoteca",
     categoria: null,
     featured: true,
     cover: img_ludoteca_valle_alto_5,
     galeria: [img_ludoteca_valle_alto_0, img_ludoteca_valle_alto_1, img_ludoteca_valle_alto_2, img_ludoteca_valle_alto_3, img_ludoteca_valle_alto_4],
   },
   {
-    slug: "valle-alto-club-de-golf",
-    nombre: "Valle Alto Club de Golf",
+    slug: "casa-liebre",
+    nombre: "Casa Liebre",
     categoria: null,
-    featured: true,
-    cover: img_valle_alto_club_de_golf_1,
-    galeria: [img_valle_alto_club_de_golf_0, img_valle_alto_club_de_golf_2, img_valle_alto_club_de_golf_3, img_valle_alto_club_de_golf_4, img_valle_alto_club_de_golf_5, img_valle_alto_club_de_golf_6, img_valle_alto_club_de_golf_7, img_valle_alto_club_de_golf_8, img_valle_alto_club_de_golf_9, img_valle_alto_club_de_golf_10, img_valle_alto_club_de_golf_11, img_valle_alto_club_de_golf_12],
+    featured: false,
+    cover: img_casa_liebre_0,
+    galeria: [img_casa_liebre_1, img_casa_liebre_2, img_casa_liebre_3, img_casa_liebre_4, img_casa_liebre_5, img_casa_liebre_6, img_casa_liebre_7, img_casa_liebre_8, img_casa_liebre_9, img_casa_liebre_10],
+  },
+  {
+    slug: "majadma-cemex",
+    nombre: "Cemex",
+    categoria: null,
+    featured: false,
+    cover: img_majadma_cemex_0,
+    galeria: [img_majadma_cemex_1, img_majadma_cemex_2, img_majadma_cemex_3, img_majadma_cemex_4],
   },
   {
     slug: "crispy-pollo",
@@ -155,28 +284,12 @@ export const projects: Project[] = [
     galeria: [img_crispy_pollo_1, img_crispy_pollo_2, img_crispy_pollo_3, img_crispy_pollo_4, img_crispy_pollo_5, img_crispy_pollo_6, img_crispy_pollo_7, img_crispy_pollo_8],
   },
   {
-    slug: "e-80",
-    nombre: "E-80",
+    slug: "kampai",
+    nombre: "Kampai",
     categoria: null,
-    featured: false,
-    cover: img_e_80_0,
-    galeria: [img_e_80_1, img_e_80_2, img_e_80_3, img_e_80_4, img_e_80_5, img_e_80_6, img_e_80_7],
-  },
-  {
-    slug: "edificio-vh",
-    nombre: "Edificio VH",
-    categoria: null,
-    featured: false,
-    cover: img_edificio_vh_0,
-    galeria: [img_edificio_vh_1],
-  },
-  {
-    slug: "oficinas-majadma",
-    nombre: "Oficinas MAJADMA",
-    categoria: null,
-    featured: false,
-    cover: img_oficinas_majadma_1,
-    galeria: [img_oficinas_majadma_0, img_oficinas_majadma_2, img_oficinas_majadma_3, img_oficinas_majadma_4, img_oficinas_majadma_5, img_oficinas_majadma_6, img_oficinas_majadma_7, img_oficinas_majadma_8],
+    featured: true,
+    cover: img_kampai_0,
+    galeria: [img_kampai_1, img_kampai_2, img_kampai_3, img_kampai_4, img_kampai_5],
   },
   {
     slug: "tp-zentralia",
@@ -187,12 +300,68 @@ export const projects: Project[] = [
     galeria: [img_tp_zentralia_1, img_tp_zentralia_2, img_tp_zentralia_3, img_tp_zentralia_4, img_tp_zentralia_5, img_tp_zentralia_6, img_tp_zentralia_7],
   },
   {
-    slug: "valle-alto-club-de-golf-gimnasio",
-    nombre: "Valle Alto Gimnasio",
+    slug: "casa-arbol",
+    nombre: "Casa Árbol",
     categoria: null,
     featured: false,
-    cover: img_valle_alto_club_de_golf_gimnasio_5,
-    galeria: [img_valle_alto_club_de_golf_gimnasio_0, img_valle_alto_club_de_golf_gimnasio_1, img_valle_alto_club_de_golf_gimnasio_2, img_valle_alto_club_de_golf_gimnasio_3, img_valle_alto_club_de_golf_gimnasio_4],
+    cover: img_casa_arbol_0,
+    galeria: [img_casa_arbol_1, img_casa_arbol_2, img_casa_arbol_3, img_casa_arbol_4],
+  },
+  {
+    slug: "mirasierra",
+    nombre: "Mirasierra",
+    categoria: null,
+    featured: false,
+    cover: img_mirasierra_0,
+    galeria: [img_mirasierra_1, img_mirasierra_2, img_mirasierra_3, img_mirasierra_4],
+  },
+  {
+    slug: "colibri",
+    nombre: "Colibrí",
+    categoria: null,
+    featured: false,
+    cover: img_colibri_8,
+    galeria: [img_colibri_0, img_colibri_1, img_colibri_2, img_colibri_3, img_colibri_4, img_colibri_5, img_colibri_6, img_colibri_7, img_colibri_9, img_colibri_10],
+  },
+  {
+    slug: "departamente-bw-2204",
+    nombre: "Departamento BW2204",
+    categoria: null,
+    featured: false,
+    cover: img_departamente_bw_2204_0,
+    galeria: [img_departamente_bw_2204_1, img_departamente_bw_2204_2, img_departamente_bw_2204_3, img_departamente_bw_2204_4, img_departamente_bw_2204_5, img_departamente_bw_2204_6, img_departamente_bw_2204_7, img_departamente_bw_2204_8],
+  },
+  {
+    slug: "san-patricio",
+    nombre: "San Patricio",
+    categoria: null,
+    featured: false,
+    cover: img_san_patricio_0,
+    galeria: [img_san_patricio_1, img_san_patricio_2, img_san_patricio_3, img_san_patricio_4, img_san_patricio_5, img_san_patricio_6, img_san_patricio_7],
+  },
+  {
+    slug: "casa-bosques",
+    nombre: "Bosques",
+    categoria: null,
+    featured: false,
+    cover: img_casa_bosques_0,
+    galeria: [img_casa_bosques_1, img_casa_bosques_2, img_casa_bosques_3, img_casa_bosques_4, img_casa_bosques_5, img_casa_bosques_6, img_casa_bosques_7],
+  },
+  {
+    slug: "casa-san-jeronimo",
+    nombre: "San Jerónimo",
+    categoria: null,
+    featured: false,
+    cover: img_casa_san_jeronimo_0,
+    galeria: [img_casa_san_jeronimo_1, img_casa_san_jeronimo_2, img_casa_san_jeronimo_3, img_casa_san_jeronimo_4, img_casa_san_jeronimo_5, img_casa_san_jeronimo_6],
+  },
+  {
+    slug: "edificio-vh",
+    nombre: "Edificio VH",
+    categoria: null,
+    featured: false,
+    cover: img_edificio_vh_0,
+    galeria: [img_edificio_vh_1],
   },
 ];
 
