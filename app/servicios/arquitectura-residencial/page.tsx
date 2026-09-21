@@ -127,6 +127,7 @@ export default function ArquitecturaResidencialPage() {
     "san-patricio",
     "casa-bosques",
     "casa-san-jeronimo",
+    "torre-shiro",
   ].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];

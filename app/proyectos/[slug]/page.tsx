@@ -44,7 +44,8 @@ export default async function ProjectDetailPage({
   const next = getNextProject(slug);
   const images = [project.cover, ...project.galeria];
 
-  // Ficha técnica — campos sin dato muestran "—" por ahora.
+  // Ficha técnica — campos sin dato muestran "—" (salvo Colaboración, que solo
+  // aparece cuando el proyecto la tiene).
   const meta = getProjectMeta(slug);
   const dash = "—";
   const ficha = [
@@ -61,9 +62,7 @@ export default async function ProjectDetailPage({
       ),
     },
     { label: "Ubicación", value: meta.ubicacion ?? dash },
-    { label: "Alcance", value: meta.alcance ?? dash },
-    { label: "Superficie", value: meta.superficie ?? dash },
-    { label: "En colaboración con", value: meta.colaboracion ?? dash },
+    ...(meta.colaboracion ? [{ label: "En colaboración con", value: meta.colaboracion }] : []),
   ];
 
   return (

@@ -37,6 +37,8 @@ const NAMES = {
   "casa-bosques": "Bosques",
   "casa-san-jeronimo": "San Jerónimo",
   "edificio-vh": "Edificio VH",
+  "torre-shiro": "Torre Shiro",
+  "rivero-gonzalez": "Rivero González",
 };
 
 // Chosen cover per project.
@@ -64,6 +66,8 @@ const COVERS = {
   "casa-bosques": "anta-estudio-residencial-casa-bosques-2.webp",
   "casa-san-jeronimo": "anta-estudio-residencial-casa-san-jeronimo-2.webp",
   "edificio-vh": "anta-arquitectura-corporativo-edificio-vh-1.webp",
+  "torre-shiro": "anta-estudio-residencial-torre-shiro.webp",
+  "rivero-gonzalez": "anta-estudio-rivero-gonzalez.webp",
 };
 
 const FEATURED = new Set([
@@ -100,6 +104,8 @@ const ORDER = [
   "casa-bosques",
   "casa-san-jeronimo",
   "edificio-vh",
+  "torre-shiro",
+  "rivero-gonzalez",
 ];
 
 const IMG_RE = /\.(webp|jpe?g|png)$/i;

@@ -6,6 +6,7 @@ import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Textarea } from "@/components/Textarea";
 import { WhatsAppIcon } from "@/components/site";
+import { sendContact } from "@/lib/sendContact";
 import shared from "./home.module.css";
 import styles from "./ClosingCta.module.css";
 
@@ -21,6 +22,17 @@ const DEFAULT_TITLE = "¿Necesitas un Despacho de Arquitectura en Monterrey?";
 const DEFAULT_BODY =
   "Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para llevarlo a la realidad con la mayor tranquilidad.";
 
+type Status = "idle" | "sending" | "success" | "error";
+
+const hpStyle = {
+  position: "absolute" as const,
+  left: "-9999px",
+  width: "1px",
+  height: "1px",
+  opacity: 0,
+  overflow: "hidden",
+};
+
 /**
  * Closing CTA on ink (blends into the footer): headline + copy on the left,
  * a short contact form on the right.
@@ -30,7 +42,29 @@ export function ClosingCta({
   body = DEFAULT_BODY,
   whatsappHref = "https://wa.me/528100000000",
 }: ClosingCtaProps) {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setStatus("sending");
+    setError("");
+    const res = await sendContact({
+      nombre: String(fd.get("nombre") ?? ""),
+      correo: String(fd.get("correo") ?? ""),
+      tipoProyecto: String(fd.get("tipoProyecto") ?? ""),
+      mensaje: String(fd.get("mensaje") ?? ""),
+      confirmacion: String(fd.get("confirmacion") ?? ""),
+      origen: "CTA de cierre",
+    });
+    if (res.ok) {
+      setStatus("success");
+    } else {
+      setStatus("error");
+      setError(res.error ?? "No se pudo enviar. Intenta de nuevo.");
+    }
+  }
 
   return (
     <section id="cta" className={`${shared.section} ${shared.sectionInk} ${styles.section}`}>
@@ -55,7 +89,7 @@ export function ClosingCta({
           </div>
 
           <div className={styles.formPanel}>
-            {sent ? (
+            {status === "success" ? (
               <div className={styles.thanks}>
                 <p className={styles.thanksTitle}>Gracias.</p>
                 <p className={styles.thanksBody}>
@@ -64,25 +98,28 @@ export function ClosingCta({
                 <Button
                   variant="outline"
                   style={{ borderColor: "#fff", color: "#fff" }}
-                  onClick={() => setSent(false)}
+                  onClick={() => setStatus("idle")}
                 >
                   Enviar otro
                 </Button>
               </div>
             ) : (
-              <form
-                className={styles.form}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
-                <Input tone="ink" label="Nombre" placeholder="Tu nombre" required />
-                <Input tone="ink" label="Correo" type="email" placeholder="tu@correo.com" required />
-                <Input tone="ink" label="Tipo de proyecto" placeholder="Comercial, corporativo…" />
-                <Textarea tone="ink" label="Mensaje" rows={3} placeholder="Cuéntanos sobre tu proyecto" />
-                <Button type="submit" style={{ alignSelf: "flex-start" }}>
-                  Solicitar propuesta
+              <form className={styles.form} onSubmit={onSubmit}>
+                <Input tone="ink" name="nombre" label="Nombre" placeholder="Tu nombre" required />
+                <Input tone="ink" name="correo" label="Correo" type="email" placeholder="tu@correo.com" required />
+                <Input tone="ink" name="tipoProyecto" label="Tipo de proyecto" placeholder="Comercial, corporativo…" />
+                <Textarea tone="ink" name="mensaje" label="Mensaje" rows={3} placeholder="Cuéntanos sobre tu proyecto" />
+
+                {/* Honeypot anti-spam — invisible para humanos. */}
+                <div style={hpStyle} aria-hidden="true">
+                  <label htmlFor="cta-confirmacion">No llenar</label>
+                  <input id="cta-confirmacion" name="confirmacion" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
+                {status === "error" && <p className={styles.formError}>{error}</p>}
+
+                <Button type="submit" disabled={status === "sending"} style={{ alignSelf: "flex-start" }}>
+                  {status === "sending" ? "Enviando…" : "Solicitar propuesta"}
                 </Button>
               </form>
             )}

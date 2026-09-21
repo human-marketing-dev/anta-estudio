@@ -116,7 +116,7 @@ export default function ArquitecturaCorporativaPage() {
   const heroImg = getProject("majadma")!.cover;
   const queEsImg = getProject("e-80")!.cover;
   const nosotrosImg = getProject("tp-zentralia")!.cover;
-  const corporativo = ["e-80", "majadma", "majadma-cemex", "tp-zentralia", "edificio-vh"].flatMap((s) => {
+  const corporativo = ["e-80", "majadma", "majadma-cemex", "tp-zentralia", "edificio-vh", "rivero-gonzalez"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });
@@ -252,11 +252,6 @@ export default function ArquitecturaCorporativaPage() {
           {corporativo.map((p) => (
             <ProjectTile key={p.slug} project={p} />
           ))}
-          {/* TODO: placeholder — Rivero González, pendiente de fotografía. */}
-          <div className={styles.placeholderTile}>
-            <span className={styles.placeholderName}>Rivero González</span>
-            <span className={styles.placeholderNote}>Próximamente</span>
-          </div>
         </div>
       </section>
 

@@ -165,6 +165,18 @@ import img_casa_san_jeronimo_5 from "@/public/proyectos/casa-san-jeronimo/anta-e
 import img_casa_san_jeronimo_6 from "@/public/proyectos/casa-san-jeronimo/anta-estudio-residencial-casa-san-jeronimo.webp";
 import img_edificio_vh_0 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-1.webp";
 import img_edificio_vh_1 from "@/public/proyectos/edificio-vh/anta-arquitectura-corporativo-edificio-vh-2.webp";
+import img_torre_shiro_0 from "@/public/proyectos/torre-shiro/anta-estudio-residencial-torre-shiro-2.webp";
+import img_torre_shiro_1 from "@/public/proyectos/torre-shiro/anta-estudio-residencial-torre-shiro-3.webp";
+import img_torre_shiro_2 from "@/public/proyectos/torre-shiro/anta-estudio-residencial-torre-shiro-4.webp";
+import img_torre_shiro_3 from "@/public/proyectos/torre-shiro/anta-estudio-residencial-torre-shiro-5.webp";
+import img_torre_shiro_4 from "@/public/proyectos/torre-shiro/anta-estudio-residencial-torre-shiro.webp";
+import img_rivero_gonzalez_0 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-2.webp";
+import img_rivero_gonzalez_1 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-3.webp";
+import img_rivero_gonzalez_2 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-4.webp";
+import img_rivero_gonzalez_3 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-5.webp";
+import img_rivero_gonzalez_4 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-6.webp";
+import img_rivero_gonzalez_5 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez-7.webp";
+import img_rivero_gonzalez_6 from "@/public/proyectos/rivero-gonzalez/anta-estudio-rivero-gonzalez.webp";
 
 export type Categoria = "comercial" | "corporativo" | "residencial";
 
@@ -362,6 +374,22 @@ export const projects: Project[] = [
     featured: false,
     cover: img_edificio_vh_0,
     galeria: [img_edificio_vh_1],
+  },
+  {
+    slug: "torre-shiro",
+    nombre: "Torre Shiro",
+    categoria: null,
+    featured: false,
+    cover: img_torre_shiro_4,
+    galeria: [img_torre_shiro_0, img_torre_shiro_1, img_torre_shiro_2, img_torre_shiro_3],
+  },
+  {
+    slug: "rivero-gonzalez",
+    nombre: "Rivero González",
+    categoria: null,
+    featured: false,
+    cover: img_rivero_gonzalez_6,
+    galeria: [img_rivero_gonzalez_0, img_rivero_gonzalez_1, img_rivero_gonzalez_2, img_rivero_gonzalez_3, img_rivero_gonzalez_4, img_rivero_gonzalez_5],
   },
 ];
 
