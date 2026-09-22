@@ -9,8 +9,8 @@ key vive solo en el servidor; nunca llega al cliente.
 | Variable | Descripción |
 | --- | --- |
 | `BREVO_API_KEY` | API key transaccional de Brevo (Brevo → SMTP & API → API Keys). |
-| `BREVO_SENDER_EMAIL` | Remitente **verificado** en Brevo (Senders & IP). Sugerencia: `hola@antaestudio.com`. |
-| `BREVO_TO_EMAIL` | Correo que recibe los mensajes. Sugerencia: `hola@antaestudio.com`. |
+| `BREVO_SENDER_EMAIL` | Remitente **verificado** en Brevo (Senders & IP). Sugerencia: `info@antaestudio.com`. |
+| `BREVO_TO_EMAIL` | Correo que recibe los mensajes. Sugerencia: `info@antaestudio.com`. |
 
 Plantilla en [`.env.example`](../.env.example).
 

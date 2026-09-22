@@ -67,7 +67,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
         </div>
         <div style={col}>
           <span style={head}>Contacto</span>
-          <FooterLink href="mailto:hola@antaestudio.com" style={link}>hola@antaestudio.com</FooterLink>
+          <FooterLink href="mailto:info@antaestudio.com" style={link}>info@antaestudio.com</FooterLink>
           <FooterLink href="#" style={link}>San Pedro Garza García, N.L.</FooterLink>
           <FooterLink href="#" style={{ ...link, color: "var(--anta-pink)" }}>Instagram ↗</FooterLink>
         </div>

@@ -20,7 +20,7 @@ const navLinks = [
 ];
 
 const detalles: { key: string; value: string; href?: string }[] = [
-  { key: "Correo", value: "hola@antaestudio.com", href: "mailto:hola@antaestudio.com" },
+  { key: "Correo", value: "info@antaestudio.com", href: "mailto:info@antaestudio.com" },
   { key: "WhatsApp", value: "+52 81 0000 0000", href: "https://wa.me/528100000000" },
   { key: "Ubicación", value: "San Pedro Garza García, N.L." },
   { key: "Instagram", value: "@antaestudio", href: "https://instagram.com/antaestudio" },
