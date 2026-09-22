@@ -4,6 +4,7 @@
 
 const WINDOW_MS = 10 * 60 * 1000; // 10 min
 const MAX_PER_WINDOW = 5;
+const MAX_BODY = 10 * 1024; // 10 KB — el formulario es pequeño
 const MAX = { nombre: 120, correo: 160, telefono: 40, tipoProyecto: 120, mensaje: 5000, origen: 80 };
 
 // In-memory rate limit (per server instance; resets on restart — suficiente
@@ -36,23 +37,55 @@ const clean = (v: unknown, max: number): string =>
 
 const isEmail = (s: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 
+/**
+ * IP confiable detrás de Nginx/RunCloud: `x-real-ip` (lo fija el proxy con el
+ * IP real). Si no está, el ÚLTIMO valor de `x-forwarded-for` (el que añade
+ * nuestro proxy; el primero lo puede falsificar el cliente). Si no hay ninguno,
+ * null → el rate limit se aplica de forma global (fail-closed), nunca se deja
+ * pasar sin contar.
+ */
+function clientIp(request: Request): string | null {
+  const real = request.headers.get("x-real-ip")?.trim();
+  if (real) return real;
+  const xff = request.headers.get("x-forwarded-for");
+  if (xff) {
+    const parts = xff.split(",").map((s) => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
+  return null;
+}
+
 function json(body: Record<string, unknown>, status = 200) {
   return Response.json(body, { status });
 }
 
 export async function POST(request: Request) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
+  // Sin IP confiable → cae en un cubo global (fail-closed), nunca se deja pasar.
+  const ip = clientIp(request) ?? "__no_ip__";
 
   if (rateLimited(ip)) {
     return json({ ok: false, error: "Demasiados envíos. Intenta de nuevo en unos minutos." }, 429);
   }
 
+  // Tope de tamaño (anti-DoS; Nginx además limita por su lado).
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(declared) && declared > MAX_BODY) {
+    return json({ ok: false, error: "Solicitud demasiado grande." }, 413);
+  }
+
+  let body: string;
+  try {
+    body = await request.text();
+  } catch {
+    return json({ ok: false, error: "Solicitud inválida." }, 400);
+  }
+  if (body.length > MAX_BODY) {
+    return json({ ok: false, error: "Solicitud demasiado grande." }, 413);
+  }
+
   let raw: Record<string, unknown>;
   try {
-    raw = await request.json();
+    raw = JSON.parse(body);
   } catch {
     return json({ ok: false, error: "Solicitud inválida." }, 400);
   }
