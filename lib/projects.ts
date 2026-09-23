@@ -399,6 +399,24 @@ export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
 
+/**
+ * Like `getProject` but throws a clear, named error when the slug doesn't exist.
+ * Use it for hardcoded slugs (hero/section images, curated lists) so a typo or a
+ * renamed project fails the build with a readable message instead of a cryptic
+ * "Cannot read properties of undefined". For dynamic/user slugs use `getProject`
+ * and handle `undefined` (e.g. `notFound()`).
+ */
+export function requireProject(slug: string): Project {
+  const project = getProject(slug);
+  if (!project) {
+    throw new Error(
+      `requireProject: no existe ningún proyecto con slug "${slug}". ` +
+        `Revisa el slug en lib/projects.ts (generado por scripts/gen-projects.mjs).`,
+    );
+  }
+  return project;
+}
+
 /** The next project in order (wraps around) — for the "siguiente proyecto" link. */
 export function getNextProject(slug: string): Project {
   const i = projects.findIndex((p) => p.slug === slug);

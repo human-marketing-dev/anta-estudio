@@ -57,8 +57,16 @@
   color: var(--anta-ink);
   background: transparent;
   text-decoration: none;
+  position: relative;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
     border-color var(--dur-fast) var(--ease);
+}
+
+/* Enlarge the tap target to >=44px without altering the visible button. */
+.blockBtn::before {
+  content: "";
+  position: absolute;
+  inset: -2px 0;
 }
 
 .blockBtn:hover {

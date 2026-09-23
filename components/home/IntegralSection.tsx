@@ -6,12 +6,12 @@ import type { ReactNode } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import { RevealLines } from "@/components/anim";
-import { getProject } from "@/lib/projects";
+import { requireProject } from "@/lib/projects";
 import shared from "./home.module.css";
 import styles from "./IntegralSection.module.css";
 
 const img = (slug: string, i = 0): StaticImageData => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 

@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { WhatsAppIcon, Arrow } from "@/components/site";
@@ -10,18 +11,19 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject, type Project } from "@/lib/projects";
+import { getProject, requireProject, type Project } from "@/lib/projects";
 import shared from "@/components/home/home.module.css";
 import styles from "./arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Arquitectura Comercial y Diseño de Restaurantes | Anta Estudio",
   description:
     "Diseño de restaurantes e interiorismo comercial en Monterrey. Creamos espacios que representan tu marca y funcionan en operación, con diseño y ejecución de principio a fin.",
-};
+  path: "/servicios/arquitectura-comercial",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -77,7 +79,7 @@ const pasos = [
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -113,9 +115,9 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function ArquitecturaComercialPage() {
-  const heroImg = getProject("crispy-pollo")!.cover;
-  const queEsImg = getProject("kampai")!.cover;
-  const nosotrosImg = getProject("cafe-laurel")!.cover;
+  const heroImg = requireProject("crispy-pollo").cover;
+  const queEsImg = requireProject("kampai").cover;
+  const nosotrosImg = requireProject("cafe-laurel").cover;
   const comercial = [
     "cafe-laurel",
     "valle-alto-club-de-golf-areas-comunes",
@@ -133,10 +135,17 @@ export default function ArquitecturaComercialPage() {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Arquitectura Comercial", path: "/servicios/arquitectura-comercial" },
+        ])}
+      />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Restaurante — arquitectura comercial de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
@@ -155,7 +164,7 @@ export default function ArquitecturaComercialPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -357,6 +366,7 @@ export default function ArquitecturaComercialPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para crear restaurantes y espacios comerciales que representan tu marca y funcionan desde el primer día."
       />
 
+      </main>
       <Footer />
     </>
   );

@@ -5,14 +5,10 @@ import type { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
-import { getProject } from "@/lib/projects";
+import { requireProject } from "@/lib/projects";
 import styles from "./ScrollGridProjects.module.css";
 
-const P = (slug: string) => {
-  const p = getProject(slug);
-  if (!p) throw new Error(`ScrollGridProjects: unknown project "${slug}"`);
-  return p;
-};
+const P = requireProject;
 const cover = (slug: string) => P(slug).cover;
 const gal = (slug: string, i = 0) => P(slug).galeria[i] ?? P(slug).cover;
 

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import type { CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
 import { Logo } from "@/components/Logo";
+import styles from "./NavBar.module.css";
 
 type NavLinkItem = { label: string; href: string };
 
 const DEFAULT_LINKS: NavLinkItem[] = [
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -23,6 +24,8 @@ const SERVICE_LINKS: NavLinkItem[] = [
 
 /**
  * Website top bar — logo left, nav links right. `theme` inverts for dark heroes.
+ * Below 860px the links + CTA collapse into a hamburger + full-screen panel;
+ * the desktop layout (>=861px) is unchanged.
  */
 export function NavBar({
   theme = "light",
@@ -39,6 +42,56 @@ export function NavBar({
 }) {
   const inverse = theme === "dark";
   const fg = inverse ? "var(--anta-white)" : "var(--anta-ink)";
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }, []);
+
+  // While the menu is open: lock body scroll, focus the close button, and on
+  // close restore scroll and return focus to the hamburger.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      hamburgerRef.current?.focus();
+    };
+  }, [menuOpen]);
+
+  // Trap focus inside the panel and close on Escape.
+  const handlePanelKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Escape") {
+        closeMenu();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusables = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
+      if (!focusables || focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    },
+    [closeMenu],
+  );
+
   return (
     <nav
       style={{
@@ -60,37 +113,163 @@ export function NavBar({
         <Link href="/" aria-label="Anta Estudio — inicio" style={{ display: "inline-flex" }}>
           <Logo color={inverse ? "white" : "black"} height={24} />
         </Link>
-        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
-        <ul style={{ display: "flex", gap: 32, listStyle: "none", margin: 0, padding: 0 }}>
-          {links.map((l) =>
-            l.label === "Servicios" ? (
-              <NavDropdown key={l.href} label={l.label} fg={fg} items={SERVICE_LINKS} />
-            ) : (
-              <NavLink key={l.href} {...l} fg={fg} />
-            ),
+
+        {/* Desktop cluster — hidden below 860px (see NavBar.module.css). */}
+        <div className={styles.desktopNav} style={{ alignItems: "center", gap: 40 }}>
+          <ul style={{ display: "flex", gap: 32, listStyle: "none", margin: 0, padding: 0 }}>
+            {links.map((l) =>
+              l.label === "Servicios" ? (
+                <NavDropdown key={l.href} label={l.label} fg={fg} items={SERVICE_LINKS} />
+              ) : (
+                <NavLink key={l.href} {...l} fg={fg} />
+              ),
+            )}
+          </ul>
+          {cta && (
+            <Link
+              href={ctaHref}
+              style={{
+                fontFamily: "var(--font-text)",
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: "0.8px",
+                textTransform: "uppercase",
+                color: "var(--anta-white)",
+                background: "var(--anta-pink)",
+                padding: "12px 22px",
+                textDecoration: "none",
+                borderRadius: 0,
+              }}
+            >
+              {cta}
+            </Link>
           )}
-        </ul>
-        {cta && (
-          <Link
-            href={ctaHref}
-            style={{
-              fontFamily: "var(--font-text)",
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: "0.8px",
-              textTransform: "uppercase",
-              color: "var(--anta-white)",
-              background: "var(--anta-pink)",
-              padding: "12px 22px",
-              textDecoration: "none",
-              borderRadius: 0,
-            }}
-          >
-            {cta}
-          </Link>
-        )}
         </div>
+
+        {/* Hamburger — hidden on desktop, shown below 860px. */}
+        <button
+          ref={hamburgerRef}
+          type="button"
+          className={styles.hamburger}
+          aria-label="Abrir menú"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+          onClick={() => setMenuOpen(true)}
+          style={{ color: fg }}
+        >
+          <svg
+            aria-hidden="true"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          >
+            <line x1="3" y1="7" x2="21" y2="7" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="17" x2="21" y2="17" />
+          </svg>
+        </button>
       </div>
+
+      {menuOpen && (
+        <div
+          id="mobile-nav"
+          ref={panelRef}
+          className={styles.panel}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú de navegación"
+          onKeyDown={handlePanelKeyDown}
+        >
+          <div className={styles.panelBar}>
+            <Link
+              href="/"
+              aria-label="Anta Estudio — inicio"
+              onClick={closeMenu}
+              style={{ display: "inline-flex" }}
+            >
+              <Logo color="black" height={24} />
+            </Link>
+            <button
+              ref={closeRef}
+              type="button"
+              className={styles.close}
+              aria-label="Cerrar menú"
+              onClick={closeMenu}
+            >
+              <svg
+                aria-hidden="true"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              >
+                <line x1="5" y1="5" x2="19" y2="19" />
+                <line x1="19" y1="5" x2="5" y2="19" />
+              </svg>
+            </button>
+          </div>
+
+          <nav className={styles.panelList} aria-label="Principal">
+            {links.map((l) =>
+              l.label === "Servicios" ? (
+                <div key={l.href} className={styles.accItem}>
+                  <button
+                    type="button"
+                    className={`${styles.accToggle} ${servicesOpen ? styles.accToggleOpen : ""}`}
+                    aria-expanded={servicesOpen}
+                    onClick={() => setServicesOpen((o) => !o)}
+                  >
+                    Servicios
+                    <svg
+                      aria-hidden="true"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                  {servicesOpen && (
+                    <div className={styles.accPanel}>
+                      {SERVICE_LINKS.map((s) => (
+                        <Link key={s.href} href={s.href} className={styles.accSub} onClick={closeMenu}>
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : l.href.startsWith("/") ? (
+                <Link key={l.href} href={l.href} className={styles.panelItem} onClick={closeMenu}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.href} href={l.href} className={styles.panelItem} onClick={closeMenu}>
+                  {l.label}
+                </a>
+              ),
+            )}
+          </nav>
+
+          {cta && (
+            <Link href={ctaHref} className={styles.panelCta} onClick={closeMenu}>
+              {cta}
+            </Link>
+          )}
+        </div>
+      )}
     </nav>
   );
 }

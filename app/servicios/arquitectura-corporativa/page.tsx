@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { WhatsAppIcon, Arrow } from "@/components/site";
@@ -10,19 +11,20 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject, type Project } from "@/lib/projects";
+import { getProject, requireProject, type Project } from "@/lib/projects";
 import shared from "@/components/home/home.module.css";
 // Same design as Arquitectura Comercial — reuse its module so both stay in sync.
 import styles from "../arquitectura-comercial/arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Arquitectura Corporativa y Diseño de Oficinas | Anta Estudio",
   description:
     "Diseño de oficinas e interiorismo corporativo en Monterrey. Creamos espacios que reflejan tu marca y mejoran la operación, con diseño y ejecución de principio a fin.",
-};
+  path: "/servicios/arquitectura-corporativa",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -77,7 +79,7 @@ const pasos = [
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -113,9 +115,9 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function ArquitecturaCorporativaPage() {
-  const heroImg = getProject("majadma")!.cover;
-  const queEsImg = getProject("e-80")!.cover;
-  const nosotrosImg = getProject("tp-zentralia")!.cover;
+  const heroImg = requireProject("majadma").cover;
+  const queEsImg = requireProject("e-80").cover;
+  const nosotrosImg = requireProject("tp-zentralia").cover;
   const corporativo = ["e-80", "majadma", "majadma-cemex", "tp-zentralia", "edificio-vh", "rivero-gonzalez"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
@@ -123,10 +125,17 @@ export default function ArquitecturaCorporativaPage() {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Arquitectura Corporativa", path: "/servicios/arquitectura-corporativa" },
+        ])}
+      />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Oficina — arquitectura corporativa de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
@@ -145,7 +154,7 @@ export default function ArquitecturaCorporativaPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -346,6 +355,7 @@ export default function ArquitecturaCorporativaPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para crear oficinas que reflejan tu marca y funcionan desde el primer día."
       />
 
+      </main>
       <Footer />
     </>
   );

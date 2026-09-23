@@ -64,7 +64,7 @@
   font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--anta-ink-50);
+  color: var(--anta-ink-70);
 }
 
 .fichaGrid {
@@ -83,7 +83,7 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--anta-ink-50);
+  color: var(--anta-ink-70);
 }
 
 .fichaValue {
@@ -122,7 +122,7 @@
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--anta-ink-50);
+  color: var(--anta-ink-70);
 }
 
 .nextName {

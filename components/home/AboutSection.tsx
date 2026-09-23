@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { RevealLines, StaggerReveal } from "@/components/anim";
+import { Arrow } from "@/components/site";
 import shared from "./home.module.css";
 import styles from "./AboutSection.module.css";
 
@@ -22,6 +24,14 @@ export function AboutSection() {
           <RevealLines as="h3" className={`${shared.h3big} ${styles.subtitle}`}>
             Un despacho de arquitectura e interiorismo con más de 15 años de experiencia
           </RevealLines>
+          <div style={{ marginTop: 28 }}>
+            <Link href="/nosotros" className={shared.link}>
+              Conócenos
+              <span className={shared.arrow}>
+                <Arrow s={15} />
+              </span>
+            </Link>
+          </div>
         </div>
         <div className={styles.right}>
           <p className={shared.body}>

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -9,28 +8,29 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject } from "@/lib/projects";
+import { requireProject } from "@/lib/projects";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbList } from "@/lib/seo";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
 // Same design as the service pages — reuse the module so they stay in sync.
 import styles from "../servicios/arquitectura-comercial/arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Interiorismo en Monterrey | Anta Estudio",
   description:
     "Interiorismo en Monterrey: diseño de interiores para oficinas, restaurantes y casas. Ambiente, materialidad y mobiliario con criterio arquitectónico. +15 años.",
-};
+  path: "/interiorismo",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -99,8 +99,8 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function InteriorismoPage() {
-  const heroImg = getProject("e-80")!.cover;
-  const queEsImg = getProject("cafe-laurel")!.cover;
+  const heroImg = requireProject("e-80").cover;
+  const queEsImg = requireProject("cafe-laurel").cover;
 
   return (
     <>
@@ -115,6 +115,7 @@ export default function InteriorismoPage() {
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Interiorismo de Anta Estudio en Monterrey" priority sizes="100vw" className={styles.heroMedia} />
@@ -133,7 +134,7 @@ export default function InteriorismoPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -252,6 +253,7 @@ export default function InteriorismoPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, criterio arquitectónico y más de 15 años de experiencia para crear interiores con carácter propio, cómodos de usar y pensados para durar."
       />
 
+      </main>
       <Footer />
     </>
   );

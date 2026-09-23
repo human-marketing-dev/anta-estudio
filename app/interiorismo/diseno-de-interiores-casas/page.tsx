@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -10,21 +9,22 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject, type Project } from "@/lib/projects";
+import { getProject, requireProject, type Project } from "@/lib/projects";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbList } from "@/lib/seo";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
 // Same design as the service pages — reuse the module so they stay in sync.
 import styles from "../../servicios/arquitectura-comercial/arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Diseño de Interiores de Casas en Monterrey | Anta Estudio",
   description:
     "Diseño de interiores de casas en Monterrey y San Pedro. Salas, recámaras y cocinas con materialidad, luz y mobiliario a medida. +15 años de experiencia.",
-};
+  path: "/interiorismo/diseno-de-interiores-casas",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -80,7 +80,7 @@ const pasos = [
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -103,9 +103,9 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function DisenoDeInterioresCasasPage() {
-  const heroImg = getProject("terraza-pangea")!.cover;
-  const queEsImg = getProject("edificio-vh")!.cover;
-  const nosotrosImg = getProject("tp-zentralia")!.cover;
+  const heroImg = requireProject("terraza-pangea").cover;
+  const queEsImg = requireProject("edificio-vh").cover;
+  const nosotrosImg = requireProject("tp-zentralia").cover;
   // TODO: placeholder — reemplazar por proyectos residenciales reales cuando existan.
   const proyectos = ["terraza-pangea", "edificio-vh", "tp-zentralia", "valle-alto-club-de-golf-areas-comunes"].flatMap((s) => {
     const p = getProject(s);
@@ -125,6 +125,7 @@ export default function DisenoDeInterioresCasasPage() {
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Interior de casa — diseño de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
@@ -144,7 +145,7 @@ export default function DisenoDeInterioresCasasPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -351,6 +352,7 @@ export default function DisenoDeInterioresCasasPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, criterio arquitectónico y más de 15 años de experiencia para crear espacios con carácter propio, cómodos de habitar y pensados para acompañarte muchos años."
       />
 
+      </main>
       <Footer />
     </>
   );

@@ -1,29 +1,31 @@
-import type { Metadata } from "next";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { RevealLines } from "@/components/anim";
+import { CONTACT } from "@/lib/site";
+import { buildMetadata } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
 import styles from "./contacto.module.css";
 import { ContactForm } from "./ContactForm";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Contacto | Anta Estudio — Arquitectura e Interiorismo en Monterrey",
   description:
     "Conversemos sobre tu proyecto de arquitectura o interiorismo en Monterrey. Escríbenos por WhatsApp o llena el formulario y te contactamos en menos de 48 horas hábiles.",
-};
+  path: "/contacto",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
 ];
 
 const detalles: { key: string; value: string; href?: string }[] = [
-  { key: "Correo", value: "info@antaestudio.com", href: "mailto:info@antaestudio.com" },
-  { key: "WhatsApp", value: "+52 81 0000 0000", href: "https://wa.me/528100000000" },
-  { key: "Ubicación", value: "San Pedro Garza García, N.L." },
-  { key: "Instagram", value: "@antaestudio", href: "https://instagram.com/antaestudio" },
+  { key: "Correo", value: CONTACT.correo, href: `mailto:${CONTACT.correo}` },
+  { key: "WhatsApp", value: CONTACT.telefonoDisplay, href: CONTACT.whatsapp },
+  { key: "Ubicación", value: CONTACT.direccion.completa, href: CONTACT.direccion.mapsUrl },
+  { key: "Instagram", value: CONTACT.instagramHandle, href: CONTACT.instagram },
 ];
 
 export default function ContactPage() {

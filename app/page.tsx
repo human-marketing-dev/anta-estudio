@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import heroWide from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_001AV2_5260_P-e1771974642904.webp";
 import heroPortrait from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_004AV2_5324_P-scaled-1.webp";
 import { NavBar } from "@/components/NavBar";
@@ -12,14 +12,15 @@ import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Despacho de Arquitectura en Monterrey | Anta Estudio",
   description:
     "Despacho de arquitectura e interiorismo en Monterrey con +15 años de experiencia. Diseño y ejecución de proyectos comerciales, corporativos y residenciales.",
-};
+  path: "/",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -40,13 +41,15 @@ export default function Home() {
       />
       {/* Opaque wrapper above the sticky hero — it scrolls over the hero image. */}
       <div style={{ position: "relative", zIndex: 1, background: "var(--anta-white)" }}>
-        <AboutSection />
-        <ProjectsSection />
-        <ServicesSection />
-        <IntegralSection />
-        <ClientsSection />
-        <ReviewsSection />
-        <ClosingCta />
+        <main>
+          <AboutSection />
+          <ProjectsSection />
+          <ServicesSection />
+          <IntegralSection />
+          <ClientsSection />
+          <ReviewsSection />
+          <ClosingCta />
+        </main>
         <Footer />
       </div>
     </>

@@ -1,10 +1,13 @@
 import type { CSSProperties } from "react";
 import { Logo } from "@/components/Logo";
 import { FooterLink } from "@/components/FooterLink";
+import { CONTACT } from "@/lib/site";
 
 /** Site footer on ink. Wordmark, columns, contact, fine print. */
 export function Footer({ style = {} }: { style?: CSSProperties }) {
-  const col: CSSProperties = { display: "flex", flexDirection: "column", gap: 12 };
+  // gap trimmed to 2 because each FooterLink now carries 12px vertical padding
+  // (the padding supplies the row spacing + the 44px tap target).
+  const col: CSSProperties = { display: "flex", flexDirection: "column", gap: 2 };
   const head: CSSProperties = {
     fontFamily: "var(--font-text)",
     fontSize: 12,
@@ -13,6 +16,9 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
     textTransform: "uppercase",
     color: "var(--anta-ink-50)",
     textDecoration: "none",
+    // No vertical padding: heading links stay top-aligned with the <span>
+    // headings (Estudio, Contacto) across all columns.
+    padding: 0,
     marginBottom: 6,
   };
   const link: CSSProperties = {
@@ -36,6 +42,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
           // auto-fit + minmax lets the 5 columns wrap onto multiple rows on
           // tablet/mobile instead of getting cramped (no media queries inline).
           gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+          alignItems: "start",
           gap: 48,
           maxWidth: "var(--content-max)", paddingInline: "var(--section-pad-x)",
           margin: "96px auto 0",
@@ -49,7 +56,7 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
         </div>
         <div style={col}>
           <span style={head}>Estudio</span>
-          <FooterLink href="/#nosotros" style={link}>Nosotros</FooterLink>
+          <FooterLink href="/nosotros" style={link}>Nosotros</FooterLink>
           <FooterLink href="/#servicios" style={link}>Servicios</FooterLink>
           <FooterLink href="/#proyectos" style={link}>Proyectos</FooterLink>
         </div>
@@ -67,9 +74,11 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
         </div>
         <div style={col}>
           <span style={head}>Contacto</span>
-          <FooterLink href="mailto:info@antaestudio.com" style={link}>info@antaestudio.com</FooterLink>
-          <FooterLink href="#" style={link}>San Pedro Garza García, N.L.</FooterLink>
-          <FooterLink href="#" style={{ ...link, color: "var(--anta-pink)" }}>Instagram ↗</FooterLink>
+          <FooterLink href={`mailto:${CONTACT.correo}`} style={link}>{CONTACT.correo}</FooterLink>
+          <FooterLink href={CONTACT.direccion.mapsUrl} style={link}>
+            Av. José Vasconcelos 430, San Pedro Garza García, N.L.
+          </FooterLink>
+          <FooterLink href={CONTACT.instagram} style={{ ...link, color: "var(--anta-pink)" }}>Instagram ↗</FooterLink>
         </div>
       </div>
       <div

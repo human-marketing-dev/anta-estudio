@@ -69,7 +69,7 @@ export function Hero({
   mobileImage,
   kicker = "Anta Estudio",
   primaryHref = "/contacto",
-  whatsappHref = "https://wa.me/528100000000",
+  whatsappHref = "https://wa.me/528136091999",
   debug = false,
 }: HeroProps) {
   const rootRef = useRef<HTMLElement>(null);

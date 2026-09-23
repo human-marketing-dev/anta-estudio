@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/Button";
 import { WhatsAppIcon, Arrow } from "@/components/site";
@@ -10,19 +11,20 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject, type Project } from "@/lib/projects";
+import { getProject, requireProject, type Project } from "@/lib/projects";
 import shared from "@/components/home/home.module.css";
 // Same design as Arquitectura Comercial — reuse its module so both stay in sync.
 import styles from "../arquitectura-comercial/arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Arquitectura Residencial en Monterrey y San Pedro | Anta Estudio",
   description:
     "Arquitectura residencial en Monterrey y San Pedro. Diseñamos y construimos casas y residencias premium, del plano a la obra, con más de 15 años de experiencia.",
-};
+  path: "/servicios/arquitectura-residencial",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -78,7 +80,7 @@ const pasos = [
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -114,10 +116,9 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function ArquitecturaResidencialPage() {
-  const heroImg = getProject("terraza-pangea")!.cover;
-  const queEsImg = getProject("edificio-vh")!.cover;
-  const nosotrosImg = getProject("tp-zentralia")!.cover;
-  // TODO: placeholder — reemplazar por proyectos residenciales reales cuando existan.
+  const heroImg = requireProject("terraza-pangea").cover;
+  const queEsImg = requireProject("edificio-vh").cover;
+  const nosotrosImg = requireProject("tp-zentralia").cover;
   const residencial = [
     "casa-arbol",
     "mirasierra",
@@ -135,10 +136,17 @@ export default function ArquitecturaResidencialPage() {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Arquitectura Residencial", path: "/servicios/arquitectura-residencial" },
+        ])}
+      />
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20 }}>
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Residencia — arquitectura residencial de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
@@ -158,7 +166,7 @@ export default function ArquitecturaResidencialPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -360,6 +368,7 @@ export default function ArquitecturaResidencialPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, ejecución y más de 15 años de experiencia para crear hogares a la medida de quien los habita, cuidando cada detalle del plano a la obra."
       />
 
+      </main>
       <Footer />
     </>
   );

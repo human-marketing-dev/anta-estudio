@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { ProjectTile } from "@/components/ProjectTile";
@@ -9,11 +9,12 @@ import { ClosingCta } from "@/components/home/ClosingCta";
 import { projects } from "@/lib/projects";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Proyectos | Anta Estudio",
   description:
     "Portafolio de Anta Estudio: proyectos de arquitectura e interiorismo comercial, corporativo y residencial en Monterrey.",
-};
+  path: "/proyectos",
+});
 
 export default function ProyectosPage() {
   return (

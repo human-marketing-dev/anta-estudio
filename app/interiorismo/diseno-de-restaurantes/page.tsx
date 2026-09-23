@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -10,21 +9,22 @@ import { IntegralSection } from "@/components/home/IntegralSection";
 import { ClientsSection } from "@/components/home/ClientsSection";
 import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
-import { getProject, type Project } from "@/lib/projects";
+import { getProject, requireProject, type Project } from "@/lib/projects";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbList } from "@/lib/seo";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import shared from "@/components/home/home.module.css";
 // Same design as the service pages — reuse the module so they stay in sync.
 import styles from "../../servicios/arquitectura-comercial/arquitectura-comercial.module.css";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Diseño de Restaurantes e Interiorismo Comercial | Anta Estudio",
   description:
     "Diseño de restaurantes e interiorismo comercial en Monterrey. Ambiente, materialidad y mobiliario para espacios de hospitalidad con carácter. +15 años de experiencia.",
-};
+  path: "/interiorismo/diseno-de-restaurantes",
+});
 
 const navLinks = [
-  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Proyectos", href: "/proyectos" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
@@ -77,7 +77,7 @@ const pasos = [
 ];
 
 const pic = (slug: string, i = 0) => {
-  const p = getProject(slug)!;
+  const p = requireProject(slug);
   return p.galeria[i] ?? p.cover;
 };
 
@@ -100,9 +100,9 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function DisenoDeRestaurantesPage() {
-  const heroImg = getProject("crispy-pollo")!.cover;
-  const queEsImg = getProject("kampai")!.cover;
-  const nosotrosImg = getProject("cafe-laurel")!.cover;
+  const heroImg = requireProject("crispy-pollo").cover;
+  const queEsImg = requireProject("kampai").cover;
+  const nosotrosImg = requireProject("cafe-laurel").cover;
   const proyectos = ["cafe-laurel", "kampai", "crispy-pollo", "nailz"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
@@ -121,6 +121,7 @@ export default function DisenoDeRestaurantesPage() {
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
 
+      <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
         <ParallaxImage src={heroImg} alt="Restaurante — diseño e interiorismo de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
@@ -139,7 +140,7 @@ export default function DisenoDeRestaurantesPage() {
               <Button as="a" href="/contacto">
                 Solicitar propuesta
               </Button>
-              <Button as="a" href="https://wa.me/528100000000" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
+              <Button as="a" href="https://wa.me/528136091999" variant="outline" style={{ borderColor: "#fff", color: "#fff" }}>
                 <WhatsAppIcon />
                 Hablar por WhatsApp
               </Button>
@@ -346,6 +347,7 @@ export default function DisenoDeRestaurantesPage() {
         body="Nos encantaría conocer tu proyecto. En Anta Estudio combinamos diseño, criterio arquitectónico y más de 15 años de experiencia para crear espacios con ambiente propio, cómodos de operar y pensados para que la gente quiera volver."
       />
 
+      </main>
       <Footer />
     </>
   );

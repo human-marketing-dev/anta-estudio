@@ -18,6 +18,11 @@ const csp = [
   "connect-src 'self'",
 ].join("; ");
 
+// Ambiente de prueba: con NOINDEX=true se bloquea la indexación (cabecera +
+// robots.txt). Quitar la variable al lanzar. Se evalúa en build/arranque, así
+// que cambiarla requiere redeploy (ver docs/lanzamiento.md).
+const noindex = process.env.NOINDEX === "true";
+
 const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
@@ -35,6 +40,8 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
+          // Ambiente de prueba: no indexar mientras NOINDEX=true.
+          ...(noindex ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
           // Report-Only por ahora: no bloquea, solo reporta en consola.
           // Al confirmar que no rompe nada, renombrar a "Content-Security-Policy".
           { key: "Content-Security-Policy-Report-Only", value: csp },

@@ -86,6 +86,14 @@
   text-decoration: none;
   border-bottom: 1px solid var(--anta-pink);
   padding-bottom: 6px;
+  position: relative;
+}
+
+/* Enlarge the tap target to >=44px without moving the visible underline/text. */
+.link::before {
+  content: "";
+  position: absolute;
+  inset: -13px 0;
 }
 
 .link:hover {

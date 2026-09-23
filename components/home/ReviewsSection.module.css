@@ -23,10 +23,6 @@
   background: var(--anta-white);
   border: 1px solid var(--color-border-subtle);
   text-decoration: none;
-  transition: border-color var(--dur) var(--ease);
-}
-.summary:hover {
-  border-color: var(--anta-pink);
 }
 
 .score {
@@ -138,7 +134,7 @@
   font-family: var(--font-text);
   font-size: 11.5px;
   letter-spacing: 0.3px;
-  color: var(--anta-ink-50);
+  color: var(--anta-ink-70);
 }
 
 .stars {
@@ -166,8 +162,60 @@
   }
 }
 
+/* Phone: the grid becomes a native horizontal swipe slider (same pattern as
+   the project gallery). Desktop/tablet keep the grid untouched. */
 @media (max-width: 560px) {
   .grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--section-pad-x);
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
   }
+  .card {
+    flex: none;
+    width: 82vw; /* leaves the next card peeking, signalling swipe */
+    height: auto;
+    scroll-snap-align: center;
+  }
+}
+
+/* ---------- Slider position dots (phone only) ---------- */
+.dots {
+  display: none; /* only shown where the slider exists (<=560px) */
+  justify-content: center;
+  gap: 36px; /* 8px dot + 36px gap = 44px pitch → tap areas never overlap */
+  margin-top: 28px;
+}
+
+@media (max-width: 560px) {
+  .dots {
+    display: flex;
+  }
+}
+
+.dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--anta-ink-30);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+/* Invisible 44px tap target around the small visible dot. */
+.dot::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+}
+
+.dotActive {
+  background: var(--anta-pink);
+  transform: scale(1.15);
 }

@@ -52,3 +52,5 @@ HTTPS inestable puede dejar el sitio inaccesible). Al lanzar, descomenta:
 4. En DevTools → Network → doc principal → **Response Headers**, confirma que
    aparecen `content-security-policy-report-only`, `x-frame-options`,
    `x-content-type-options` y `referrer-policy`.
+
+> Notas de contraste/accesibilidad: ver `docs/accesibilidad.md`.

@@ -5,6 +5,7 @@ import { projects } from "@/lib/projects";
 // Static routes (folder-based). Kept explicit so the sitemap is auditable.
 const STATIC_ROUTES = [
   "/",
+  "/nosotros",
   "/proyectos",
   "/contacto",
   "/servicios/arquitectura-comercial",

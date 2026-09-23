@@ -1,0 +1,279 @@
+/* Página /nosotros — reutiliza las primitivas de home.module.css; aquí solo
+   vive el layout propio de esta página (hero, split, especialidades, socias). */
+
+/* ---------- Hero (mismo patrón que las páginas de servicio) ---------- */
+.hero {
+  position: relative;
+  height: clamp(520px, 82svh, 900px);
+  overflow: hidden;
+  background: var(--anta-ink);
+  color: var(--anta-white);
+}
+
+.heroMedia {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 23, 22, 0.5) 0%,
+    rgba(26, 23, 22, 0.6) 45%,
+    rgba(26, 23, 22, 0.88) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.heroTick {
+  width: 28px;
+  height: 1px;
+  background: var(--anta-pink);
+}
+
+.heroTitle {
+  margin: 0;
+  max-width: 20ch;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(38px, 5.4vw, 74px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--anta-white);
+}
+
+.heroSub {
+  max-width: 54ch;
+  font-family: var(--font-text);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  margin: clamp(22px, 3.5vh, 36px) 0 0;
+}
+
+/* ---------- Split: quiénes somos (texto + imagen) ---------- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+}
+
+.splitMedia {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  overflow: hidden;
+  background: var(--anta-mist);
+}
+
+.splitImg {
+  width: 100%;
+  height: 100%;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--anta-ink-70);
+}
+
+.eyebrowTick {
+  width: 28px;
+  height: 1px;
+  background: var(--anta-pink);
+}
+
+.leadBody {
+  margin-top: 22px;
+}
+
+/* ---------- "Contigo en cada etapa" (bloque narrativo centrado) ---------- */
+.narrow {
+  max-width: 760px;
+}
+
+.narrow .leadBody {
+  margin-top: 26px;
+  font-size: 16.5px;
+}
+
+/* ---------- Tres especialidades (strip enlazado) ---------- */
+.specHead {
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 1.6vw, 24px);
+}
+
+.spec {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(24px, 2.4vw, 34px);
+  background: var(--anta-white);
+  border: 1px solid var(--color-border-subtle);
+  text-decoration: none;
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.spec:hover {
+  border-color: var(--anta-pink);
+  transform: translateY(-4px);
+}
+
+.specNum {
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--anta-pink);
+}
+
+.specTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 24px);
+  line-height: 1.15;
+  color: var(--anta-ink);
+}
+
+.specLine {
+  font-family: var(--font-text);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--anta-ink-70);
+}
+
+.specGo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--anta-ink);
+}
+
+/* ---------- Nuestras Socias ---------- */
+.sociasHead {
+  margin-bottom: clamp(32px, 4vw, 52px);
+  max-width: 720px;
+}
+
+.sociasSub {
+  margin-top: 18px;
+}
+
+.socias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.sociaCard {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Real photos are ~731x1024 (~5:7). width:100%/height:auto keeps their native
+   ratio with zero crop; both share the ratio so the two cards align. */
+.sociaPhoto {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--anta-mist);
+}
+
+.sociaName {
+  margin: 22px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.15;
+  color: var(--anta-ink);
+}
+
+.sociaRole {
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--anta-ink-70);
+}
+
+.sociaRole::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--anta-pink);
+  flex: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 44px);
+  }
+  .splitMedia {
+    order: -1; /* imagen arriba del texto en móvil */
+    aspect-ratio: 3 / 2;
+  }
+  .specs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .socias {
+    grid-template-columns: 1fr;
+  }
+}

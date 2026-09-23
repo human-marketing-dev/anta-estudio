@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 import { RevealLines, ParallaxImage } from "@/components/anim";
-import { getProject } from "@/lib/projects";
+import { requireProject } from "@/lib/projects";
 import shared from "@/components/home/home.module.css";
 import styles from "./AboutStudio.module.css";
 
@@ -16,7 +16,7 @@ export function AboutStudio({
   image?: StaticImageData;
   alt?: string;
 }) {
-  const img = image ?? getProject("terraza-pangea")!.cover;
+  const img = image ?? requireProject("terraza-pangea").cover;
 
   return (
     <section className={shared.section}>

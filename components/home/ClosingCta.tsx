@@ -40,7 +40,7 @@ const hpStyle = {
 export function ClosingCta({
   title = DEFAULT_TITLE,
   body = DEFAULT_BODY,
-  whatsappHref = "https://wa.me/528100000000",
+  whatsappHref = "https://wa.me/528136091999",
 }: ClosingCtaProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -105,10 +105,10 @@ export function ClosingCta({
               </div>
             ) : (
               <form className={styles.form} onSubmit={onSubmit}>
-                <Input tone="ink" name="nombre" label="Nombre" placeholder="Tu nombre" required />
-                <Input tone="ink" name="correo" label="Correo" type="email" placeholder="tu@correo.com" required />
-                <Input tone="ink" name="tipoProyecto" label="Tipo de proyecto" placeholder="Comercial, corporativo…" />
-                <Textarea tone="ink" name="mensaje" label="Mensaje" rows={3} placeholder="Cuéntanos sobre tu proyecto" />
+                <Input tone="ink" id="cta-nombre" name="nombre" label="Nombre" placeholder="Tu nombre" required />
+                <Input tone="ink" id="cta-correo" name="correo" label="Correo" type="email" placeholder="tu@correo.com" required />
+                <Input tone="ink" id="cta-tipoProyecto" name="tipoProyecto" label="Tipo de proyecto" placeholder="Comercial, corporativo…" />
+                <Textarea tone="ink" id="cta-mensaje" name="mensaje" label="Mensaje" rows={3} placeholder="Cuéntanos sobre tu proyecto" />
 
                 {/* Honeypot anti-spam — invisible para humanos. */}
                 <div style={hpStyle} aria-hidden="true">

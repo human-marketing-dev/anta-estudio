@@ -12,6 +12,8 @@ import { ReviewsSection } from "@/components/home/ReviewsSection";
 import { ClosingCta } from "@/components/home/ClosingCta";
 import { projects, getProject, getNextProject } from "@/lib/projects";
 import { getProjectMeta } from "@/lib/projectMeta";
+import { JsonLd } from "@/components/JsonLd";
+import { buildMetadata, breadcrumbList } from "@/lib/seo";
 import styles from "./detail.module.css";
 
 export function generateStaticParams() {
@@ -26,10 +28,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
+  return buildMetadata({
     title: `${project.nombre} | Proyectos | Anta Estudio`,
     description: `${project.nombre} — proyecto de arquitectura e interiorismo de Anta Estudio en Monterrey.`,
-  };
+    path: `/proyectos/${slug}`,
+    // OG por proyecto: su portada tal cual (las redes recortan).
+    image: project.cover.src,
+    imageWidth: project.cover.width,
+    imageHeight: project.cover.height,
+  });
 }
 
 export default async function ProjectDetailPage({
@@ -67,6 +74,13 @@ export default async function ProjectDetailPage({
 
   return (
     <ViewTransition enter="slide-in-right" exit="slide-out-right" default="none">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Inicio", path: "/" },
+          { name: "Proyectos", path: "/proyectos" },
+          { name: project.nombre, path: `/proyectos/${slug}` },
+        ])}
+      />
       <NavBar theme="light" cta="Solicitar propuesta" />
 
       <main>

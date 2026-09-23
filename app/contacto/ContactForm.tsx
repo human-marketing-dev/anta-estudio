@@ -57,11 +57,11 @@ export function ContactForm() {
         </div>
       ) : (
         <form className={styles.form} onSubmit={onSubmit}>
-          <Input name="nombre" label="Nombre" placeholder="Tu nombre" required />
-          <Input name="correo" label="Correo" type="email" placeholder="tu@correo.com" required />
-          <Input name="telefono" label="Teléfono" type="tel" placeholder="81 0000 0000" />
-          <Input name="tipoProyecto" label="Tipo de proyecto" placeholder="Comercial, corporativo, residencial…" />
-          <Textarea name="mensaje" label="Mensaje" rows={4} placeholder="Cuéntanos sobre tu proyecto" />
+          <Input id="nombre" name="nombre" label="Nombre" placeholder="Tu nombre" required />
+          <Input id="correo" name="correo" label="Correo" type="email" placeholder="tu@correo.com" required />
+          <Input id="telefono" name="telefono" label="Teléfono" type="tel" placeholder="81 0000 0000" />
+          <Input id="tipoProyecto" name="tipoProyecto" label="Tipo de proyecto" placeholder="Comercial, corporativo, residencial…" />
+          <Textarea id="mensaje" name="mensaje" label="Mensaje" rows={4} placeholder="Cuéntanos sobre tu proyecto" />
 
           {/* Honeypot anti-spam — invisible para humanos. */}
           <div style={hpStyle} aria-hidden="true">
