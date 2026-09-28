@@ -8,6 +8,7 @@ const STATIC_ROUTES = [
   "/nosotros",
   "/proyectos",
   "/contacto",
+  "/aviso-de-privacidad",
   "/servicios/arquitectura-comercial",
   "/servicios/arquitectura-corporativa",
   "/servicios/arquitectura-residencial",

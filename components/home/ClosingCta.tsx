@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { RevealLines } from "@/components/anim";
 import { Button } from "@/components/Button";
@@ -117,6 +118,14 @@ export function ClosingCta({
                 </div>
 
                 {status === "error" && <p className={styles.formError}>{error}</p>}
+
+                <p className={styles.legal}>
+                  Al enviar aceptas nuestro{" "}
+                  <Link href="/aviso-de-privacidad" className={styles.legalLink}>
+                    aviso de privacidad
+                  </Link>
+                  .
+                </p>
 
                 <Button type="submit" disabled={status === "sending"} style={{ alignSelf: "flex-start" }}>
                   {status === "sending" ? "Enviando…" : "Solicitar propuesta"}

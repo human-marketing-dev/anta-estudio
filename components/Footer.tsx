@@ -88,14 +88,38 @@ export function Footer({ style = {} }: { style?: CSSProperties }) {
           paddingTop: 24,
           borderTop: "1px solid var(--anta-ink-90)",
           display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
           justifyContent: "space-between",
+          columnGap: 24,
         }}
       >
-        <span style={{ ...link, fontSize: 12, color: "var(--anta-ink-50)" }}>
-          © {new Date().getFullYear()} Anta Estudio
+        <span style={{ display: "flex", flexWrap: "wrap", alignItems: "center", columnGap: 20 }}>
+          <span style={{ ...link, fontSize: 12, color: "var(--anta-ink-50)" }}>
+            © {new Date().getFullYear()} Anta Estudio
+          </span>
+          <FooterLink href="/aviso-de-privacidad" style={{ ...link, fontSize: 12, color: "var(--anta-ink-30)" }}>
+            Aviso de privacidad
+          </FooterLink>
         </span>
         <span style={{ ...link, fontSize: 12, color: "var(--anta-ink-50)" }}>Monterrey · México</span>
       </div>
+      {/* Developer credit — last line of the site. */}
+      <p
+        style={{
+          ...link,
+          fontSize: 12,
+          color: "var(--anta-ink-50)",
+          maxWidth: "var(--content-max)",
+          paddingInline: "var(--section-pad-x)",
+          margin: "8px auto 0",
+        }}
+      >
+        Desarrollo Web por{" "}
+        <FooterLink href="https://humanmarketing.mx/" style={{ ...link, fontSize: 12, color: "var(--anta-ink-30)" }}>
+          Human Marketing
+        </FooterLink>
+      </p>
     </footer>
   );
 }

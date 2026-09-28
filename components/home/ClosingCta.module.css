@@ -86,3 +86,23 @@
   line-height: 1.4;
   color: var(--anta-pink);
 }
+
+/* Aviso de privacidad bajo el formulario. */
+.legal {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--anta-ink-30);
+}
+
+.legalLink {
+  color: var(--anta-white);
+  text-decoration: underline;
+  text-decoration-color: var(--anta-pink);
+  text-underline-offset: 3px;
+}
+
+.legalLink:hover {
+  color: var(--anta-pink);
+}

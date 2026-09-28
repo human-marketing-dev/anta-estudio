@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/Input";
 import { Textarea } from "@/components/Textarea";
@@ -70,6 +71,14 @@ export function ContactForm() {
           </div>
 
           {status === "error" && <p className={styles.formError}>{error}</p>}
+
+          <p className={styles.legal}>
+            Al enviar aceptas nuestro{" "}
+            <Link href="/aviso-de-privacidad" className={styles.legalLink}>
+              aviso de privacidad
+            </Link>
+            .
+          </p>
 
           <Button type="submit" disabled={status === "sending"} style={{ alignSelf: "flex-start" }}>
             {status === "sending" ? "Enviando…" : "Solicitar propuesta"}

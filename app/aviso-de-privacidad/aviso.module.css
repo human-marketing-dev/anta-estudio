@@ -1,0 +1,73 @@
+/* Aviso de privacidad — columna de lectura. Tipografía de home.module.css
+   (h3, body); el encabezado sigue el patrón de /contacto (eyebrow + título).
+   Los márgenes van bajo .doc para ganarle a `margin: 0` de .body sin depender
+   del orden de carga de los CSS. */
+
+.doc {
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  font-family: var(--font-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--anta-ink-70);
+}
+
+.eyebrowTick {
+  width: 28px;
+  height: 1px;
+  background: var(--anta-pink);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--anta-ink);
+}
+
+.doc .updated {
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+.block {
+  margin-top: clamp(40px, 5vw, 56px);
+  padding-top: clamp(28px, 3.5vw, 40px);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.doc .p {
+  margin-top: 16px;
+}
+
+.doc .list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.doc .list li + li {
+  margin-top: 6px;
+}
+
+.link {
+  color: var(--anta-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--anta-pink);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.link:hover {
+  color: var(--anta-pink-dark);
+}

@@ -19,6 +19,16 @@ Cuando confirmes que no hay violaciones legítimas, cambia en `next.config.ts`
 la key `Content-Security-Policy-Report-Only` por **`Content-Security-Policy`**
 (modo enforce). El valor (`csp`) no cambia.
 
+### CSP y Google Tag Manager
+
+La CSP permite los dominios de GTM y GA4 (`*.googletagmanager.com`,
+`*.google-analytics.com`, `*.analytics.google.com`) en `script-src`, `img-src`,
+`connect-src` y `frame-src`. Cualquier etiqueta de terceros que se agregue
+**dentro** del contenedor de GTM (Meta Pixel, Hotjar, Google Ads, etc.)
+necesita sus propios dominios en la CSP, y las "variables de JavaScript
+personalizado" de GTM requieren `'unsafe-eval'`. Revisa la consola después de
+publicar cada cambio del contenedor **antes** de pasar la CSP a enforce.
+
 ### HSTS — activar tras el lanzamiento
 
 `Strict-Transport-Security` está **comentado** en `next.config.ts`. Actívalo

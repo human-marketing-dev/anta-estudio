@@ -133,3 +133,23 @@ a.detailVal:hover {
   line-height: 1.4;
   color: var(--anta-pink);
 }
+
+/* Aviso de privacidad bajo el formulario. */
+.legal {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--anta-ink-70);
+}
+
+.legalLink {
+  color: var(--anta-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--anta-pink);
+  text-underline-offset: 3px;
+}
+
+.legalLink:hover {
+  color: var(--anta-pink);
+}

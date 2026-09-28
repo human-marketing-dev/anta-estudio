@@ -67,3 +67,24 @@ CP, teléfono). Un NAP inconsistente daña el SEO local.
 - **Página `/nosotros`:** ya está creada y **en el sitemap** (`app/sitemap.ts`);
   el nav y el footer apuntan a ella. El `Organization` incluye a las socias como
   `founder`. Confirmar que los nombres/roles de las socias son los definitivos.
+
+## 8. Redirecciones del sitio anterior
+
+`next.config.ts` → `redirects()` manda con **301** las 15 URLs `.html` del sitio
+anterior y `/descargas/portafolio-anta.pdf` a su página equivalente. Verifica
+después del deploy (debe responder `301` y `location` con la ruta nueva):
+
+```
+curl -sI https://www.antaestudio.com/servicio-de-remodelacion-en-monterrey.html | grep -iE "^HTTP|^location"
+```
+
+En Search Console, revisa durante 2 a 4 semanas el reporte de páginas con 404.
+
+## 9. Google Tag Manager
+
+Define `NEXT_PUBLIC_GTM_ID` (formato `GTM-XXXXXXX`) en el env del servidor de
+**producción** y haz rebuild: la variable se incrusta en el build. Vacía = GTM
+desactivado. Déjala vacía en el ambiente de prueba. En GA4, confirma que la
+medición mejorada tenga activado "Cambios de página basados en eventos del
+historial del navegador" para contar la navegación interna del sitio.
+

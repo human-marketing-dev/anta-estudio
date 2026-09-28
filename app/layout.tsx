@@ -3,6 +3,7 @@ import { Lato, Open_Sans, Poppins } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import { businessLd } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 import "./globals.css";
 
 // Brand fonts: Lato (display), Open Sans (body/UI), Poppins (italic accent).
@@ -70,8 +71,10 @@ export default function RootLayout({
       className={`${lato.variable} ${openSans.variable} ${poppins.variable}`}
     >
       <body>
+        <GoogleTagManagerNoScript />
         <JsonLd data={businessLd()} />
         {children}
+        <GoogleTagManager />
       </body>
     </html>
   );
