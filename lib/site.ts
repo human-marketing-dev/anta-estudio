@@ -1,6 +1,7 @@
 // Single source of truth for the production origin. Read by sitemap.ts,
 // robots.ts, layout metadataBase y el structured data JSON-LD.
-export const SITE_URL = "https://antaestudio.com";
+// Con www: es el dominio que el sitio anterior tenía indexado (canonical y sitemap).
+export const SITE_URL = "https://www.antaestudio.com";
 
 // Datos de contacto — fuente única (footer, contacto, JSON-LD).
 export const CONTACT = {

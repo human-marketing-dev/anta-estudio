@@ -4,15 +4,14 @@ El sitio corre en un ambiente de prueba con la indexación **bloqueada**. Al
 apuntar el dominio real y estar listo para lanzar, en este orden: dominio (0),
 luego el resto.
 
-## 0. Dominio definitivo: www
+## 0. Dominio definitivo: `https://www.antaestudio.com`
 
-El sitio anterior está indexado en `https://www.antaestudio.com` (canonical,
-sitemap y perfiles). Para no cambiar el dominio que Google ya conoce:
+El dominio del sitio es **`https://www.antaestudio.com`**, el mismo que el sitio
+anterior tenía indexado. `SITE_URL` (`lib/site.ts`) ya lo usa: canonical,
+sitemap, robots, Open Graph y JSON-LD salen de ahí.
 
-- Cambiar `SITE_URL` en `lib/site.ts` a `https://www.antaestudio.com` (canonical,
-  sitemap, robots, Open Graph y JSON-LD salen de ahí) y hacer rebuild.
 - En nginx/RunCloud: `antaestudio.com` → **301** → `https://www.antaestudio.com`
-  (y `http://` → `https://`).
+  (y `http://` → `https://`), conservando la ruta.
 - Verificar: `curl -sI https://antaestudio.com/nosotros` responde `301` con
   `location: https://www.antaestudio.com/nosotros`.
 
@@ -27,7 +26,7 @@ servidor (RunCloud → Environment Variables) y **redeploy** (rebuild). Se eval�
 en build/arranque, así que sin redeploy no toma efecto.
 
 Verifica después:
-- `https://antaestudio.com/robots.txt` → debe permitir (`Allow: /`) y listar el
+- `https://www.antaestudio.com/robots.txt` → debe permitir (`Allow: /`) y listar el
   `Sitemap:`.
 - Response headers de cualquier página → **no** debe aparecer `X-Robots-Tag`.
 
@@ -60,8 +59,9 @@ CP, teléfono). Un NAP inconsistente daña el SEO local.
 
 ## 5. Search Console
 
-- Usar una propiedad de **dominio** (`antaestudio.com`, verificación por DNS):
-  cubre www, sin www, http y https. Si ya existe la del sitio anterior, usar esa.
+- Usar una propiedad de **dominio** (`antaestudio.com`, verificación por DNS),
+  que cubre `https://www.antaestudio.com`. Si ya existe la del sitio anterior,
+  usar esa.
 - Enviar el sitemap: `https://www.antaestudio.com/sitemap.xml`.
 - Confirmar que las URLs se indexan (Inspección de URL) y que ya **no** salen
   como "Excluida por noindex".
