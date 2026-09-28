@@ -23,7 +23,8 @@ const navLinks = [
 
 const detalles: { key: string; value: string; href?: string }[] = [
   { key: "Correo", value: CONTACT.correo, href: `mailto:${CONTACT.correo}` },
-  { key: "WhatsApp", value: CONTACT.telefonoDisplay, href: CONTACT.whatsapp },
+  { key: "Teléfono", value: CONTACT.telefonoDisplay, href: `tel:+${CONTACT.telefono}` },
+  { key: "WhatsApp", value: CONTACT.whatsappDisplay, href: CONTACT.whatsapp },
   { key: "Ubicación", value: CONTACT.direccion.completa, href: CONTACT.direccion.mapsUrl },
   { key: "Instagram", value: CONTACT.instagramHandle, href: CONTACT.instagram },
 ];

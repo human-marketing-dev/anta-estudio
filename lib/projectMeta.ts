@@ -50,7 +50,7 @@ export const projectMeta: Record<string, ProjectMeta> = {
   mirasierra: { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "San Pedro Garza García, N.L." },
   colibri: { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "Monterrey, N.L." },
   livin: { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "Monterrey, N.L." },
-  "departamente-bw-2204": { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "Monterrey, N.L." },
+  "departamento-bw-2204": { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "Monterrey, N.L." },
   "san-patricio": { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "San Pedro Garza García, N.L." },
   "casa-bosques": { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "San Pedro Garza García, N.L." },
   "casa-san-jeronimo": { uso: "Residencial", servicio: RESIDENCIAL, ubicacion: "Monterrey, N.L." },

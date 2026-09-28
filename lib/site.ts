@@ -5,9 +5,12 @@ export const SITE_URL = "https://antaestudio.com";
 // Datos de contacto — fuente única (footer, contacto, JSON-LD).
 export const CONTACT = {
   nombre: "Anta Estudio",
-  telefono: "528136091999", // E.164 sin "+"
-  telefonoDisplay: "+52 81 3609 1999",
+  // Teléfono fijo (JSON-LD y /contacto). Debe coincidir con Google Business.
+  telefono: "528183562558", // E.164 sin "+"
+  telefonoDisplay: "+52 81 8356 2558",
+  // WhatsApp: número distinto al fijo.
   whatsapp: "https://wa.me/528136091999",
+  whatsappDisplay: "+52 81 3609 1999",
   correo: "info@antaestudio.com",
   instagram: "https://www.instagram.com/antaestudio.arq/",
   instagramHandle: "@antaestudio.arq",

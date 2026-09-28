@@ -85,12 +85,12 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  { title: "Salas y Áreas Sociales", desc: "Los espacios donde recibes: acomodo, confort y una atmósfera que invita a quedarse.", image: pic("terraza-pangea", 0) },
-  { title: "Diseño de Interiores de Recámaras", desc: "Descanso, guardado y luz bien resueltos, con materiales cálidos y duraderos.", image: pic("edificio-vh", 0) },
-  { title: "Cocinas y Comedores", desc: "El corazón de la casa: funcionalidad diaria con acabados que aguantan el uso.", image: pic("tp-zentralia", 0) },
-  { title: "Materialidad e Iluminación", desc: "Selección de acabados, texturas y luz que definen el carácter de cada estancia.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
-  { title: "Mobiliario a Medida", desc: "Clósets, libreros y piezas especiales diseñadas para tu espacio y tus cosas.", image: pic("edificio-vh", 1) },
-  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("terraza-pangea", 1) },
+  { title: "Salas y Áreas Sociales", desc: "Los espacios donde recibes: acomodo, confort y una atmósfera que invita a quedarse.", image: pic("san-patricio", 6) },
+  { title: "Diseño de Interiores de Recámaras", desc: "Descanso, guardado y luz bien resueltos, con materiales cálidos y duraderos.", image: pic("livin", 4) },
+  { title: "Cocinas y Comedores", desc: "El corazón de la casa: funcionalidad diaria con acabados que aguantan el uso.", image: pic("colibri", 4) },
+  { title: "Materialidad e Iluminación", desc: "Selección de acabados, texturas y luz que definen el carácter de cada estancia.", image: pic("san-patricio", 5) },
+  { title: "Mobiliario a Medida", desc: "Clósets, libreros y piezas especiales diseñadas para tu espacio y tus cosas.", image: pic("casa-bosques", 4) },
+  { title: "Implementación y Coordinación", desc: "Supervisión de proveedores y seguimiento en sitio para que el diseño se ejecute tal como se planeó.", image: pic("torre-shiro", 1) },
 ];
 
 const diferenciadores = [
@@ -103,11 +103,10 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function DisenoDeInterioresCasasPage() {
-  const heroImg = requireProject("terraza-pangea").cover;
-  const queEsImg = requireProject("edificio-vh").cover;
-  const nosotrosImg = requireProject("tp-zentralia").cover;
-  // TODO: placeholder — reemplazar por proyectos residenciales reales cuando existan.
-  const proyectos = ["terraza-pangea", "edificio-vh", "tp-zentralia", "valle-alto-club-de-golf-areas-comunes"].flatMap((s) => {
+  const heroImg = pic("colibri", 1);
+  const queEsImg = pic("casa-bosques", 0);
+  const nosotrosImg = pic("departamento-bw-2204", 2);
+  const proyectos = ["colibri", "casa-bosques", "san-patricio", "casa-san-jeronimo"].flatMap((s) => {
     const p = getProject(s);
     return p ? [p as Project] : [];
   });
@@ -128,7 +127,7 @@ export default function DisenoDeInterioresCasasPage() {
       <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
-        <ParallaxImage src={heroImg} alt="Interior de casa — diseño de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
+        <ParallaxImage src={heroImg} alt="Colibrí, interior de casa diseñado por Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
@@ -188,7 +187,7 @@ export default function DisenoDeInterioresCasasPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={queEsImg}
-              alt="Interiorismo residencial de Anta Estudio"
+              alt="Casa Bosques, interiorismo residencial de Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -316,7 +315,7 @@ export default function DisenoDeInterioresCasasPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={nosotrosImg}
-              alt="Interior residencial diseñado por Anta Estudio"
+              alt="Departamento BW2204, interior diseñado por Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />

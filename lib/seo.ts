@@ -17,9 +17,8 @@ export function breadcrumbList(items: { name: string; path: string }[]) {
 
 /**
  * Organization + LocalBusiness del despacho. Se inyecta una vez en el layout.
- * PENDIENTE: `geo` (lat/lng) y `openingHoursSpecification` (horario) — se
- * agregan cuando el cliente los dé. name/address/telephone deben coincidir con
- * el perfil de Google Business (verificar antes de lanzar).
+ * `geo` y el horario vienen del schema del sitio anterior. name/address/
+ * telephone deben coincidir con el perfil de Google Business.
  */
 export function businessLd() {
   return {
@@ -40,6 +39,19 @@ export function businessLd() {
       postalCode: CONTACT.direccion.cp,
       addressCountry: "MX",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 25.65319,
+      longitude: -100.37931,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "10:00",
+        closes: "19:00",
+      },
+    ],
     areaServed: "Monterrey",
     sameAs: [CONTACT.instagram],
     founder: [

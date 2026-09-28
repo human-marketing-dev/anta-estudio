@@ -1,8 +1,20 @@
 # Checklist de lanzamiento (apuntar el dominio)
 
-El sitio ya usa `SITE_URL = "https://antaestudio.com"` (definitivo), pero corre
-en un ambiente de prueba con la indexación **bloqueada**. Al apuntar el dominio
-real y estar listo para lanzar:
+El sitio corre en un ambiente de prueba con la indexación **bloqueada**. Al
+apuntar el dominio real y estar listo para lanzar, en este orden: dominio (0),
+luego el resto.
+
+## 0. Dominio definitivo: www
+
+El sitio anterior está indexado en `https://www.antaestudio.com` (canonical,
+sitemap y perfiles). Para no cambiar el dominio que Google ya conoce:
+
+- Cambiar `SITE_URL` en `lib/site.ts` a `https://www.antaestudio.com` (canonical,
+  sitemap, robots, Open Graph y JSON-LD salen de ahí) y hacer rebuild.
+- En nginx/RunCloud: `antaestudio.com` → **301** → `https://www.antaestudio.com`
+  (y `http://` → `https://`).
+- Verificar: `curl -sI https://antaestudio.com/nosotros` responde `301` con
+  `location: https://www.antaestudio.com/nosotros`.
 
 ## 1. Quitar el bloqueo de indexación (`NOINDEX`)
 
@@ -48,8 +60,9 @@ CP, teléfono). Un NAP inconsistente daña el SEO local.
 
 ## 5. Search Console
 
-- Dar de alta la propiedad `https://antaestudio.com` y verificarla.
-- Enviar el sitemap: `https://antaestudio.com/sitemap.xml`.
+- Usar una propiedad de **dominio** (`antaestudio.com`, verificación por DNS):
+  cubre www, sin www, http y https. Si ya existe la del sitio anterior, usar esa.
+- Enviar el sitemap: `https://www.antaestudio.com/sitemap.xml`.
 - Confirmar que las URLs se indexan (Inspección de URL) y que ya **no** salen
   como "Excluida por noindex".
 
@@ -88,3 +101,18 @@ desactivado. Déjala vacía en el ambiente de prueba. En GA4, confirma que la
 medición mejorada tenga activado "Cambios de página basados en eventos del
 historial del navegador" para contar la navegación interna del sitio.
 
+Contenedor de GTM **nuevo** y propiedad de GA4 **nueva** (cuenta propia). La
+propiedad del sitio anterior (`G-PZ20SJKD35`) no se usa porque no hay acceso a
+esa cuenta: el historial de visitas empieza de cero con el lanzamiento. En el
+contenedor, crear la etiqueta "Google tag" con el ID de medición de la nueva
+propiedad y activarla en "All Pages".
+
+## 10. Después del deploy
+
+- Medir en PageSpeed Insights (móvil y escritorio) la home, /nosotros y un
+  proyecto. Con esos datos se decide el recorte vertical del hero en móvil y el
+  `quality` 60.
+- Actualizar el sitio web en el perfil de Google Business y en redes si apunta
+  a otra URL.
+- Revisar la consola del navegador (CSP Report-Only) con GTM ya activo, antes
+  de pasar la CSP a enforce (paso 3).

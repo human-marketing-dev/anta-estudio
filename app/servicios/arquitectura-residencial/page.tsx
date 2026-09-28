@@ -85,7 +85,7 @@ const pic = (slug: string, i = 0) => {
 };
 
 const alcances = [
-  { title: "Diseño Arquitectónico Residencial", desc: "Proyecto y distribución de la casa o residencia, del concepto a los planos ejecutivos.", image: pic("terraza-pangea", 0) },
+  { title: "Diseño Arquitectónico Residencial", desc: "Proyecto y distribución de la casa o residencia, del concepto a los planos ejecutivos.", image: pic("casa-san-jeronimo", 2) },
   {
     title: "Diseño de Interiores de Casas",
     desc: (
@@ -98,12 +98,12 @@ const alcances = [
         .
       </>
     ),
-    image: pic("edificio-vh", 0),
+    image: pic("colibri", 1),
   },
-  { title: "Diseño de Fachadas", desc: "Renovación y diseño de la imagen exterior, integrando la vivienda a su entorno.", image: pic("tp-zentralia", 0) },
-  { title: "Remodelación y Adecuaciones", desc: "Renovación de residencias existentes, optimizando lo que ya funciona sin perder control.", image: pic("valle-alto-club-de-golf-areas-comunes", 0) },
-  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y el estilo de vida del cliente.", image: pic("edificio-vh", 1) },
-  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar la residencia en tiempo y presupuesto.", image: pic("terraza-pangea", 1) },
+  { title: "Diseño de Fachadas", desc: "Renovación y diseño de la imagen exterior, integrando la vivienda a su entorno.", image: pic("casa-arbol", 0) },
+  { title: "Remodelación y Adecuaciones", desc: "Renovación de residencias existentes, optimizando lo que ya funciona sin perder control.", image: pic("san-patricio", 3) },
+  { title: "Mobiliario a Medida", desc: "Piezas y carpinterías especiales diseñadas para el espacio y el estilo de vida del cliente.", image: requireProject("livin").cover },
+  { title: "Ejecución y Coordinación de Obra", desc: "Administración, supervisión y gestión de obra para entregar la residencia en tiempo y presupuesto.", image: pic("colibri", 5) },
 ];
 
 const diferenciadores = [
@@ -116,15 +116,15 @@ const diferenciadores = [
 const subInk = { color: "var(--anta-ink-30)" };
 
 export default function ArquitecturaResidencialPage() {
-  const heroImg = requireProject("terraza-pangea").cover;
-  const queEsImg = requireProject("edificio-vh").cover;
-  const nosotrosImg = requireProject("tp-zentralia").cover;
+  const heroImg = pic("mirasierra", 0);
+  const queEsImg = pic("casa-arbol", 2);
+  const nosotrosImg = pic("san-patricio", 6);
   const residencial = [
     "casa-arbol",
     "mirasierra",
     "colibri",
     "livin",
-    "departamente-bw-2204",
+    "departamento-bw-2204",
     "san-patricio",
     "casa-bosques",
     "casa-san-jeronimo",
@@ -149,7 +149,7 @@ export default function ArquitecturaResidencialPage() {
       <main>
       {/* 1 · HERO */}
       <header className={styles.hero}>
-        <ParallaxImage src={heroImg} alt="Residencia — arquitectura residencial de Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
+        <ParallaxImage src={heroImg} alt="Mirasierra, residencia diseñada por Anta Estudio" priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <RevealLines as="h1" className={styles.heroTitle}>
@@ -204,7 +204,7 @@ export default function ArquitecturaResidencialPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={queEsImg}
-              alt="Interiorismo residencial de Anta Estudio"
+              alt="Casa Árbol, arquitectura residencial de Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />
@@ -332,7 +332,7 @@ export default function ArquitecturaResidencialPage() {
           <div className={styles.queEsMedia}>
             <ParallaxImage
               src={nosotrosImg}
-              alt="Proyecto residencial de Anta Estudio"
+              alt="San Patricio, proyecto residencial de Anta Estudio"
               className={styles.queEsImg}
               sizes="(max-width: 860px) 100vw, 50vw"
             />

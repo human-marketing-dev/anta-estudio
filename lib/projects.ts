@@ -131,15 +131,15 @@ import img_colibri_7 from "@/public/proyectos/colibri/anta-estudio-residencial-c
 import img_colibri_8 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-10.jpg";
 import img_colibri_9 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri-11.jpg";
 import img_colibri_10 from "@/public/proyectos/colibri/anta-estudio-residencial-colibri.jpg";
-import img_departamente_bw_2204_0 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-2.webp";
-import img_departamente_bw_2204_1 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-3.webp";
-import img_departamente_bw_2204_2 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-4.webp";
-import img_departamente_bw_2204_3 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-5.webp";
-import img_departamente_bw_2204_4 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-6.webp";
-import img_departamente_bw_2204_5 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-7.webp";
-import img_departamente_bw_2204_6 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-8.webp";
-import img_departamente_bw_2204_7 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204-9.webp";
-import img_departamente_bw_2204_8 from "@/public/proyectos/departamente-bw-2204/anta-estudio-residencial-departamente-bw-2204.webp";
+import img_departamento_bw_2204_0 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-2.webp";
+import img_departamento_bw_2204_1 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-3.webp";
+import img_departamento_bw_2204_2 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-4.webp";
+import img_departamento_bw_2204_3 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-5.webp";
+import img_departamento_bw_2204_4 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-6.webp";
+import img_departamento_bw_2204_5 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-7.webp";
+import img_departamento_bw_2204_6 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-8.webp";
+import img_departamento_bw_2204_7 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204-9.webp";
+import img_departamento_bw_2204_8 from "@/public/proyectos/departamento-bw-2204/anta-estudio-residencial-departamento-bw-2204.webp";
 import img_san_patricio_0 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-2.webp";
 import img_san_patricio_1 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-3.webp";
 import img_san_patricio_2 from "@/public/proyectos/san-patricio/anta-estudio-residencial-san-patricio-4.webp";
@@ -336,12 +336,12 @@ export const projects: Project[] = [
     galeria: [img_colibri_0, img_colibri_1, img_colibri_2, img_colibri_3, img_colibri_4, img_colibri_5, img_colibri_6, img_colibri_7, img_colibri_9, img_colibri_10],
   },
   {
-    slug: "departamente-bw-2204",
+    slug: "departamento-bw-2204",
     nombre: "Departamento BW2204",
     categoria: null,
     featured: false,
-    cover: img_departamente_bw_2204_0,
-    galeria: [img_departamente_bw_2204_1, img_departamente_bw_2204_2, img_departamente_bw_2204_3, img_departamente_bw_2204_4, img_departamente_bw_2204_5, img_departamente_bw_2204_6, img_departamente_bw_2204_7, img_departamente_bw_2204_8],
+    cover: img_departamento_bw_2204_0,
+    galeria: [img_departamento_bw_2204_1, img_departamento_bw_2204_2, img_departamento_bw_2204_3, img_departamento_bw_2204_4, img_departamento_bw_2204_5, img_departamento_bw_2204_6, img_departamento_bw_2204_7, img_departamento_bw_2204_8],
   },
   {
     slug: "san-patricio",
