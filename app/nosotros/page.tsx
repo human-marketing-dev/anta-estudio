@@ -169,11 +169,13 @@ export default function NosotrosPage() {
                     src={s.foto}
                     alt={s.nombre}
                     placeholder="blur"
-                    sizes="(max-width: 560px) 100vw, 50vw"
+                    sizes="(max-width: 560px) 120px, 200px"
                     className={styles.sociaPhoto}
                   />
-                  <h3 className={styles.sociaName}>{s.nombre}</h3>
-                  <p className={styles.sociaRole}>{s.rol}</p>
+                  <div>
+                    <h3 className={styles.sociaName}>{s.nombre}</h3>
+                    <p className={styles.sociaRole}>{s.rol}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -187,10 +189,10 @@ export default function NosotrosPage() {
               Contigo en cada etapa
             </RevealLines>
             <p className={`${shared.body} ${styles.leadBody}`}>
-              Muchos proyectos se complican cuando el diseño y la obra van por caminos separados. En
-              Anta Estudio nos encargamos de todo el proceso —diseño arquitectónico, interiorismo,
-              remodelación, ejecución y coordinación— bajo un mismo estándar de calidad. Eso
-              significa un solo interlocutor, alcances claros y menos fricción entre proveedores.
+              Los mejores proyectos nacen cuando el diseño y la obra avanzan de la mano. En Anta
+              Estudio te acompañamos en todo el proceso: diseño arquitectónico, interiorismo,
+              remodelación, ejecución y coordinación, con un mismo estándar de calidad. Así tienes
+              un solo interlocutor, alcances claros y un proyecto que fluye de principio a fin.
             </p>
           </div>
         </section>
@@ -206,7 +208,7 @@ export default function NosotrosPage() {
                 Un proceso claro para alinear expectativas, definir alcances y ejecutar con control.
               </p>
             </div>
-            <ProcessTimeline steps={pasos} />
+            <ProcessTimeline steps={pasos} tone="light" />
           </div>
         </section>
 

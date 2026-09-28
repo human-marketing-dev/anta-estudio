@@ -213,22 +213,25 @@
   gap: clamp(28px, 4vw, 56px);
 }
 
+/* Foto chica a la izquierda, nombre y rol a la derecha. */
 .sociaCard {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 32px);
 }
 
-/* Real photos are ~731x1024 (~5:7). width:100%/height:auto keeps their native
-   ratio with zero crop; both share the ratio so the two cards align. */
+/* Real photos are ~731x1024 (~5:7). height:auto keeps their native ratio with
+   zero crop; fixed width keeps both cards aligned. */
 .sociaPhoto {
-  width: 100%;
+  flex: none;
+  width: clamp(140px, 14vw, 200px);
   height: auto;
   display: block;
   background: var(--anta-mist);
 }
 
 .sociaName {
-  margin: 22px 0 0;
+  margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(20px, 1.8vw, 26px);
@@ -272,8 +275,14 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 860px) {
   .socias {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .sociaPhoto {
+    width: 120px;
   }
 }

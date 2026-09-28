@@ -13,8 +13,9 @@ export interface Step {
  * Horizontal process timeline (on ink). A connecting line draws left→right and
  * the steps rise in, staggered, as it enters view. H3 titles preserved.
  * Reduced motion / no-JS render it static. Stacks vertically on mobile.
+ * `tone="light"` switches the text/line colors for white or mist sections.
  */
-export function ProcessTimeline({ steps }: { steps: Step[] }) {
+export function ProcessTimeline({ steps, tone = "dark" }: { steps: Step[]; tone?: "dark" | "light" }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -40,7 +41,7 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
   );
 
   return (
-    <div ref={ref} className={styles.timeline}>
+    <div ref={ref} className={`${styles.timeline} ${tone === "light" ? styles.light : ""}`}>
       <span className={styles.line} aria-hidden="true" />
       <ol className={styles.steps}>
         {steps.map((s, i) => (

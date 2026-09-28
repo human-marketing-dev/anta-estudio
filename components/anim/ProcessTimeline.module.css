@@ -60,6 +60,19 @@
   color: var(--anta-ink-30);
 }
 
+/* Light tone: for white / mist backgrounds. */
+.light .line {
+  background: var(--anta-ink-30);
+}
+
+.light .title {
+  color: var(--anta-ink);
+}
+
+.light .desc {
+  color: var(--anta-ink-70);
+}
+
 @media (max-width: 780px) {
   .timeline {
     padding-top: 0;
@@ -77,5 +90,11 @@
   }
   .node {
     top: -6px;
+  }
+}
+
+@media (max-width: 780px) {
+  .light .step {
+    border-top-color: var(--anta-ink-30);
   }
 }

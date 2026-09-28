@@ -1,6 +1,5 @@
 import { buildMetadata } from "@/lib/seo";
-import heroWide from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_001AV2_5260_P-e1771974642904.webp";
-import heroPortrait from "@/public/proyectos/terraza-pangea/EA_AES_SRPA_24_004AV2_5324_P-scaled-1.webp";
+import heroImg from "@/public/proyectos/casa-arbol/anta-estudio-residencial-casa-arbol-4.webp";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/home/Hero";
@@ -36,8 +35,8 @@ export default function Home() {
         <NavBar theme="dark" links={navLinks} cta="Solicitar propuesta" />
       </div>
       <Hero
-        image={{ src: heroWide, alt: "Terraza Pangea, proyecto de arquitectura de Anta Estudio en Monterrey" }}
-        mobileImage={{ src: heroPortrait, alt: "Terraza Pangea, proyecto de arquitectura de Anta Estudio en Monterrey" }}
+        image={{ src: heroImg, alt: "Casa Árbol, proyecto residencial de Anta Estudio en Monterrey" }}
+        mobileImage={{ src: heroImg, alt: "Casa Árbol, proyecto residencial de Anta Estudio en Monterrey" }}
       />
       {/* Opaque wrapper above the sticky hero — it scrolls over the hero image. */}
       <div style={{ position: "relative", zIndex: 1, background: "var(--anta-white)" }}>
