@@ -53,7 +53,7 @@ function Cells({ cells }: { cells: Cell[] }) {
           <Link href={`/proyectos/${c.slug}`} className={styles.cellLink}>
             <Image
               src={c.img}
-              alt={P(c.slug).nombre}
+              alt="" // the link's name is the .cellName span; repeating it is redundant
               sizes="(max-width: 600px) 33vw, 300px"
               placeholder="blur"
               className={styles.cellImg}
@@ -152,9 +152,11 @@ export function ScrollGridProjects({ debug = false }: { debug?: boolean }) {
 
   const { props: scalerProps } = getImageProps({
     src: scaler.img,
-    alt: P(scaler.slug).nombre,
+    alt: "",
     sizes: "100vw",
-    loading: "eager", // it opens full-bleed — don't lazy-load it
+    // Lazy: it sits below the hero. "eager" made React preload it in <head>,
+    // competing with the hero (the LCP) for bandwidth.
+    loading: "lazy",
   });
 
   return (
@@ -177,7 +179,7 @@ export function ScrollGridProjects({ debug = false }: { debug?: boolean }) {
               ref={scalerImgRef}
               onLoad={() => ScrollTrigger.refresh()}
               className={styles.scalerImg}
-              alt={P(scaler.slug).nombre}
+              alt="" // the link's name is the .scalerName span
             />
             <span className={styles.scalerName}>{P(scaler.slug).nombre}</span>
           </Link>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/projects";
+import { getProjectMeta } from "@/lib/projectMeta";
 import styles from "./ProjectTile.module.css";
 
 const CYCLE_MS = 800;
@@ -17,6 +18,7 @@ const MAX_IMAGES = 4; // cover + up to 3 gallery frames
  */
 export function ProjectTile({ project }: { project: Project }) {
   const images = [project.cover, ...project.galeria].slice(0, MAX_IMAGES);
+  const { ubicacion } = getProjectMeta(project.slug);
   const [idx, setIdx] = useState(0);
   const [activated, setActivated] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -55,7 +57,7 @@ export function ProjectTile({ project }: { project: Project }) {
               <Image
                 key={i}
                 src={img}
-                alt={i === 0 ? project.nombre : ""}
+                alt="" // the link's name comes from .name below; repeating it is redundant
                 fill
                 placeholder="blur"
                 sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
@@ -66,7 +68,7 @@ export function ProjectTile({ project }: { project: Project }) {
           )}
           <div className={styles.info}>
             <span className={styles.name}>{project.nombre}</span>
-            <span className={styles.loc}>Monterrey, N.L.</span>
+            {ubicacion && <span className={styles.loc}>{ubicacion}</span>}
           </div>
         </div>
       </Link>

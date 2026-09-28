@@ -13,19 +13,23 @@ const lato = Lato({
   display: "swap",
 });
 
+// Only the normal style: no page uses Open Sans in italic.
 const openSans = Open_Sans({
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   variable: "--font-open-sans",
   display: "swap",
 });
 
+// Italic only (ProjectTile). Not preloaded: it never appears above the fold,
+// and preloading it would compete with each page's hero image.
 const poppins = Poppins({
   weight: ["400"],
-  style: ["normal", "italic"],
+  style: ["italic"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
+  preload: false,
 });
 
 const DESCRIPTION =

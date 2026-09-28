@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import type { ReactNode } from "react";
 import type { StaticImageData } from "next/image";
 import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
@@ -85,6 +86,9 @@ export function IntegralSection({
   tone = "mist",
 }: IntegralSectionProps = {}) {
   const [active, setActive] = useState(0);
+  const uid = useId();
+  const tabId = (i: number) => `${uid}-tab-${i}`;
+  const panelId = `${uid}-panel`;
   const rootRef = useRef<HTMLElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const stRef = useRef<ScrollTrigger | null>(null);
@@ -133,6 +137,22 @@ export function IntegralSection({
     }
   };
 
+  // WAI-ARIA tabs keyboard pattern (vertical list): arrows / Home / End move
+  // selection and focus; only the active tab is in the Tab order.
+  const onTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
+    const last = items.length - 1;
+    const next =
+      e.key === "ArrowDown" || e.key === "ArrowRight" ? (i === last ? 0 : i + 1)
+      : e.key === "ArrowUp" || e.key === "ArrowLeft" ? (i === 0 ? last : i - 1)
+      : e.key === "Home" ? 0
+      : e.key === "End" ? last
+      : null;
+    if (next === null) return;
+    e.preventDefault();
+    goTo(next);
+    document.getElementById(tabId(next))?.focus();
+  };
+
   return (
     <section
       ref={rootRef}
@@ -148,24 +168,29 @@ export function IntegralSection({
         </div>
 
         <div ref={tabsRef} className={styles.tabs}>
-          <ul className={styles.list} role="tablist" aria-label={heading}>
+          {/* Tabs are direct children of the tablist (no ul/li in between) so
+              the ARIA ownership tablist → tab is valid. */}
+          <div className={styles.list} role="tablist" aria-label={heading} aria-orientation="vertical">
             {items.map((c, i) => (
-              <li key={c.title}>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={active === i}
-                  className={`${styles.tab} ${active === i ? styles.tabActive : ""}`}
-                  onClick={() => goTo(i)}
-                >
-                  <span className={styles.tabNum}>{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className={styles.tabTitle}>{c.title}</h3>
-                </button>
-              </li>
+              <button
+                key={c.title}
+                id={tabId(i)}
+                type="button"
+                role="tab"
+                aria-selected={active === i}
+                aria-controls={panelId}
+                tabIndex={active === i ? 0 : -1}
+                className={`${styles.tab} ${active === i ? styles.tabActive : ""}`}
+                onClick={() => goTo(i)}
+                onKeyDown={(e) => onTabKeyDown(e, i)}
+              >
+                <span className={styles.tabNum}>{String(i + 1).padStart(2, "0")}</span>
+                <h3 className={styles.tabTitle}>{c.title}</h3>
+              </button>
             ))}
-          </ul>
+          </div>
 
-          <div className={styles.panel}>
+          <div className={styles.panel} id={panelId} role="tabpanel" aria-labelledby={tabId(active)}>
             <div className={styles.panelImg}>
               {items.map((c, i) => (
                 <Image

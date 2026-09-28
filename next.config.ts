@@ -26,6 +26,10 @@ const noindex = process.env.NOINDEX === "true";
 const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
+    // CSS goes into a <style> in the HTML instead of <link> tags: removes the
+    // render-blocking stylesheet requests (≈750 ms on mobile Lighthouse). The
+    // whole site's CSS is ~11 KB gzip, so the per-page cost is small.
+    inlineCss: true,
   },
   images: {
     // Local SVG placeholders are rendered via `unoptimized` at the call site.

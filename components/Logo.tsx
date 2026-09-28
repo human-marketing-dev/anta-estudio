@@ -29,7 +29,11 @@ export function Logo({
       alt="Anta Estudio"
       height={height}
       width={Math.round(height * RATIO)}
-      priority
+      // Eager (it's the first thing on screen) but without a <head> preload:
+      // React 19 preloads every non-lazy <img> unless fetchPriority is "low",
+      // and that preload competed with each page's hero (the LCP).
+      loading="eager"
+      fetchPriority="low"
       style={{ display: "block", filter: FILTER[color], ...style }}
     />
   );

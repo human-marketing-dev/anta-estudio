@@ -208,7 +208,10 @@ export function Hero({
   );
 
   // Art direction via <picture>: only the matching breakpoint's image is fetched.
-  const shared = { priority: true as const };
+  // React doesn't emit a preload for an <img> inside <picture>, so the LCP hint
+  // is fetchPriority="high" on the <img> (per the next/image docs for <picture>).
+  // loading must be explicit: without priority/preload, getImageProps defaults to lazy.
+  const shared = { fetchPriority: "high" as const, loading: "eager" as const };
   const { props: desktop } = getImageProps({ ...shared, src: image.src, alt: image.alt, sizes: "100vw" });
   const { props: mobile } = getImageProps({ ...shared, src: mobileImage.src, alt: mobileImage.alt, sizes: "100vw" });
 
